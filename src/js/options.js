@@ -1,13 +1,8 @@
 // JS for options.html
 
 import {
-    checkPerms,
-    grantPerms,
     linkClick,
-    onAdded,
-    onRemoved,
     processBrowser,
-    revokePerms,
     saveOptions,
     showToast,
     updateManifest,
@@ -15,18 +10,9 @@ import {
 } from './export.js'
 
 chrome.storage.onChanged.addListener(onChanged)
-chrome.permissions.onAdded.addListener(onAdded)
-chrome.permissions.onRemoved.addListener(onRemoved)
 
 document.addEventListener('DOMContentLoaded', initOptions)
 document.getElementById('copy-support').addEventListener('click', copySupport)
-
-document
-    .querySelectorAll('.revoke-permissions')
-    .forEach((el) => el.addEventListener('click', revokePerms))
-document
-    .querySelectorAll('.grant-permissions')
-    .forEach((el) => el.addEventListener('click', grantPerms))
 document
     .querySelectorAll('a[href]')
     .forEach((el) => el.addEventListener('click', linkClick))
@@ -48,8 +34,7 @@ async function initOptions() {
     console.debug('initOptions')
 
     updateManifest()
-    setShortcuts('#keyboard-shortcuts', true).then()
-    checkPerms().then()
+    setShortcuts().then()
     processBrowser().then()
 
     const { options, hosts } = await chrome.storage.sync.get([
@@ -97,7 +82,7 @@ async function setShortcuts(selector = '#keyboard-shortcuts', action = false) {
     const source = table.querySelector('tfoot > tr').cloneNode(true)
     const commands = await chrome.commands.getAll()
     for (const command of commands) {
-        // console.debug('command:', command)
+        console.debug('command:', command)
         const row = source.cloneNode(true)
         // TODO: Chrome does not parse the description for _execute_action in manifest.json
         let description = command.description
@@ -109,12 +94,13 @@ async function setShortcuts(selector = '#keyboard-shortcuts', action = false) {
         tbody.appendChild(row)
     }
     if (action) {
-        const userSettings = await chrome.action.getUserSettings()
-        const row = source.cloneNode(true)
-        row.querySelector('i').className = 'fa-solid fa-puzzle-piece me-1'
-        row.querySelector('.description').textContent = 'Toolbar Icon Pinned'
-        row.querySelector('kbd').textContent = userSettings ? 'Yes' : 'No'
-        tbody.appendChild(row)
+        console.debug('Requires Firefox 116+ and Chrome 91+')
+        // const userSettings = await chrome.action.getUserSettings()
+        // const row = source.cloneNode(true)
+        // row.querySelector('i').className = 'fa-solid fa-puzzle-piece me-1'
+        // row.querySelector('.description').textContent = 'Toolbar Icon Pinned'
+        // row.querySelector('kbd').textContent = userSettings ? 'Yes' : 'No'
+        // tbody.appendChild(row)
     }
 }
 

@@ -1,9 +1,7 @@
 // JS for popup.html
 
 import {
-    checkPerms,
     cleanCache,
-    grantPerms,
     injectFunction,
     linkClick,
     saveOptions,
@@ -15,9 +13,6 @@ import {
 chrome.storage.onChanged.addListener(onChanged)
 
 document.addEventListener('DOMContentLoaded', initPopup)
-document
-    .querySelectorAll('.grant-permissions')
-    .forEach((el) => el.addEventListener('click', (e) => grantPerms(e, true)))
 document
     .querySelectorAll('a[href]')
     .forEach((el) => el.addEventListener('click', (e) => linkClick(e, true)))
@@ -52,17 +47,11 @@ async function initPopup() {
         showToast(chrome.runtime.lastError.message, 'warning')
     }
 
-    // Check Host Permissions
-    const hasPerms = await checkPerms()
-    if (!hasPerms) {
-        console.log('%cMissing Host Permissions', 'color: Red')
-    }
-
     // Check Site Access
     const result = await checkSite()
     if (!result) {
         console.log('%cNo result from checkSite', 'color: Yellow')
-        hostnameEl.classList.replace('border-success', 'border-danger-subtle')
+        hostnameEl.classList.replace('border-success', 'border-danger')
         document.getElementById('site-access').classList.add('d-none')
         return
     }

@@ -34,7 +34,9 @@
 
         <div class="flex-fill text-center">
             <a class="link-body-emphasis text-decoration-none fs-4" title="Open Home Page" href="homepage_url">Cache Cleaner</a>
-            <span class="small">v<span class="version"></span></span>
+            <span class="small"><a class="link-body-emphasis text-decoration-none" href="version_url">
+                v<span class="version"></span></a>
+            </span>
         </div>
 
         <div class="">
@@ -42,15 +44,6 @@
                 <i class="fa-solid fa-gears"></i></a>
         </div>
     </div> <!-- d-flex -->
-
-    <div class="d-none grant-perms">
-        <button class="btn btn-sm btn-success w-100 mt-1 grant-permissions" type="button"
-                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
-                data-bs-title="This Extension Requires Host Permissions to Function.">
-            <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions</button>
-        <p class="text-center small mb-0"><a href="../html/permissions.html" class="">
-            More Information on Permissions</a></p>
-    </div> <!-- grant-perms -->
 
     <div class="text-center mb-1">
         <div class="form-check form-check-inline">
@@ -161,7 +154,7 @@
 
         <div class="d-grid g-2 gap-2">
             <button class="btn btn-warning d-flex align-items-center" data-clean="browser-selected">
-                <i class="fa-solid fa-biohazard me-1"></i>
+                <i class="fa-solid fa-toggle-on me-1"></i>
                 <span class="flex-fill text-center">Clear Selected Browser Cache</span>
             </button>
             <button class="btn btn-outline-danger d-flex align-items-center" data-clean="browser-all">

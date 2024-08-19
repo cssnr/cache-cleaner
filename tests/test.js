@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer')
+const assert = require('assert')
 const path = require('path')
 const fs = require('fs')
 
@@ -93,7 +94,7 @@ async function getPage(browser, name, size) {
     console.log('popup:', popup)
     await popup.waitForNetworkIdle()
     await popup.screenshot(ssOptions('popup'))
-    await popup.locator('#browserSettings').click()
+    await popup.locator('#autoReload').click()
     await popup.screenshot(ssOptions('popup'))
     await popup.locator('[href="../html/options.html"]').click()
 
@@ -123,7 +124,10 @@ async function getPage(browser, name, size) {
     popup = await getPage(browser, 'popup.html')
     await popup.screenshot(ssOptions('popup'))
     await popup.locator('[data-clean="site-selected"]').click()
-    // await page.waitForNetworkIdle()
+    await page.waitForNetworkIdle()
+    const localStorage = await page.evaluate(() => ({ ...window.localStorage }))
+    console.log('localStorage:', localStorage)
+    assert(!Object.keys(localStorage).includes('theme'), 'Cache Not Cleared!')
     // await page.screenshot(ssOptions('page'))
 
     await browser.close()

@@ -13,13 +13,6 @@
     "scripting",
     "storage"
   ],
-  "host_permissions": ["*://*/*"],
-  "content_scripts": [
-    {
-      "matches": ["*://*/*"],
-      "js": ["js/content-script.js"]
-    }
-  ],
   "background": { "type": "module" },
   "options_ui": {
     "page": "html/options.html",

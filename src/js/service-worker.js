@@ -1,15 +1,12 @@
 // JS Background Service Worker
 
-import { checkPerms, cleanCache, showPanel } from './export.js'
+import { cleanCache, githubURL } from './export.js'
 
 chrome.runtime.onStartup.addListener(onStartup)
 chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.contextMenus?.onClicked.addListener(onClicked)
 chrome.commands?.onCommand.addListener(onCommand)
-chrome.runtime.onMessage.addListener(onMessage)
 chrome.storage.onChanged.addListener(onChanged)
-chrome.permissions.onAdded.addListener(onAdded)
-chrome.permissions.onRemoved.addListener(onRemoved)
 
 /**
  * On Startup Callback
@@ -35,7 +32,6 @@ async function onStartup() {
  */
 async function onInstalled(details) {
     console.log('onInstalled:', details)
-    const githubURL = 'https://github.com/cssnr/cache-cleaner'
     // const uninstallURL = new URL('https://link-extractor.cssnr.com/uninstall/')
     const options = await setDefaultOptions({
         site: {
@@ -51,7 +47,7 @@ async function onInstalled(details) {
             indexedDB: true,
             localStorage: true,
             serviceWorkers: true,
-            cache: false,
+            cache: true,
             downloads: false,
             formData: false,
             history: false,
@@ -63,19 +59,12 @@ async function onInstalled(details) {
         showUpdate: false,
     })
     console.debug('options:', options)
-    // await updateIcon(options)
     if (options.contextMenu) {
         createContextMenus()
     }
     const manifest = chrome.runtime.getManifest()
     if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
-        const hasPerms = await checkPerms()
-        if (hasPerms) {
-            await chrome.runtime.openOptionsPage()
-        } else {
-            const url = chrome.runtime.getURL('/html/permissions.html')
-            await chrome.tabs.create({ active: true, url })
-        }
+        await chrome.runtime.openOptionsPage()
     } else if (details.reason === chrome.runtime.OnInstalledReason.UPDATE) {
         if (options.showUpdate) {
             if (manifest.version !== details.previousVersion) {
@@ -100,8 +89,6 @@ async function onClicked(ctx, tab) {
     console.debug('onClicked:', ctx, tab)
     if (ctx.menuItemId === 'openOptions') {
         await chrome.runtime.openOptionsPage()
-    } else if (ctx.menuItemId === 'showPanel') {
-        await showPanel()
     } else if (ctx.menuItemId === 'clearSiteCache') {
         console.debug('%cclearSiteCache:', 'color: Lime')
         await cleanCache('site-selected')
@@ -122,8 +109,6 @@ async function onCommand(command) {
     console.debug(`onCommand: ${command}`)
     if (command === 'openOptions') {
         await chrome.runtime.openOptionsPage()
-    } else if (command === 'showPanel') {
-        await showPanel()
     } else if (command === 'clearSiteCache') {
         console.debug('%cclearSiteCache:', 'color: Lime')
         await cleanCache('site-selected')
@@ -132,39 +117,6 @@ async function onCommand(command) {
         await cleanCache('site-all')
     } else {
         console.error(`Unknown command: ${command}`)
-    }
-}
-
-/**
- * Message Callback - this function must not async
- * @function onMessage
- * @param {Object} message
- * @param {String} [message.badgeColor]
- * @param {String} [message.badgeText]
- * @param {Number} [message.tabId]
- * @param {Function} sendResponse
- * @param {MessageSender} sender
- */
-function onMessage(message, sender, sendResponse) {
-    console.debug('message, sender:', message, sender)
-    const tabId = message.tabId || sender.tab?.id
-    if ('badgeColor' in message && tabId) {
-        console.debug(`tabId: ${tabId} color: ${message.badgeColor}`)
-        chrome.action.setBadgeBackgroundColor({
-            tabId: tabId,
-            color: message.badgeColor,
-        })
-    }
-    if ('badgeText' in message && tabId) {
-        console.debug(`tabId: ${tabId} text: ${message.badgeText}`)
-        chrome.action.setBadgeText({
-            tabId: tabId,
-            text: message.badgeText,
-        })
-    }
-    if ('host' in message) {
-        Hosts.get(message.host).then((creds) => sendResponse(creds))
-        return true
     }
 }
 
@@ -187,31 +139,8 @@ async function onChanged(changes, namespace) {
                     chrome.contextMenus.removeAll()
                 }
             }
-            // if (oldValue.tempDisabled !== newValue.tempDisabled) {
-            //     console.debug('tempDisabled:', newValue.tempDisabled)
-            //     // const color = newValue.tempDisabled ? 'red' : 'green'
-            //     await updateIcon(newValue)
-            // }
         }
     }
-}
-
-/**
- * Permissions On Added Callback
- * @param {chrome.permissions} permissions
- */
-export async function onAdded(permissions) {
-    console.debug('onAdded', permissions)
-    // await updateIcon()
-}
-
-/**
- * Permissions On Removed Callback
- * @param {chrome.permissions} permissions
- */
-export async function onRemoved(permissions) {
-    console.debug('onRemoved', permissions)
-    // await updateIcon()
 }
 
 /**
@@ -226,7 +155,7 @@ function createContextMenus() {
         [['all'], 'clearSiteCache', 'Clear Site Cache'],
         [['all'], 'clearAllSiteCache', 'Clear All Site Cache'],
         [['all'], 'separator'],
-        [['all'], 'openOptions', 'Cache Cleaner Options'],
+        [['all'], 'openOptions', 'Open Options'],
     ]
     contexts.forEach(addContext)
 }
@@ -275,7 +204,22 @@ async function setDefaultOptions(defaultOptions) {
         if (options[key] === undefined) {
             changed = true
             options[key] = value
-            console.log(`%cSet ${key}:`, 'color: LimeGreen', value)
+            console.log(`%cSet ${key}:`, 'color: Yellow', value)
+        } else if (typeof defaultOptions[key] === 'object') {
+            console.debug(`%cProcessing Object: ${key}`, 'color: Magenta')
+            for (const [subKey, subValue] of Object.entries(
+                defaultOptions[key]
+            )) {
+                if (options[key][subKey] === undefined) {
+                    changed = true
+                    options[key][subKey] = subValue
+                    console.log(
+                        `%cSet: ${key}.${subKey}:`,
+                        'color: Yellow',
+                        subValue
+                    )
+                }
+            }
         }
     }
     if (changed) {

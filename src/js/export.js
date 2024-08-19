@@ -1,10 +1,11 @@
 // JS Exports
 
+export const githubURL = 'https://github.com/cssnr/cache-cleaner'
+
 /**
  * Save Options Callback
  * @function cleanCache
  * @param {String} type
- // * @param {chrome.tabs.Tab} tab
  */
 export async function cleanCache(type) {
     console.debug('cleanCache:', type)
@@ -54,12 +55,11 @@ export async function cleanCache(type) {
         console.debug('cleanOptions:', cleanOptions)
         await chrome.browsingData.remove(removalOptions, cleanOptions)
         if (options.autoReload) {
-            console.debug('window.location.reload()')
             await injectFunction(() => window.location.reload())
         }
     } else if (type.startsWith('browser')) {
         // Browser Cleaner
-        console.log('%cCleaning Browser Cache', 'color: Red')
+        console.log('%cCleaning Browser Cache', 'color: OrangeRed')
         let cleanOptions
         if (type === 'browser-selected') {
             cleanOptions = options.browser
@@ -86,31 +86,20 @@ export async function cleanCache(type) {
     }
 }
 
+/**
+ * @function clearCacheStorage
+ * @return {Promise<void>}
+ */
 async function clearCacheStorage() {
     async function cacheStorage() {
         const keys = await caches.keys()
         for (const key of keys) {
-            console.log(`%cDeleting Cache: ${key}`, 'color: OrangeRed')
+            console.log(`%cDeleting Cache: ${key}`, 'color: DeepSkyBlue')
             await caches.delete(key)
         }
     }
     const results = await injectFunction(cacheStorage)
     console.debug('results:', results)
-}
-
-/**
- * Show Extension Panel
- * @function showPanel
- * @param {Number} height
- * @param {Number} width
- */
-export async function showPanel(height = 520, width = 480) {
-    return await chrome.windows.create({
-        type: 'panel',
-        url: '/html/panel.html',
-        width,
-        height,
-    })
 }
 
 /**
@@ -144,10 +133,10 @@ export async function saveOptions(event) {
     if (key.includes('-')) {
         const subkey = key.split('-')[1]
         key = key.split('-')[0]
-        console.log(`%cSet: ${key}.${subkey}:`, 'color: Magenta', value)
+        console.log(`%cSet: ${key}.${subkey}:`, 'color: DeepSkyBlue', value)
         options[key][subkey] = value
     } else if (value !== undefined) {
-        console.log(`%cSet: ${key}:`, 'color: Magenta', value)
+        console.log(`%cSet: ${key}:`, 'color: DeepSkyBlue', value)
         options[key] = value
     } else {
         console.warn('No Value for key:', key)
@@ -182,9 +171,13 @@ export function updateOptions(options) {
     }
 }
 
+/**
+ * @function processEl
+ * @param {HTMLElement} el
+ * @param {Boolean} value
+ */
 function processEl(el, value) {
     if (!el) {
-        // console.debug('no el')
         return
     }
     if (el.tagName !== 'INPUT') {
@@ -248,16 +241,11 @@ export async function linkClick(event, close = false) {
     const href = event.currentTarget.getAttribute('href').replace(/^\.+/g, '')
     // console.debug('href:', href)
     if (href.startsWith('#')) {
-        // console.debug('return on anchor link')
         return
     }
     let url
     if (href.endsWith('html/options.html')) {
         await chrome.runtime.openOptionsPage()
-        if (close) window.close()
-        return
-    } else if (href.endsWith('html/panel.html')) {
-        await showPanel()
         if (close) window.close()
         return
     } else if (href.startsWith('http')) {
@@ -266,32 +254,8 @@ export async function linkClick(event, close = false) {
         url = chrome.runtime.getURL(href)
     }
     console.debug('url:', url)
-    await activateOrOpen(url)
+    await chrome.tabs.create({ active: true, url })
     if (close) window.close()
-}
-
-/**
- * Activate or Open Tab from URL
- * @function activateOrOpen
- * @param {String} url
- * @param {Boolean} [open]
- * @return {Promise<Boolean>}
- */
-export async function activateOrOpen(url, open = true) {
-    console.debug('activateOrOpen:', url)
-    // Get Tab from Tabs (requires host permissions)
-    const tabs = await chrome.tabs.query({ currentWindow: true })
-    // console.debug('tabs:', tabs)
-    for (const tab of tabs) {
-        if (tab.url === url) {
-            console.debug('found tab in tabs:', tab)
-            return await chrome.tabs.update(tab.id, { active: true })
-        }
-    }
-    console.debug('tab not found, open:', open)
-    if (open) {
-        return await chrome.tabs.create({ active: true, url })
-    }
 }
 
 /**
@@ -300,103 +264,15 @@ export async function activateOrOpen(url, open = true) {
  */
 export function updateManifest() {
     const manifest = chrome.runtime.getManifest()
-    document
-        .querySelectorAll('.version')
-        .forEach((el) => (el.textContent = manifest.version))
-    document
-        .querySelectorAll('[href="homepage_url"]')
-        .forEach((el) => (el.href = manifest.homepage_url))
-}
-
-/**
- * Check Host Permissions
- * @function checkPerms
- * @return {Promise<Boolean>}
- */
-export async function checkPerms() {
-    const hasPerms = await chrome.permissions.contains({
-        origins: ['*://*/*'],
+    document.querySelectorAll('.version').forEach((el) => {
+        el.textContent = manifest.version
     })
-    console.debug('checkPerms:', hasPerms)
-    // Firefox still uses DOM Based Background Scripts
-    if (typeof document === 'undefined') {
-        return hasPerms
-    }
-    const hasPermsEl = document.querySelectorAll('.has-perms')
-    const grantPermsEl = document.querySelectorAll('.grant-perms')
-    if (hasPerms) {
-        hasPermsEl.forEach((el) => el.classList.remove('d-none'))
-        grantPermsEl.forEach((el) => el.classList.add('d-none'))
-    } else {
-        grantPermsEl.forEach((el) => el.classList.remove('d-none'))
-        hasPermsEl.forEach((el) => el.classList.add('d-none'))
-    }
-    return hasPerms
-}
-
-/**
- * Grant Permissions Click Callback
- * @function grantPerms
- * @param {MouseEvent} event
- * @param {Boolean} [close]
- */
-export async function grantPerms(event, close = false) {
-    console.debug('grantPerms:', event)
-    requestPerms() // Firefox: Do NOT await so that we can call window.close()
-    if (close) {
-        window.close()
-    }
-}
-
-/**
- * Request Host Permissions
- * @function requestPerms
- * @return {Promise<Boolean>}
- */
-export async function requestPerms() {
-    return await chrome.permissions.request({
-        origins: ['*://*/*'],
+    document.querySelectorAll('[href="version_url"]').forEach((el) => {
+        el.href = `${githubURL}/releases/tag/${manifest.version}`
     })
-}
-
-/**
- * Revoke Permissions Click Callback
- * NOTE: For many reasons Chrome will determine host_perms are required and
- *       will ask for them at install time and not allow them to be revoked
- * @function revokePerms
- * @param {MouseEvent} event
- */
-export async function revokePerms(event) {
-    console.debug('revokePerms:', event)
-    const permissions = await chrome.permissions.getAll()
-    console.debug('permissions:', permissions)
-    try {
-        await chrome.permissions.remove({
-            origins: permissions.origins,
-        })
-        await checkPerms()
-    } catch (e) {
-        console.log(`%cError: ${e.message}`, 'color: Red', e)
-        showToast(e.toString(), 'danger')
-    }
-}
-
-/**
- * Permissions On Added Callback
- * @param {chrome.permissions} permissions
- */
-export async function onAdded(permissions) {
-    console.debug('onAdded', permissions)
-    await checkPerms()
-}
-
-/**
- * Permissions On Removed Callback
- * @param {chrome.permissions} permissions
- */
-export async function onRemoved(permissions) {
-    console.debug('onRemoved', permissions)
-    await checkPerms()
+    document.querySelectorAll('[href="homepage_url"]').forEach((el) => {
+        el.href = manifest.homepage_url
+    })
 }
 
 /**

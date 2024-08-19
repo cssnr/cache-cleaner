@@ -15,7 +15,7 @@ if (typeof ClipboardJS !== 'undefined') {
         }
     })
     clipboard.on('error', function (event) {
-        console.log('clipboard.error:', event)
+        console.log('%cclipboard.error:', 'color: Red', event)
         showToast('Clipboard Copy Failed', 'warning')
     })
 }
