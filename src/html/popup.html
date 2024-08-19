@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cache Cleaner</title>
+    <link rel="icon" href="../images/logo16.png" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/popup.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body>
+
+<div class="container-fluid p-2">
+
+    <div class="d-flex flex-row align-items-center">
+<!--        <div class="">-->
+<!--            <a title="Cache Cleaner" href="homepage_url"><img src="../images/logo32.png" height="32" width="32" alt="Cache Cleaner"></a>-->
+<!--        </div>-->
+        <div class="dropdown">
+            <a class="nav-link hvr-grow" id="bd-theme-disabled" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i id="theme-icon" class="fa-solid fa-circle-half-stroke fa-lg" style="min-width: 20px;"></i> <i class="fa-solid fa-caret-down fa-xs mx-1"></i></a>
+            <ul class="dropdown-menu auto dropdown-menu-end" aria-labelledby="bd-theme-disabled">
+                <li><button class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
+                    <i class="fa-regular fa-moon" style="min-width: 16px;"></i> <span class="ms-3">Dark</span></button></li>
+                <li><button class="dropdown-item" data-bs-theme-value="light" aria-pressed="false">
+                    <i class="fa-solid fa-sun" style="min-width: 16px;"></i> <span class="ms-3">Light</span></button></li>
+                <li><button class="dropdown-item" data-bs-theme-value="auto" aria-pressed="false">
+                    <i class="fa-solid fa-circle-half-stroke" style="min-width: 16px;"></i> <span class="ms-3">Auto</span></button></li>
+            </ul>
+        </div>
+
+        <div class="flex-fill text-center">
+            <a class="link-body-emphasis text-decoration-none fs-4" title="Open Home Page" href="homepage_url">Cache Cleaner</a>
+            <span class="small">v<span class="version"></span></span>
+        </div>
+
+        <div class="">
+            <a class="btn btn-sm btn-outline-info" role="button" href="../html/options.html" title="Options">
+                <i class="fa-solid fa-gears"></i></a>
+        </div>
+    </div> <!-- d-flex -->
+
+    <div class="d-none grant-perms">
+        <button class="btn btn-sm btn-success w-100 mt-1 grant-permissions" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+                data-bs-title="This Extension Requires Host Permissions to Function.">
+            <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions</button>
+        <p class="text-center small mb-0"><a href="../html/permissions.html" class="">
+            More Information on Permissions</a></p>
+    </div> <!-- grant-perms -->
+
+    <div class="text-center mb-1">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="cacheType" id="siteSettings" value="site" checked>
+            <label class="form-check-label small" for="siteSettings">Site Cache</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="cacheType" id="browserSettings" value="browser">
+            <label class="form-check-label small" for="browserSettings">Browser Cache</label>
+        </div>
+    </div> <!-- radio -->
+
+    <!-- SITE SETTINGS -->
+
+    <div id="site-settings">
+        <div id="hostname" class="text-center border border-success border-2 rounded p-1 mb-2">
+            No Access to the Current Tab.
+        </div>
+
+        <div id="site-access">
+            <div class="d-grid g-2 gap-2">
+                <button class="btn btn-success d-flex align-items-center" data-clean="site-selected">
+                    <i class="fa-solid fa-toggle-on me-1"></i>
+                    <span class="flex-fill text-center">Clear Selected Site Cache</span>
+                </button>
+                <button class="btn btn-outline-primary d-flex align-items-center" data-clean="site-all">
+                    <i class="fa-solid fa-eraser me-1"></i>
+                    <span class="flex-fill text-center">Clear ALL Site Cache</span>
+                </button>
+            </div> <!-- d-grid -->
+            <p class="text-warning-emphasis text-center my-1">
+                Site Cache Size: <abbr id="cache-usage" class="fw-bolder" type="wtf"></abbr>
+            </p>
+        </div> <!-- site-access -->
+
+        <form class="options-form">
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" type="checkbox" role="switch" id="autoReload">
+                <label class="form-check-label ps-2 me-2" for="autoReload" aria-describedby="autoReloadHelp">
+                    Reload after Clearing Cache
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Reload after Clearing Cache.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+
+            <div class="d-flex flex-row align-items-center justify-content-center">
+                <hr class="w-100 my-0">
+                <span class="text-nowrap mx-2">Site Specific Settings</span>
+                <hr class="w-100 my-0">
+            </div>
+
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="site-cookies" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="site-cookies" aria-describedby="site-cookiesHelp">
+                    Cookies
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Cookies.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="site-indexedDB" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="site-indexedDB" aria-describedby="site-indexedDBHelp">
+                    Index DB
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Index DB.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="site-localStorage" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="site-localStorage" aria-describedby="site-localStorageHelp">
+                    Local Storage
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Local Storage.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="site-serviceWorkers" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="site-serviceWorkers" aria-describedby="site-serviceWorkersHelp">
+                    Service Workers
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Service Workers.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="site-cacheStorage" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="site-cacheStorage" aria-describedby="site-cacheStorageHelp">
+                    Cache Storage
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Cache Storage.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+
+        </form> <!-- options-form -->
+    </div> <!-- site-settings -->
+
+    <!-- BROWSER SETTINGS -->
+
+    <div id="browser-settings" class="d-none">
+        <div class="text-center border border-warning border-2 rounded p-1 mb-2">
+            Cache for ALL Sites will be Removed!
+        </div>
+
+        <div class="d-grid g-2 gap-2">
+            <button class="btn btn-warning d-flex align-items-center" data-clean="browser-selected">
+                <i class="fa-solid fa-biohazard me-1"></i>
+                <span class="flex-fill text-center">Clear Selected Browser Cache</span>
+            </button>
+            <button class="btn btn-outline-danger d-flex align-items-center" data-clean="browser-all">
+                <i class="fa-solid fa-skull-crossbones me-1"></i>
+                <span class="flex-fill text-center">Clear ALL Browser & Site Cache</span>
+            </button>
+        </div> <!-- d-grid -->
+
+        <form class="options-form">
+            <div class="d-flex flex-row align-items-center justify-content-center">
+                <hr class="w-100 my-0">
+                <span class="text-nowrap mx-2">Site Data</span>
+                <hr class="w-100 my-0">
+            </div>
+
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-cookies" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-cookies" aria-describedby="browser-cookiesHelp">
+                    Cookies
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Cookies.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-indexedDB" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-indexedDB" aria-describedby="browser-indexedDBHelp">
+                    Index DB
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Index DB.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-localStorage" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-localStorage" aria-describedby="browser-localStorageHelp">
+                    Local Storage
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Local Storage.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-serviceWorkers" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-serviceWorkers" aria-describedby="browser-serviceWorkersHelp">
+                    Service Workers
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Service Workers.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-cacheStorage" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-cacheStorage" aria-describedby="browser-cacheStorageHelp">
+                    Cache Storage
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Cache Storage.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+
+            <div class="d-flex flex-row align-items-center justify-content-center">
+                <hr class="w-100 my-0">
+                <span class="text-nowrap mx-2">Browser Data</span>
+                <hr class="w-100 my-0">
+            </div>
+
+            <div class="form-check form-switch d-flex align-items-center d-flex align-items-center">
+                <input class="form-check-input" id="browser-cache" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-cache" aria-describedby="browser-cacheHelp">
+                    Browser Cache
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Browser Cache.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-downloads" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-downloads" aria-describedby="browser-downloadsHelp">
+                    Downloads
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Downloads.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-formData" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-formData" aria-describedby="browser-formDataHelp">
+                    Form Data
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Form Data.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-history" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-history" aria-describedby="browser-historyHelp">
+                    History
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="History.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-passwords" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-passwords" aria-describedby="browser-passwordsHelp">
+                    Passwords
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Passwords.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" id="browser-pluginData" type="checkbox" role="switch">
+                <label class="form-check-label ps-2 me-2" for="browser-pluginData" aria-describedby="browser-pluginDataHelp">
+                    Plugin Data
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Plugin Data.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+            </div>
+        </form> <!-- options-form -->
+    </div> <!-- browser-settings -->
+</div> <!-- container -->
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="6000">
+        <div class="d-flex">
+            <div class="toast-body text-break small"></div>
+        </div>
+    </div>
+</div> <!-- d-none -->
+
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="module" src="../js/popup.js"></script>
+
+</body>
+</html>

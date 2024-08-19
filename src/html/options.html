@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cache Cleaner Options</title>
+    <link rel="icon" href="../images/logo16.png" sizes="any">
+    <link rel="stylesheet" type="text/css" href="../dist/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../dist/fontawesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/options.css">
+    <script type="text/javascript" src="../js/theme.js"></script>
+</head>
+<body>
+
+<div class="container-fluid py-3 px-1 px-sm-3 ">
+<div class="card w-100 mx-auto">
+<div class="card-body">
+    <div class="d-flex flex-row justify-content-center">
+        <img src="../images/logo48.png" class="me-2" height="48" width="48" alt="Cache Cleaner" title="Cache Cleaner">
+        <div>
+            <span class="fs-1 me-1">Cache Cleaner</span>
+            v<span class="version"></span>
+        </div>
+    </div>
+<!--    <div class="d-flex justify-content-center align-items-center">-->
+<!--        <img src="../images/logo48.png" class="me-2" height="48" width="48"-->
+<!--             alt="Cache Cleaner" title="Cache Cleaner">-->
+<!--        <h1 class="text-center">Cache Cleaner</h1>-->
+<!--    </div>-->
+<!--    <div class="clearfix"></div>-->
+<!--    <p class="text-center lead">v<span class="version"></span></p>-->
+
+    <table id="keyboard-shortcuts" class="table table-sm table-borderless table-hover">
+        <caption class="visually-hidden">Keyboard Shortcuts</caption>
+        <thead class="visually-hidden"><tr><th>Description</th><th>Shortcut</th></tr></thead>
+        <tbody></tbody>
+        <tfoot class="d-none">
+        <tr>
+            <td class="bg-transparent"><i class="fa-regular fa-keyboard me-1"></i> <span class="description"></span></td>
+            <td class="bg-transparent text-end" title="Keyboard Shortcut"><kbd>Unknown</kbd></td>
+        </tr>
+        </tfoot>
+    </table>
+
+    <div class="mb-2">
+        Manage Keyboard Shortcuts:
+        <a class="body-link d-inline-block d-none firefox" href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox" target="_blank" rel="noopener">
+            https://mzl.la/3Qwp5QQ<i class="fa-solid fa-up-right-from-square fa-xs ms-1 text-primary"></i></a>
+        <span class="d-inline-block"><kbd class="d-none chrome" role="button" data-clipboard-text="chrome://extensions/shortcuts">
+            chrome://extensions/shortcuts</kbd></span>
+    </div>
+
+    <div class="d-none my-3 grant-perms">
+        <hr>
+        <button class="btn btn-lg btn-success w-100 mb-2 grant-permissions" type="button"
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"
+                data-bs-title="This Extension Requires Host Permissions to Function.">
+            <i class="fa-solid fa-check-double me-1"></i> Grant Host Permissions</button>
+        <p class="text-center"><a href="../html/permissions.html">More Information on Permissions</a></p>
+    </div>
+<!--    <div class="d-none my-3 has-perms">-->
+<!--        <button class="btn btn-link link-danger revoke-permissions" type="button"-->
+<!--                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-trigger="hover"-->
+<!--                data-bs-title="Google Chrome does not allow removing required permissions via this method.">-->
+<!--            Remove Host Permissions</button>-->
+<!--    </div>-->
+
+    <form id="options-form" class="options">
+
+        <div class="d-flex flex-row align-items-center justify-content-center">
+            <hr class="w-100 my-0">
+            <span class="text-nowrap mx-2">Site Specific Settings</span>
+            <hr class="w-100 my-0">
+        </div>
+
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="site-cookies" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="site-cookies" aria-describedby="site-cookiesHelp">
+                Cookies
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Cookies.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="site-indexedDB" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="site-indexedDB" aria-describedby="site-indexedDBHelp">
+                Index DB
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Index DB.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="site-localStorage" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="site-localStorage" aria-describedby="site-localStorageHelp">
+                Local Storage
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Local Storage.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="site-serviceWorkers" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="site-serviceWorkers" aria-describedby="site-serviceWorkersHelp">
+                Service Workers
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Service Workers.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="site-cacheStorage" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="site-cacheStorage" aria-describedby="site-cacheStorageHelp">
+                Cache Storage
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Cache Storage.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+
+        <div class="d-flex flex-row align-items-center justify-content-center">
+            <hr class="w-100 my-0">
+            <span class="text-nowrap mx-2">Global Browser Settings</span>
+            <hr class="w-100 my-0">
+        </div>
+
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-cookies" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-cookies" aria-describedby="browser-cookiesHelp">
+                Cookies
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Cookies.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-indexedDB" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-indexedDB" aria-describedby="browser-indexedDBHelp">
+                Index DB
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Index DB.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-localStorage" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-localStorage" aria-describedby="browser-localStorageHelp">
+                Local Storage
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Local Storage.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-serviceWorkers" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-serviceWorkers" aria-describedby="browser-serviceWorkersHelp">
+                Service Workers
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Service Workers.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-cacheStorage" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-cacheStorage" aria-describedby="browser-cacheStorageHelp">
+                Cache Storage
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Cache Storage.">
+                    <i class="fa-solid fa-circle-info"></i>
+                </span>
+        </div>
+
+        <div class="form-check form-switch d-flex align-items-center d-flex align-items-center">
+            <input class="form-check-input" id="browser-cache" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-cache" aria-describedby="browser-cacheHelp">
+                Browser Cache
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Browser Cache.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-downloads" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-downloads" aria-describedby="browser-downloadsHelp">
+                Downloads
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Downloads.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-formData" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-formData" aria-describedby="browser-formDataHelp">
+                Form Data
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Form Data.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-history" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-history" aria-describedby="browser-historyHelp">
+                History
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="History.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-passwords" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-passwords" aria-describedby="browser-passwordsHelp">
+                Passwords
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Passwords.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" id="browser-pluginData" type="checkbox" role="switch">
+            <label class="form-check-label ps-2 me-2" for="browser-pluginData" aria-describedby="browser-pluginDataHelp">
+                Plugin Data
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Plugin Data.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+
+        <div class="d-flex flex-row align-items-center justify-content-center">
+            <hr class="w-100 my-0">
+            <span class="text-nowrap mx-2">Web Extension Settings</span>
+            <hr class="w-100 my-0">
+        </div>
+
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" type="checkbox" role="switch" id="autoReload">
+            <label class="form-check-label ps-2 me-2" for="autoReload" aria-describedby="autoReloadHelp">
+                Reload after Clearing Cache
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Reload after Clearing Cache.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" type="checkbox" role="switch" id="contextMenu">
+            <label class="form-check-label ps-2 me-2" for="contextMenu" aria-describedby="contextMenuHelp">
+                Enable Right Click Menu
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Show Context Menu on Right Click.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+        <div class="form-check form-switch d-flex align-items-center">
+            <input class="form-check-input" type="checkbox" role="switch" id="showUpdate">
+            <label class="form-check-label ps-2 me-2" for="showUpdate" aria-describedby="showUpdateHelp">
+                Show Release Notes on Update
+            </label>
+            <span data-bs-toggle="tooltip" data-bs-title="Show Release Notes on Version Update.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+        </div>
+
+    </form>
+
+    <p class="fst-italic small mt-3">
+        <a id="copy-support" href="#0">Copy Support Information</a> for issue reporting.
+    </p>
+
+    <hr class="mt-0">
+
+    <div class="text-center">
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="homepage_url">Home Page</a>
+        <span class="mx-2">&bull;</span>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="https://github.com/cssnr/cache-cleaner/discussions/categories/feature-requests">Request Feature</a>
+        <span class="mx-2">&bull;</span>
+        <a class="link-body-emphasis text-decoration-none d-inline-block" target="_blank" rel="noopener"
+           href="https://github.com/cssnr/cache-cleaner/issues">Open Issue</a>
+    </div>
+</div> <!-- card-body -->
+</div> <!-- card -->
+</div> <!-- container -->
+
+<button type="button" class="btn btn-outline-primary" id="back-to-top">
+    <i class="fa-regular fa-square-caret-up"></i>
+</button> <!-- back-to-top -->
+
+<div aria-live="polite" aria-atomic="true" class="">
+    <div id="toast-container" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+</div> <!-- toast -->
+
+<div class="d-none">
+    <div class="toast align-items-center border-0" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="10000">
+        <div class="toast-body"></div>
+    </div>
+    <i class="fa-regular fa-trash-can"></i>
+    <i class="fa-regular fa-pen-to-square"></i>
+</div> <!-- d-none -->
+
+<script type="text/javascript" src="../dist/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/bootstrap/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="../dist/clipboard/clipboard.min.js"></script>
+<script type="module" src="../js/main.js"></script>
+<script type="module" src="../js/options.js"></script>
+
+</body>
+</html>

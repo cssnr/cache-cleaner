@@ -1,0 +1,26 @@
+{
+  "commands": {
+    "clearSiteCache": {
+      "suggested_key": {
+        "default": "F4"
+      }
+    },
+    "clearAllSiteCache": {
+      "suggested_key": {
+        "default": "F6"
+      }
+    }
+  },
+  "background": {
+    "scripts": ["js/service-worker.js"]
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cache-cleaner@cssnr.com",
+      "strict_min_version": "116.0"
+    },
+    "gecko_android ": {
+      "strict_min_version": "120.0"
+    }
+  }
+}
