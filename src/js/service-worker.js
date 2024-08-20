@@ -37,16 +37,22 @@ async function onInstalled(details) {
         site: {
             cacheStorage: true,
             cookies: true,
+            fileSystems: true,
             indexedDB: true,
             localStorage: true,
             serviceWorkers: true,
+            webSQL: true,
         },
         browser: {
             cacheStorage: true,
-            cookies: true,
+            cookies: false,
+            fileSystems: true,
             indexedDB: true,
             localStorage: true,
             serviceWorkers: true,
+            webSQL: true,
+
+            appcache: false,
             cache: true,
             downloads: false,
             formData: false,
@@ -91,10 +97,10 @@ async function onClicked(ctx, tab) {
     if (ctx.menuItemId === 'openOptions') {
         await chrome.runtime.openOptionsPage()
     } else if (ctx.menuItemId === 'clearSiteCache') {
-        console.debug('%cclearSiteCache:', 'color: Lime')
+        console.debug('%cclearSiteCache', 'color: Lime')
         await cleanCache('site-selected')
     } else if (ctx.menuItemId === 'clearAllSiteCache') {
-        console.debug('%cclearAllSiteCache:', 'color: Lime')
+        console.debug('%cclearAllSiteCache', 'color: Lime')
         await cleanCache('site-all')
     } else {
         console.error(`Unknown ctx.menuItemId: ${ctx.menuItemId}`)

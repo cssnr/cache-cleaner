@@ -50,6 +50,8 @@ export async function cleanCache(type) {
                 await clearCacheStorage()
             }
             delete cleanOptions.cacheStorage
+            delete cleanOptions.fileSystems
+            delete cleanOptions.webSQL
         }
         console.debug('removalOptions:', removalOptions)
         console.debug('cleanOptions:', cleanOptions)
@@ -80,6 +82,9 @@ export async function cleanCache(type) {
         }
         if (typeof browser !== 'undefined') {
             delete cleanOptions.cacheStorage
+            delete cleanOptions.fileSystems
+            delete cleanOptions.webSQL
+            delete cleanOptions.appcache
         }
         console.debug('cleanOptions:', cleanOptions)
         await chrome.browsingData.remove({}, cleanOptions)

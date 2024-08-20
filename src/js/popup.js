@@ -4,6 +4,7 @@ import {
     cleanCache,
     injectFunction,
     linkClick,
+    processBrowser,
     saveOptions,
     showToast,
     updateManifest,
@@ -39,6 +40,7 @@ const confirmModal = new bootstrap.Modal('#confirm-modal')
 async function initPopup() {
     console.debug('initPopup')
     updateManifest()
+    processBrowser().then()
 
     const { options } = await chrome.storage.sync.get(['options'])
     console.debug('options:', options)
@@ -100,6 +102,7 @@ async function cacheTypeChange(event) {
 async function cleanCacheClick(event) {
     console.debug('cleanCacheClick:', event)
     const target = event.currentTarget
+    console.debug('target:', target)
     const { options } = await chrome.storage.sync.get(['options'])
     console.debug('options:', options)
     console.debug('type:', target.dataset.clean)
@@ -112,9 +115,10 @@ async function cleanCacheClick(event) {
         console.debug('Show Confirmation for:', target.dataset.clean)
         const btn = target.cloneNode(true)
         btn.dataset.confirm = 'true'
-        const node = confirmModal._element.querySelector('.d-grid')
-        node.innerHTML = ''
-        node.appendChild(btn)
+        btn.addEventListener('click', cleanCacheClick)
+        const parent = confirmModal._element.querySelector('.d-grid')
+        parent.innerHTML = ''
+        parent.appendChild(btn)
         confirmModal.show()
         return
     }

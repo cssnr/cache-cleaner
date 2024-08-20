@@ -26,6 +26,10 @@ the cache. Now after making a change to a site with a service worker, all you ha
 to clear cache) to clear the cache and refresh the site. Additionally, the browsing data API differs on Firefox and
 Chrome so logic was added to allow the extension to run on both browsers.
 
+More information on the individual APIs
+for [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browsingData)
+and [Chrome](https://developer.chrome.com/docs/extensions/reference/api/browsingData).
+
 * [Install](#Install)
 * [Features](#Features)
     - [Upcoming Features](#Upcoming-Features)
@@ -56,12 +60,13 @@ the [Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/xx
 - Clear cache and reload site with a single key or button press
 - Choose which cache items to clear or clear all data
 - Clear cache for a specific site or the whole browser
-- Option to clear cache storage in Firefox for site cache
-- Consistent functionality in both Chrome and Firefox
+- Option to clear **Cache Storage** in Firefox for individual sites
+- Works in both Firefox and Chrome based browsers
 
 ### Upcoming Features
 
-- Custom time frames to clear cache
+- Custom time frames to clear supported caches
+- Chrome only, option to exclude specified origins
 
 > [!TIP]
 > **Don't see your feature here?**
@@ -70,8 +75,7 @@ the [Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/xx
 
 ### Known Issues
 
-- Currently missing a few Chrome APIs including fileSystem
-- Does not allow excluding origins from browser cache (Chrome only)
+- No major issues detected at the moment...
 
 > [!TIP]
 > **Don't see your issue here?**

@@ -26,6 +26,10 @@ document
     .querySelectorAll('[data-bs-toggle="tooltip"]')
     .forEach((el) => new bootstrap.Tooltip(el))
 
+document.getElementById('chrome-shortcuts').addEventListener('click', () => {
+    chrome.tabs.update({ url: 'chrome://extensions/shortcuts' }).then()
+})
+
 /**
  * Initialize Options
  * @function initOptions
