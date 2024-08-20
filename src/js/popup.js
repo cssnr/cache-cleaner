@@ -30,6 +30,7 @@ document
     .forEach((el) => new bootstrap.Tooltip(el))
 
 const hostnameEl = document.getElementById('hostname')
+const confirmModal = new bootstrap.Modal('#confirm-modal')
 
 /**
  * Initialize Popup
@@ -43,20 +44,16 @@ async function initPopup() {
     console.debug('options:', options)
     updateOptions(options)
 
-    if (chrome.runtime.lastError) {
-        showToast(chrome.runtime.lastError.message, 'warning')
-    }
-
     // Check Site Access
-    const result = await checkSite()
+    const result = await getSiteInfo()
     if (!result) {
-        console.log('%cNo result from checkSite', 'color: Yellow')
+        console.log('%cNo result from getSiteInfo', 'color: Yellow')
         hostnameEl.classList.replace('border-success', 'border-danger')
         document.getElementById('site-access').classList.add('d-none')
         return
     }
 
-    // Valid Site Update Data
+    // Update Site Data
     hostnameEl.textContent = result.hostname
     document.getElementById('cache-usage').textContent = formatBytes(
         result.estimate.usage
@@ -66,7 +63,7 @@ async function initPopup() {
     })
 }
 
-async function checkSite() {
+async function getSiteInfo() {
     async function getInfo() {
         return {
             hostname: window.location.hostname,
@@ -102,12 +99,27 @@ async function cacheTypeChange(event) {
  */
 async function cleanCacheClick(event) {
     console.debug('cleanCacheClick:', event)
-    try {
-        const target = event.currentTarget
-        const { options } = await chrome.storage.sync.get(['options'])
-        console.debug('options:', options)
-        console.debug('type:', target.dataset.clean)
+    const target = event.currentTarget
+    const { options } = await chrome.storage.sync.get(['options'])
+    console.debug('options:', options)
+    console.debug('type:', target.dataset.clean)
 
+    if (
+        options.showConfirmation &&
+        target.dataset.clean.startsWith('browser') &&
+        !target.dataset.confirm
+    ) {
+        console.debug('Show Confirmation for:', target.dataset.clean)
+        const btn = target.cloneNode(true)
+        btn.dataset.confirm = 'true'
+        const node = confirmModal._element.querySelector('.d-grid')
+        node.innerHTML = ''
+        node.appendChild(btn)
+        confirmModal.show()
+        return
+    }
+
+    try {
         const [tab] = await chrome.tabs.query({
             currentWindow: true,
             active: true,

@@ -55,6 +55,7 @@ async function onInstalled(details) {
             pluginData: false,
         },
         autoReload: true,
+        showConfirmation: true,
         contextMenu: true,
         showUpdate: false,
     })

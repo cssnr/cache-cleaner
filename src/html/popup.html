@@ -64,17 +64,17 @@
         </div>
 
         <div id="site-access">
-            <div class="d-grid g-2 gap-2">
+            <div class="d-grid g-2 gap-2 mb-2">
                 <button class="btn btn-success d-flex align-items-center" data-clean="site-selected">
                     <i class="fa-solid fa-toggle-on me-1"></i>
                     <span class="flex-fill text-center">Clear Selected Site Cache</span>
                 </button>
                 <button class="btn btn-outline-primary d-flex align-items-center" data-clean="site-all">
-                    <i class="fa-solid fa-eraser me-1"></i>
+                    <i class="fa-solid fa-broom me-1"></i>
                     <span class="flex-fill text-center">Clear ALL Site Cache</span>
                 </button>
             </div> <!-- d-grid -->
-            <p class="text-warning-emphasis text-center my-1">
+            <p class="text-warning-emphasis text-center mb-1">
                 Site Cache Size: <abbr id="cache-usage" class="fw-bolder" type="wtf"></abbr>
             </p>
         </div> <!-- site-access -->
@@ -152,7 +152,7 @@
             Cache for ALL Sites will be Removed!
         </div>
 
-        <div class="d-grid g-2 gap-2">
+        <div class="d-grid g-2 gap-2 mb-2">
             <button class="btn btn-warning d-flex align-items-center" data-clean="browser-selected">
                 <i class="fa-solid fa-toggle-on me-1"></i>
                 <span class="flex-fill text-center">Clear Selected Browser Cache</span>
@@ -164,6 +164,16 @@
         </div> <!-- d-grid -->
 
         <form class="options-form">
+            <div class="form-check form-switch d-flex align-items-center">
+                <input class="form-check-input" type="checkbox" role="switch" id="showConfirmation">
+                <label class="form-check-label ps-2 me-2" for="showConfirmation" aria-describedby="showConfirmationHelp">
+                    Confirmation for Browser Cache
+                </label>
+                <span data-bs-toggle="tooltip" data-bs-title="Show Confirmation for All Sites and Browser Cache.">
+                <i class="fa-solid fa-circle-info"></i>
+            </span>
+            </div>
+
             <div class="d-flex flex-row align-items-center justify-content-center">
                 <hr class="w-100 my-0">
                 <span class="text-nowrap mx-2">Site Data</span>
@@ -279,6 +289,25 @@
         </form> <!-- options-form -->
     </div> <!-- browser-settings -->
 </div> <!-- container -->
+
+<div class="modal fade" id="confirm-modal" tabindex="-1" aria-labelledby="confirm-modal-label" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content">
+    <div class="modal-header">
+        <h1 class="modal-title fs-5" id="confirm-modal-label">Confirmation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" tabindex="-1"></button>
+    </div>
+    <div class="modal-body text-center p-2">
+        <p class="mb-1">Show Confirmation Enabled.</p>
+        <div class="d-grid my-2"></div>
+    </div>
+    <div class="modal-footer p-2">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cancel</button>
+    </div>
+</div> <!-- modal-content -->
+</div> <!-- modal-dialog -->
+</div> <!-- confirm-modal -->
 
 <div aria-live="polite" aria-atomic="true" class="">
     <div id="toast-container" class="toast-container bottom-0 end-0 p-3"></div>
