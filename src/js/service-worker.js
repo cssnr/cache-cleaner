@@ -19,8 +19,8 @@ async function onStartup() {
     if (typeof browser !== 'undefined') {
         console.log('Firefox CTX Menu Workaround')
         // console.debug('options:', options)
-        if (options.contextMenu) {
-            createContextMenus()
+        if (options.ctx.enable) {
+            createContextMenus(options.ctx)
         }
     }
 }
@@ -62,12 +62,19 @@ async function onInstalled(details) {
         },
         autoReload: true,
         showConfirmation: true,
-        contextMenu: true,
+        ctx: {
+            enable: true,
+            site: true,
+            siteAll: true,
+            browser: false,
+            browserAll: false,
+            options: true,
+        },
         showUpdate: false,
     })
     console.debug('options:', options)
-    if (options.contextMenu) {
-        createContextMenus()
+    if (options.ctx.enable) {
+        createContextMenus(options.ctx)
     }
     const manifest = chrome.runtime.getManifest()
     if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
@@ -84,6 +91,9 @@ async function onInstalled(details) {
     // console.log('uninstallURL:', uninstallURL.href)
     // await chrome.runtime.setUninstallURL(uninstallURL.href)
     await chrome.runtime.setUninstallURL(`${githubURL}/issues`)
+
+    const info = await chrome.runtime.getPlatformInfo()
+    console.debug('info:', info)
 }
 
 /**
@@ -102,6 +112,12 @@ async function onClicked(ctx, tab) {
     } else if (ctx.menuItemId === 'clearAllSiteCache') {
         console.debug('%cclearAllSiteCache', 'color: Lime')
         await cleanCache('site-all')
+    } else if (ctx.menuItemId === 'clearBrowserCache') {
+        console.debug('%cclearBrowserCache', 'color: Lime')
+        await cleanCache('browser-selected')
+    } else if (ctx.menuItemId === 'clearAllBrowserCache') {
+        console.debug('%cclearAllBrowserCache', 'color: Lime')
+        await cleanCache('browser-all')
     } else {
         console.error(`Unknown ctx.menuItemId: ${ctx.menuItemId}`)
     }
@@ -122,6 +138,12 @@ async function onCommand(command) {
     } else if (command === 'clearAllSiteCache') {
         console.debug('%cclearAllSiteCache:', 'color: Lime')
         await cleanCache('site-all')
+    } else if (command === 'clearBrowserCache') {
+        console.debug('%cclearBrowserCache:', 'color: Lime')
+        await cleanCache('browser-selected')
+    } else if (command === 'clearAllBrowserCache') {
+        console.debug('%cclearAllBrowserCache:', 'color: Lime')
+        await cleanCache('browser-all')
     } else {
         console.error(`Unknown command: ${command}`)
     }
@@ -134,15 +156,16 @@ async function onCommand(command) {
  * @param {String} namespace
  */
 async function onChanged(changes, namespace) {
-    // console.debug('onChanged:', changes, namespace)
+    console.debug('onChanged:', changes, namespace)
     for (const [key, { oldValue, newValue }] of Object.entries(changes)) {
         if (namespace === 'sync' && key === 'options' && oldValue && newValue) {
-            if (oldValue.contextMenu !== newValue.contextMenu) {
-                if (newValue?.contextMenu) {
-                    console.info('Enabled contextMenu...')
-                    createContextMenus()
+            if (JSON.stringify(oldValue.ctx) !== JSON.stringify(newValue.ctx)) {
+                console.debug('%cCTX Change', 'color: Lime')
+                if (newValue.ctx.enable) {
+                    console.log('%cEnabled contextMenus.', 'color: Green')
+                    createContextMenus(newValue.ctx)
                 } else {
-                    console.info('Disabled contextMenu...')
+                    console.log('Disabled contextMenus.', 'color: Yellow')
                     chrome.contextMenus.removeAll()
                 }
             }
@@ -153,28 +176,42 @@ async function onChanged(changes, namespace) {
 /**
  * Create Context Menus
  * @function createContextMenus
+ * @param {options.ctx} ctx
  */
-function createContextMenus() {
-    console.debug('createContextMenus')
+function createContextMenus(ctx) {
+    console.debug('createContextMenus:', ctx)
+    if (!chrome.contextMenus) {
+        return console.debug('Skipping: chrome.contextMenus')
+    }
     chrome.contextMenus.removeAll()
-    /** @type {Array[String[], String, String, String]} */
-    const contexts = [
-        [['all'], 'clearSiteCache', 'Clear Site Cache'],
-        [['all'], 'clearAllSiteCache', 'Clear All Site Cache'],
-        [['all'], 'separator'],
-        [['all'], 'openOptions', 'Open Options'],
-    ]
-    contexts.forEach(addContext)
+    if (ctx.site) {
+        addContext([['all'], 'clearSiteCache', 'Clear Site Cache'])
+    }
+    if (ctx.siteAll) {
+        addContext([['all'], 'clearAllSiteCache', 'Clear All Site Cache'])
+    }
+    if (ctx.browser) {
+        addContext([['all'], 'clearBrowserCache', 'Clear Browser Cache'])
+    }
+    if (ctx.browserAll) {
+        addContext([['all'], 'clearAllBrowserCache', 'Clear All Browser Cache'])
+    }
+    if (ctx.options) {
+        if (ctx.site || ctx.siteAll || ctx.browser || ctx.browserAll) {
+            addContext([['all'], 'separator'])
+        }
+        addContext([['all'], 'openOptions', 'Open Options'])
+    }
 }
 
 /**
  * Add Context from Array
  * @function addContext
- * @param {[[ContextType],String,String,String]} context
+ * @param {[String[],String,String?,String?]} context
  */
 function addContext(context) {
+    // console.debug('addContext:', context)
     try {
-        console.debug('addContext:', context)
         if (context[1] === 'separator') {
             context[1] = Math.random().toString().substring(2, 7)
             context.push('separator', 'separator')
@@ -186,7 +223,7 @@ function addContext(context) {
             type: context[3],
         })
     } catch (e) {
-        console.log(`%cError Adding Context: ${e.message}`, 'color: Red', e)
+        console.warn(`Error Adding Context: ${e.message}`, e)
     }
 }
 
@@ -194,7 +231,7 @@ function addContext(context) {
  * Set Default Options
  * @function setDefaultOptions
  * @param {Object} defaultOptions
- * @return {Promise<Object.<String, String|Boolean>>}
+ * @return {Promise<Object.<String, String|Boolean|Object>>}
  */
 async function setDefaultOptions(defaultOptions) {
     console.log('setDefaultOptions', defaultOptions)
@@ -211,7 +248,7 @@ async function setDefaultOptions(defaultOptions) {
         if (options[key] === undefined) {
             changed = true
             options[key] = value
-            console.log(`%cSet ${key}:`, 'color: Yellow', value)
+            console.log(`%cSet ${key}:`, 'color: Lime', value)
         } else if (typeof defaultOptions[key] === 'object') {
             console.debug(`%cProcessing Object: ${key}`, 'color: Magenta')
             for (const [subKey, subValue] of Object.entries(
@@ -222,7 +259,7 @@ async function setDefaultOptions(defaultOptions) {
                     options[key][subKey] = subValue
                     console.log(
                         `%cSet: ${key}.${subKey}:`,
-                        'color: Yellow',
+                        'color: Lime',
                         subValue
                     )
                 }

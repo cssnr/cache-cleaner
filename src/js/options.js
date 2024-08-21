@@ -38,7 +38,14 @@ async function initOptions() {
     console.debug('initOptions')
 
     updateManifest()
-    setShortcuts().then()
+    setShortcuts([
+        'clearSiteCache',
+        'clearAllSiteCache',
+        'clearBrowserCache',
+        'clearAllBrowserCache',
+        '_execute_action',
+        'openOptions',
+    ]).then()
     processBrowser().then()
 
     const { options, hosts } = await chrome.storage.sync.get([
@@ -73,38 +80,32 @@ async function onChanged(changes, namespace) {
 /**
  * Set Keyboard Shortcuts
  * @function setShortcuts
- * @param {String} selector
- * @param {Boolean} action
+ * @param {Array} names
+ * @param {String} [selector]
  * @return {Promise<void>}
  */
-async function setShortcuts(selector = '#keyboard-shortcuts', action = false) {
+async function setShortcuts(names, selector = '#keyboard-shortcuts') {
     if (!chrome.commands) {
         return console.debug('Skipping: chrome.commands')
     }
-    const table = document.querySelector(selector)
+    const parent = document.querySelector(selector)
+    parent.classList.remove('d-none')
+    const table = parent.querySelector('table')
     const tbody = table.querySelector('tbody')
     const source = table.querySelector('tfoot > tr').cloneNode(true)
     const commands = await chrome.commands.getAll()
-    for (const command of commands) {
-        console.debug('command:', command)
+    for (const name of names) {
+        const command = commands.find((x) => x.name === name)
+        // console.debug('command:', command)
         const row = source.cloneNode(true)
-        // TODO: Chrome does not parse the description for _execute_action in manifest.json
         let description = command.description
+        // Note: Chrome does not parse the description for _execute_action in manifest.json
         if (!description && command.name === '_execute_action') {
-            description = 'Show Popup'
+            description = 'Show Popup Action'
         }
         row.querySelector('.description').textContent = description
         row.querySelector('kbd').textContent = command.shortcut || 'Not Set'
         tbody.appendChild(row)
-    }
-    if (action) {
-        console.debug('Requires Firefox 116+ and Chrome 91+')
-        // const userSettings = await chrome.action.getUserSettings()
-        // const row = source.cloneNode(true)
-        // row.querySelector('i').className = 'fa-solid fa-puzzle-piece me-1'
-        // row.querySelector('.description').textContent = 'Toolbar Icon Pinned'
-        // row.querySelector('kbd').textContent = userSettings ? 'Yes' : 'No'
-        // tbody.appendChild(row)
     }
 }
 
