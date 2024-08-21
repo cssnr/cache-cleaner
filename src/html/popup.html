@@ -13,14 +13,14 @@
 </head>
 <body>
 
-<div class="container-fluid p-2">
+<div class="container-fluid px-2 py-1">
 
     <div class="d-flex flex-row align-items-center">
 <!--        <div class="">-->
 <!--            <a title="Cache Cleaner" href="homepage_url"><img src="../images/logo32.png" height="32" width="32" alt="Cache Cleaner"></a>-->
 <!--        </div>-->
         <div class="dropdown">
-            <a class="nav-link hvr-grow" id="bd-theme-disabled" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link hvr-grow" id="bd-theme-disabled" title="Theme Switcher" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i id="theme-icon" class="fa-solid fa-circle-half-stroke fa-lg" style="min-width: 20px;"></i> <i class="fa-solid fa-caret-down fa-xs mx-1"></i></a>
             <ul class="dropdown-menu auto dropdown-menu-end" aria-labelledby="bd-theme-disabled">
                 <li><button class="dropdown-item" data-bs-theme-value="dark" aria-pressed="false">
@@ -34,7 +34,8 @@
 
         <div class="flex-fill text-center">
             <a class="link-body-emphasis text-decoration-none fs-4" title="Open Home Page" href="homepage_url">Cache Cleaner</a>
-            <span class="small"><a class="link-body-emphasis text-decoration-none" href="version_url">
+            <span class="small">
+                <a class="link-body-emphasis text-decoration-none" title="Release Notes" href="version_url">
                 v<span class="version"></span></a>
             </span>
         </div>
@@ -45,7 +46,7 @@
         </div>
     </div> <!-- d-flex -->
 
-    <div class="text-center mb-1">
+    <div class="text-center mb-1" data-mobile-replace="mb-1 my-3">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="cacheType" id="siteSettings" value="site" checked>
             <label class="form-check-label" for="siteSettings">Site Cache</label>
@@ -59,17 +60,17 @@
     <!-- SITE SETTINGS -->
 
     <div id="site-settings">
-        <div id="hostname" class="text-center border border-success border-2 rounded p-1 mb-2">
+        <div id="hostname" class="text-center border border-success border-2 rounded p-1 mb-2" data-mobile-replace="mb-2 mb-3">
             No Access to the Current Tab.
         </div>
 
         <div id="site-access">
-            <div class="d-grid g-2 gap-2 mb-2">
-                <button class="btn btn-sm btn-success d-flex align-items-center" data-clean="site-selected">
+            <div class="d-grid gap-2 mb-2" data-mobile-replace="gap-2 gap-3">
+                <button class="btn btn-success d-flex align-items-center" data-clean="site-selected">
                     <i class="fa-solid fa-toggle-on me-1"></i>
                     <span class="flex-fill text-center">Clear Selected Site Cache</span>
                 </button>
-                <button class="btn btn-sm btn-outline-primary d-flex align-items-center" data-clean="site-all">
+                <button class="btn btn-outline-primary d-flex align-items-center" data-clean="site-all" data-mobile-replace="btn-outline-primary btn-primary">
                     <i class="fa-solid fa-broom me-1"></i>
                     <span class="flex-fill text-center">Clear ALL Site Cache</span>
                 </button>
@@ -170,22 +171,22 @@
 <!--            Cache for ALL Sites will be Removed!-->
 <!--        </div>-->
 
-        <div class="d-grid g-2 gap-2 mb-2">
-            <button class="btn btn-sm btn-warning d-flex align-items-center" data-clean="browser-selected">
+        <div class="d-grid gap-2 mb-2" data-mobile-replace="gap-2 gap-3">
+            <button class="btn btn-warning d-flex align-items-center" data-clean="browser-selected">
                 <i class="fa-solid fa-toggle-on me-1"></i>
                 <span class="flex-fill text-center">Clear Selected Browser/Site Cache</span>
             </button>
-            <button class="btn btn-sm btn-outline-danger d-flex align-items-center" data-clean="browser-all">
+            <button class="btn btn-outline-danger d-flex align-items-center" data-clean="browser-all" data-mobile-replace="btn-outline-danger btn-danger">
                 <i class="fa-solid fa-skull-crossbones me-1"></i>
                 <span class="flex-fill text-center">Clear ALL Browser/Site Cache</span>
             </button>
         </div> <!-- d-grid -->
 
         <form class="options-form">
-            <div class="form-check form-switch d-flex align-items-center">
+            <div class="form-check form-switch d-flex align-items-center" data-mobile-add="mt-3">
                 <input class="form-check-input" type="checkbox" role="switch" id="showConfirmation">
                 <label class="form-check-label ps-2 me-2" for="showConfirmation" aria-describedby="showConfirmationHelp">
-                    Confirm for Browser Cache
+                    Confirm Browser Cache Delete
                 </label>
                 <span data-bs-toggle="tooltip" data-bs-title="Show Confirmation for Browser Cache.">
                 <i class="fa-solid fa-circle-info"></i>

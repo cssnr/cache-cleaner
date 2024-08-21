@@ -319,10 +319,10 @@ export function showToast(message, type = 'primary') {
 }
 
 /**
- * @function processBrowser
+ * @function updateBrowser
  * @return {Promise<void>}
  */
-export function processBrowser() {
+export function updateBrowser() {
     return new Promise((resolve) => {
         let selector
         if (typeof browser !== 'undefined') {
@@ -335,4 +335,31 @@ export function processBrowser() {
             .forEach((el) => el.classList.remove('d-none'))
         resolve()
     })
+}
+
+export async function updatePlatform() {
+    const platform = await chrome.runtime.getPlatformInfo()
+    console.debug('updatePlatform:', platform)
+    if (platform.os === 'android') {
+        // document.querySelectorAll('[class*="mobile-"]').forEach((el) => {
+        document
+            .querySelectorAll(
+                '[data-mobile-add],[data-mobile-remove],[data-mobile-replace]'
+            )
+            .forEach((el) => {
+                if (el.dataset.mobileAdd) {
+                    // console.debug('mobileAdd:', el.dataset.mobileAdd)
+                    el.classList.add(el.dataset.mobileAdd)
+                }
+                if (el.dataset.mobileRemove) {
+                    // console.debug('mobileRemove:', el.dataset.mobileRemove)
+                    el.classList.remove(el.dataset.mobileRemove)
+                }
+                if (el.dataset.mobileReplace) {
+                    const split = el.dataset.mobileReplace.split(' ')
+                    // console.debug('mobileReplace:', split)
+                    el.classList.replace(split[0], split[1])
+                }
+            })
+    }
 }

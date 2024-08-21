@@ -13,9 +13,9 @@
 </head>
 <body>
 
-<div class="container-fluid py-3 px-1 px-sm-3">
+<div class="container-fluid py-3 px-2 px-sm-3">
 <div class="card w-100 mx-auto">
-<div class="card-body px-1 px-sm-3">
+<div class="card-body">
     <div class="d-flex flex-row justify-content-center">
         <img src="../images/logo48.png" class="me-2" height="48" width="48" alt="Cache Cleaner" title="Cache Cleaner">
         <div>
@@ -275,14 +275,14 @@
         <div class="form-check form-switch d-flex align-items-center">
             <input class="form-check-input" type="checkbox" role="switch" id="showConfirmation">
             <label class="form-check-label ps-2 me-2" for="showConfirmation" aria-describedby="showConfirmationHelp">
-                Confirm for Browser Cache
+                Confirm Browser Cache Delete
             </label>
             <span data-bs-toggle="tooltip" data-bs-title="Show Confirmation for Browser Cache.">
                 <i class="fa-solid fa-circle-info"></i>
             </span>
         </div>
 
-        <div class="form-check form-switch d-flex align-items-center">
+        <div class="form-check form-switch d-flex align-items-center" data-mobile-add="d-none">
             <input class="form-check-input" type="checkbox" role="switch" id="ctx-enable" data-related="ctxMenuItems">
             <label class="form-check-label ps-2 me-2" for="ctx-enable" aria-describedby="ctx-enableHelp">
                 Enable Right Click Menu
@@ -291,7 +291,7 @@
                 <i class="fa-solid fa-circle-info"></i>
             </span>
         </div>
-        <div id="ctxMenuItems" class="ms-4" style="display: none;">
+        <div id="ctxMenuItems" class="ms-4" style="display: none;" data-mobile-add="d-none">
             <div class="form-check form-switch d-flex align-items-center">
                 <input class="form-check-input" type="checkbox" role="switch" id="ctx-site">
                 <label class="form-check-label ps-2 me-2" for="ctx-site" aria-describedby="ctx-siteHelp">
@@ -339,7 +339,7 @@
             </div>
         </div> <!-- ctxMenuItems -->
 
-        <div class="form-check form-switch d-flex align-items-center">
+        <div class="form-check form-switch d-flex align-items-center" data-mobile-add="d-none">
             <input class="form-check-input" type="checkbox" role="switch" id="showUpdate">
             <label class="form-check-label ps-2 me-2" for="showUpdate" aria-describedby="showUpdateHelp">
                 Show Release Notes on Update

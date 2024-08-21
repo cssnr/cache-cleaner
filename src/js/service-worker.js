@@ -92,8 +92,8 @@ async function onInstalled(details) {
     // await chrome.runtime.setUninstallURL(uninstallURL.href)
     await chrome.runtime.setUninstallURL(`${githubURL}/issues`)
 
-    const info = await chrome.runtime.getPlatformInfo()
-    console.debug('info:', info)
+    // const platform = await chrome.runtime.getPlatformInfo()
+    // console.debug('platform:', platform)
 }
 
 /**
@@ -166,7 +166,7 @@ async function onChanged(changes, namespace) {
                     createContextMenus(newValue.ctx)
                 } else {
                     console.log('Disabled contextMenus.', 'color: Yellow')
-                    chrome.contextMenus.removeAll()
+                    chrome.contextMenus?.removeAll()
                 }
             }
         }

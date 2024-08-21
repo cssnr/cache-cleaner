@@ -94,8 +94,14 @@ async function getPage(browser, name, size) {
     console.log('popup:', popup)
     await popup.waitForNetworkIdle()
     await popup.screenshot(ssOptions('popup'))
-    await popup.locator('#autoReload').click()
+    await popup.locator('#browserSettings').click()
+    await new Promise((resolve) => setTimeout(resolve, 250))
     await popup.screenshot(ssOptions('popup'))
+
+    await popup.locator('[data-clean="browser-selected"]').click()
+    await new Promise((resolve) => setTimeout(resolve, 500))
+    await popup.screenshot(ssOptions('popup'))
+
     await popup.locator('[href="../html/options.html"]').click()
 
     // Options
@@ -105,9 +111,9 @@ async function getPage(browser, name, size) {
     await options.waitForNetworkIdle()
     await options.screenshot(ssOptions('options'))
 
-    await options.locator('#showUpdate').click()
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    await options.locator('#autoReload').click()
     await scrollPage(options)
+    await new Promise((resolve) => setTimeout(resolve, 250))
     await options.screenshot(ssOptions('options'))
 
     // Page

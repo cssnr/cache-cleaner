@@ -2,11 +2,12 @@
 
 import {
     linkClick,
-    processBrowser,
     saveOptions,
     showToast,
+    updateBrowser,
     updateManifest,
     updateOptions,
+    updatePlatform,
 } from './export.js'
 
 chrome.storage.onChanged.addListener(onChanged)
@@ -46,7 +47,8 @@ async function initOptions() {
         '_execute_action',
         'openOptions',
     ]).then()
-    processBrowser().then()
+    updateBrowser().then()
+    updatePlatform().then()
 
     const { options, hosts } = await chrome.storage.sync.get([
         'options',

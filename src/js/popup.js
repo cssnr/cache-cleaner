@@ -4,11 +4,12 @@ import {
     cleanCache,
     injectFunction,
     linkClick,
-    processBrowser,
     saveOptions,
     showToast,
+    updateBrowser,
     updateManifest,
     updateOptions,
+    updatePlatform,
 } from './export.js'
 
 chrome.storage.onChanged.addListener(onChanged)
@@ -40,7 +41,8 @@ const confirmModal = new bootstrap.Modal('#confirm-modal')
 async function initPopup() {
     console.debug('initPopup')
     updateManifest()
-    processBrowser().then()
+    updateBrowser().then()
+    updatePlatform().then()
 
     const { options } = await chrome.storage.sync.get(['options'])
     console.debug('options:', options)
