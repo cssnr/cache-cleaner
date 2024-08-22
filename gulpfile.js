@@ -9,12 +9,6 @@ gulp.task('bootstrap', () => {
         .pipe(gulp.dest('src/dist/bootstrap'))
 })
 
-gulp.task('clipboard', () => {
-    return gulp
-        .src('node_modules/clipboard/dist/clipboard.min.js')
-        .pipe(gulp.dest('src/dist/clipboard'))
-})
-
 gulp.task('fontawesome', () => {
     return gulp
         .src(
@@ -34,7 +28,4 @@ gulp.task('jquery', () => {
         .pipe(gulp.dest('src/dist/jquery'))
 })
 
-gulp.task(
-    'default',
-    gulp.parallel('bootstrap', 'clipboard', 'fontawesome', 'jquery')
-)
+gulp.task('default', gulp.parallel('bootstrap', 'fontawesome', 'jquery'))

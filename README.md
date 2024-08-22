@@ -16,12 +16,13 @@
 
 # Cache Cleaner
 
-Modern Chrome Web Extension and Firefox Browser Addon to easily clean cache and optionally reload for specific sites
-with a single key press, from the right-click context menu or via the toolbar icon popup.
+Modern Chrome Web Extension and Firefox Browser Addon to easily clean selected cache items specific sites or the whole
+browser with a single key press, from the right-click context menu or via the toolbar icon popup.
 
 Firefox does not have an API to clear cache storage, the cache created by service workers. Furthermore, it has no
 option to bypass the service worker for network when testing. This extension resolves that issue by using a custom
-function to clear cache storage when clearing site cache plus has an option automatically reload the page after clearing
+function to clear **Cache Storage** when clearing site cache plus has an option automatically reload the page after
+clearing
 the cache. Now after making a change to a site with a service worker, all you have to do is press `F4` (default keybind
 to clear cache) to clear the cache and refresh the site. Additionally, the browsing data API differs on Firefox and
 Chrome so logic was added to allow the extension to run on both browsers.
@@ -61,7 +62,7 @@ the [Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/xx
 - Choose which cache items to clear or clear all data
 - Clear cache for a specific site or the whole browser
 - Option to clear **Cache Storage** in Firefox for individual sites
-- Works in both Firefox and Chrome based browsers
+- Works in both Firefox and Chromium based browsers
 
 ### Upcoming Features
 
@@ -101,7 +102,7 @@ If you are experiencing an issue/bug or getting unexpected results, you can:
 
 - Report an Issue: https://github.com/cssnr/cache-cleaner/issues
 - Chat with us on Discord: https://discord.gg/wXy6m2X8wY
-- Provide General Feedback: https://cssnr.github.io/feedback
+- Provide General Feedback: [https://cssnr.github.io/feedback](https://cssnr.github.io/feedback/?app=Cache%20Cleaner)
 
 Logs can be found inspecting the page (Ctrl+Shift+I), clicking on the Console, and;
 Firefox: toggling Debug logs, Chrome: toggling Verbose from levels dropdown.

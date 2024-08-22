@@ -1,7 +1,7 @@
 {
   "name": "Cache Cleaner",
   "short_name": "Cache Cleaner",
-  "description": "Easily clear cache for the current site and optionally auto-reload with a single key press, from the popup or with the context menu.",
+  "description": "Easily clear selected cache items for the current site or whole browser with a single key press, right-click menu, or popup icon.",
   "homepage_url": "https://github.com/cssnr/cache-cleaner",
   "author": "Shane",
   "version": "0.0.1",

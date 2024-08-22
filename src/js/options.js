@@ -121,11 +121,9 @@ async function copySupport(event) {
     event.preventDefault()
     const manifest = chrome.runtime.getManifest()
     const { options } = await chrome.storage.sync.get(['options'])
-    const permissions = await chrome.permissions.getAll()
     const result = [
         `${manifest.name} - ${manifest.version}`,
         navigator.userAgent,
-        `permissions.origins: ${JSON.stringify(permissions.origins)}`,
         `options: ${JSON.stringify(options)}`,
     ]
     await navigator.clipboard.writeText(result.join('\n'))
