@@ -1,10 +1,10 @@
-[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/xxchromeidxx?logo=google&logoColor=white&label=users)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Mozilla Add-on Users](https://img.shields.io/amo/users/cache-cleaner?logo=mozilla&label=users)](https://addons.mozilla.org/addon/cache-cleaner)
-[![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/xxchromeidxx?logo=google&logoColor=white)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/cache-cleaner?logo=mozilla&logoColor=white)](https://addons.mozilla.org/addon/cache-cleaner)
+[![Chrome Web Store Users](https://img.shields.io/chrome-web-store/users/nbkhplnnajkikghffmincdbipjalpobi?logo=google&logoColor=white&label=users)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Mozilla Add-on Users](https://img.shields.io/amo/users/cache-cleaner-addon?logo=mozilla&label=users)](https://addons.mozilla.org/addon/cache-cleaner-addon)
+[![Chrome Web Store Rating](https://img.shields.io/chrome-web-store/rating/nbkhplnnajkikghffmincdbipjalpobi?logo=google&logoColor=white)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Mozilla Add-on Rating](https://img.shields.io/amo/rating/cache-cleaner-addon?logo=mozilla&logoColor=white)](https://addons.mozilla.org/addon/cache-cleaner-addon)
 [![GitHub Repo Stars](https://img.shields.io/github/stars/cssnr/cache-cleaner?style=flat&logo=github&logoColor=white)](https://github.com/cssnr/cache-cleaner/stargazers)
-[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/xxchromeidxx?label=chrome&logo=googlechrome)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Mozilla Add-on Version](https://img.shields.io/amo/v/cache-cleaner?label=firefox&logo=firefox)](https://addons.mozilla.org/addon/cache-cleaner)
+[![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/nbkhplnnajkikghffmincdbipjalpobi?label=chrome&logo=googlechrome)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Mozilla Add-on Version](https://img.shields.io/amo/v/cache-cleaner-addon?label=firefox&logo=firefox)](https://addons.mozilla.org/addon/cache-cleaner-addon)
 [![GitHub Release Version](https://img.shields.io/github/v/release/cssnr/cache-cleaner?logo=github&logoColor=white)](https://github.com/cssnr/cache-cleaner/releases/latest)
 [![Build](https://img.shields.io/github/actions/workflow/status/cssnr/cache-cleaner/build.yaml?logo=github&logoColor=white&label=build)](https://github.com/cssnr/cache-cleaner/actions/workflows/build.yaml)
 [![Test](https://img.shields.io/github/actions/workflow/status/cssnr/cache-cleaner/test.yaml?logo=github&logoColor=white&label=test)](https://github.com/cssnr/cache-cleaner/actions/workflows/test.yaml)
@@ -43,18 +43,18 @@ and [Chrome](https://developer.chrome.com/docs/extensions/reference/api/browsing
 
 ## Install
 
-* [Google Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-* [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/cache-cleaner)
+* [Google Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+* [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/cache-cleaner-addon)
 
-[![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://addons.mozilla.org/addon/cache-cleaner)
-[![Edge](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/edge_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-[![Chromium](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chromium_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
+[![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://addons.mozilla.org/addon/cache-cleaner-addon)
+[![Edge](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/edge_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Chromium](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chromium_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
 
 All **Chromium** Based Browsers can install the extension from
-the [Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx).
+the [Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi).
 
 ## Features
 
@@ -190,8 +190,8 @@ Build: [https://wiki.mozilla.org/Add-ons/Extension_Signing#Unbranded_Builds](htt
 # Contributing
 
 Currently, the best way to contribute to this project is to give a 5-star rating
-on [Google](https://chromewebstore.google.com/detail/cache-cleaner/xxchromeidxx)
-or [Mozilla](https://addons.mozilla.org/addon/cache-cleaner) and to star this project on GitHub.
+on [Google](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+or [Mozilla](https://addons.mozilla.org/addon/cache-cleaner-addon) and to star this project on GitHub.
 
 Other Web Extensions I have created and published:
 
