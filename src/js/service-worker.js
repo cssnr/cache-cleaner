@@ -14,10 +14,9 @@ chrome.storage.onChanged.addListener(onChanged)
  */
 async function onStartup() {
     console.log('onStartup')
-    const { options } = await chrome.storage.sync.get(['options'])
-    // await updateIcon(options)
     if (typeof browser !== 'undefined') {
         console.log('Firefox CTX Menu Workaround')
+        const { options } = await chrome.storage.sync.get(['options'])
         // console.debug('options:', options)
         if (options.ctx.enable) {
             createContextMenus(options.ctx)
@@ -235,11 +234,11 @@ function addContext(context) {
  */
 async function setDefaultOptions(defaultOptions) {
     console.log('setDefaultOptions', defaultOptions)
-    let { hosts } = await chrome.storage.sync.get(['hosts'])
-    if (!hosts) {
-        await chrome.storage.sync.set({ hosts: {} })
-        console.debug('Initialized Empty: hosts')
-    }
+    // let { hosts } = await chrome.storage.sync.get(['hosts'])
+    // if (!hosts) {
+    //     await chrome.storage.sync.set({ hosts: {} })
+    //     console.debug('Initialized Empty: hosts')
+    // }
     let { options } = await chrome.storage.sync.get(['options'])
     options = options || {}
     let changed = false

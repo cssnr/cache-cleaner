@@ -28,7 +28,7 @@ document
     .forEach((el) => new bootstrap.Tooltip(el))
 
 document.getElementById('chrome-shortcuts').addEventListener('click', () => {
-    chrome.tabs.update({ url: 'chrome://extensions/shortcuts' }).then()
+    chrome.tabs.update({ url: 'chrome://extensions/shortcuts' })
 })
 
 /**
@@ -37,8 +37,9 @@ document.getElementById('chrome-shortcuts').addEventListener('click', () => {
  */
 async function initOptions() {
     console.debug('initOptions')
-
     updateManifest()
+    updateBrowser()
+    updatePlatform()
     setShortcuts([
         'clearSiteCache',
         'clearAllSiteCache',
@@ -46,17 +47,12 @@ async function initOptions() {
         'clearAllBrowserCache',
         '_execute_action',
         'openOptions',
-    ]).then()
-    updateBrowser().then()
-    updatePlatform().then()
-
-    const { options, hosts } = await chrome.storage.sync.get([
-        'options',
-        'hosts',
     ])
-    console.debug('options, hosts:', options, hosts)
-    updateOptions(options)
-    // updateTable(hosts)
+
+    chrome.storage.sync.get(['options']).then((items) => {
+        console.debug('options:', items.options)
+        updateOptions(items.options)
+    })
 }
 
 /**
@@ -68,13 +64,8 @@ async function initOptions() {
 async function onChanged(changes, namespace) {
     // console.debug('onChanged:', changes, namespace)
     for (const [key, { newValue }] of Object.entries(changes)) {
-        if (namespace === 'sync') {
-            if (key === 'options') {
-                updateOptions(newValue)
-            } else if (key === 'hosts') {
-                console.debug('hosts:', newValue)
-                // updateTable(newValue)
-            }
+        if (namespace === 'sync' && key === 'options') {
+            updateOptions(newValue)
         }
     }
 }

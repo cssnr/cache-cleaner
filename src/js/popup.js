@@ -41,12 +41,13 @@ const confirmModal = new bootstrap.Modal('#confirm-modal')
 async function initPopup() {
     console.debug('initPopup')
     updateManifest()
-    updateBrowser().then()
-    updatePlatform().then()
+    updateBrowser()
+    updatePlatform()
 
-    const { options } = await chrome.storage.sync.get(['options'])
-    console.debug('options:', options)
-    updateOptions(options)
+    chrome.storage.sync.get(['options']).then((items) => {
+        console.debug('options:', items.options)
+        updateOptions(items.options)
+    })
 
     // Check Site Access
     const result = await getSiteInfo()
