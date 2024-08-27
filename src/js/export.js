@@ -267,16 +267,16 @@ export async function linkClick(event, close = false) {
  * Update DOM with Manifest Details
  * @function updateManifest
  */
-export function updateManifest() {
+export async function updateManifest() {
     const manifest = chrome.runtime.getManifest()
     document.querySelectorAll('.version').forEach((el) => {
         el.textContent = manifest.version
     })
-    document.querySelectorAll('[href="version_url"]').forEach((el) => {
-        el.href = `${githubURL}/releases/tag/${manifest.version}`
-    })
     document.querySelectorAll('[href="homepage_url"]').forEach((el) => {
         el.href = manifest.homepage_url
+    })
+    document.querySelectorAll('[href="version_url"]').forEach((el) => {
+        el.href = `${githubURL}/releases/tag/${manifest.version}`
     })
 }
 
