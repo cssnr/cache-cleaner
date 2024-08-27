@@ -14,7 +14,6 @@
 <body>
 
 <div class="container-fluid px-2 py-1">
-
     <div class="d-flex flex-row align-items-center">
         <div class="dropdown">
             <a class="nav-link hvr-grow" id="bd-theme-disabled" title="Theme Switcher" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -42,7 +41,11 @@
                 <i class="fa-solid fa-gears"></i></a>
         </div>
     </div> <!-- d-flex -->
+</div> <!-- container-fluid -->
 
+<hr class="my-0">
+
+<div class="container-fluid px-3 py-1">
     <div class="text-center mb-1" data-mobile-replace="mb-1 my-3">
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="cacheType" id="siteSettings" value="site" checked>
@@ -157,7 +160,6 @@
                     <i class="fa-solid fa-circle-info"></i>
                 </span>
             </div>
-
         </form> <!-- options-form -->
     </div> <!-- site-settings -->
 
@@ -175,8 +177,8 @@
             </button>
         </div> <!-- d-grid -->
 
-        <form class="options-form">
-            <div class="form-check form-switch" data-mobile-add="mt-3">
+        <form class="options-form" data-mobile-add="mt-3">
+            <div class="form-check form-switch mb-0">
                 <input class="form-check-input" type="checkbox" role="switch" id="showConfirmation">
                 <label class="form-check-label" for="showConfirmation">
                     Confirm Clearing Browser Cache
@@ -246,7 +248,7 @@
                     <i class="fa-solid fa-circle-info"></i>
                 </span>
             </div>
-            <div class="form-check form-switch d-none chrome">
+            <div class="form-check form-switch mb-0 d-none chrome">
                 <input class="form-check-input" id="browser-webSQL" type="checkbox" role="switch">
                 <label class="form-check-label" for="browser-webSQL">
                     Web SQL
@@ -316,7 +318,7 @@
                     <i class="fa-solid fa-circle-info"></i>
                 </span>
             </div>
-            <div class="form-check form-switch">
+            <div class="form-check form-switch mb-0">
                 <input class="form-check-input" id="browser-pluginData" type="checkbox" role="switch">
                 <label class="form-check-label" for="browser-pluginData">
                     Plugin Data
@@ -327,7 +329,7 @@
             </div>
         </form> <!-- options-form -->
     </div> <!-- browser-settings -->
-</div> <!-- container -->
+</div> <!-- container-fluid -->
 
 <div class="modal fade" id="confirm-modal" tabindex="-1" aria-labelledby="confirm-modal-label" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">

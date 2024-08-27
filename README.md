@@ -17,15 +17,15 @@
 # Cache Cleaner
 
 Modern Chrome Web Extension and Firefox Browser Addon to easily clean selected cache items specific sites or the whole
-browser with a single key press, from the right-click context menu or via the toolbar icon popup.
+browser with a single key press, from the right-click context menu or via the toolbar icon popup. Cache cleaner is also
+available for mobile browsers, see [Install](#install) below.
 
 Firefox does not have an API to clear cache storage, the cache created by service workers. Furthermore, it has no
 option to bypass the service worker for network when testing. This extension resolves that issue by using a custom
 function to clear **Cache Storage** when clearing site cache plus has an option automatically reload the page after
-clearing
-the cache. Now after making a change to a site with a service worker, all you have to do is press `F4` (default keybind
-to clear cache) to clear the cache and refresh the site. Additionally, the browsing data API differs on Firefox and
-Chrome so logic was added to allow the extension to run on both browsers.
+clearing the cache. Now after making a change to a site with a service worker, all you have to do is press `F4` (default
+keybind to clear cache) to clear the cache and refresh the site. Additionally, the browsing data API differs on Firefox
+and Chrome so logic was added to allow the extension to run on both browsers.
 
 More information on the individual APIs
 for [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browsingData)
@@ -36,6 +36,7 @@ and [Chrome](https://developer.chrome.com/docs/extensions/reference/api/browsing
     - [Upcoming Features](#Upcoming-Features)
     - [Known Issues](#Known-Issues)
 * [Configuration](#Configuration)
+* [Usage](#Usage)
 * [Support](#Support)
 * [Development](#Development)
     - [Building](#Building)
@@ -52,9 +53,15 @@ and [Chrome](https://developer.chrome.com/docs/extensions/reference/api/browsing
 [![Brave](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/brave_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
 [![Opera](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/opera_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
 [![Chromium](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chromium_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+[![Yandex](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/yandex_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
 
 All **Chromium** Based Browsers can install the extension from
 the [Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi).
+
+Mobile browser support available for
+[Firefox](https://addons.mozilla.org/addon/cache-cleaner-addon),
+[Yandex](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi) and
+[Kiwi](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi).
 
 ## Features
 
@@ -90,6 +97,14 @@ You can pin the Addon by clicking the `Puzzle Piece`, find the Cache Cleaner ico
 
 To open the options, click on the icon (from above) then click `Open Options`.  
 You can also access `Options` through the right-click context menu (enabled by default).
+
+## Usage
+
+Use the extension in one of the three following ways:
+
+- Click on the Toolbar Icon and using the Popup
+- Set Keyboard Shortcuts for Clearing Cache or Activating the Popup
+- Using the Right Click Context Menu (configurable from Options Page)
 
 ## Support
 
@@ -197,6 +212,8 @@ Other Web Extensions I have created and published:
 
 - [Link Extractor](https://github.com/cssnr/link-extractor)
 - [Open Links in New Tab](https://github.com/cssnr/open-links-in-new-tab)
+- [Cache Cleaner](https://github.com/cssnr/cache-cleaner)
+- [Auto Auth](https://github.com/cssnr/auto-auth)
 - [HLS Video Downloader](https://github.com/cssnr/hls-video-downloader)
 - [SMWC Web Extension](https://github.com/cssnr/smwc-web-extension)
 - [PlayDrift Extension](https://github.com/cssnr/playdrift-extension)
