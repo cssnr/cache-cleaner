@@ -28,6 +28,7 @@ export async function cleanCache(type) {
         console.debug('origin:', url.origin)
 
         let removalOptions
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             removalOptions = { hostnames: [url.hostname] }
         } else {
@@ -45,6 +46,7 @@ export async function cleanCache(type) {
                 serviceWorkers: true,
             }
         }
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             if (cleanOptions.cacheStorage) {
                 await clearCacheStorage()
@@ -80,6 +82,7 @@ export async function cleanCache(type) {
                 pluginData: true,
             }
         }
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             delete cleanOptions.cacheStorage
             delete cleanOptions.fileSystems
@@ -325,6 +328,7 @@ export function showToast(message, type = 'primary') {
 export function updateBrowser() {
     return new Promise((resolve) => {
         let selector
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             selector = '.firefox'
         } else {

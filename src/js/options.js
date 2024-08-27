@@ -28,6 +28,7 @@ document
     .forEach((el) => new bootstrap.Tooltip(el))
 
 document.getElementById('chrome-shortcuts').addEventListener('click', () => {
+    // noinspection JSIgnoredPromiseFromCall
     chrome.tabs.update({ url: 'chrome://extensions/shortcuts' })
 })
 
@@ -37,9 +38,13 @@ document.getElementById('chrome-shortcuts').addEventListener('click', () => {
  */
 async function initOptions() {
     console.debug('initOptions')
+    // noinspection ES6MissingAwait
     updateManifest()
+    // noinspection ES6MissingAwait
     updateBrowser()
+    // noinspection ES6MissingAwait
     updatePlatform()
+    // noinspection ES6MissingAwait
     setShortcuts([
         'clearSiteCache',
         'clearAllSiteCache',

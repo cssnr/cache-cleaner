@@ -15,6 +15,7 @@ import {
 chrome.storage.onChanged.addListener(onChanged)
 
 document.addEventListener('DOMContentLoaded', initPopup)
+// noinspection JSCheckFunctionSignatures
 document
     .querySelectorAll('a[href]')
     .forEach((el) => el.addEventListener('click', (e) => linkClick(e, true)))
@@ -40,8 +41,11 @@ const confirmModal = new bootstrap.Modal('#confirm-modal')
  */
 async function initPopup() {
     console.debug('initPopup')
+    // noinspection ES6MissingAwait
     updateManifest()
+    // noinspection ES6MissingAwait
     updateBrowser()
+    // noinspection ES6MissingAwait
     updatePlatform()
 
     chrome.storage.sync.get(['options']).then((items) => {

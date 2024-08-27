@@ -14,6 +14,7 @@ chrome.storage.onChanged.addListener(onChanged)
  */
 async function onStartup() {
     console.log('onStartup')
+    // noinspection JSUnresolvedReference
     if (typeof browser !== 'undefined') {
         console.log('Firefox CTX Menu Workaround')
         const { options } = await chrome.storage.sync.get(['options'])
@@ -72,6 +73,7 @@ async function onInstalled(details) {
         showUpdate: false,
     })
     console.debug('options:', options)
+    // noinspection JSUnresolvedReference
     if (options.ctx.enable) {
         createContextMenus(options.ctx)
     }
@@ -183,18 +185,23 @@ function createContextMenus(ctx) {
         return console.debug('Skipping: chrome.contextMenus')
     }
     chrome.contextMenus.removeAll()
+    // noinspection JSUnresolvedReference
     if (ctx.site) {
         addContext([['all'], 'clearSiteCache', 'Clear Site Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.siteAll) {
         addContext([['all'], 'clearAllSiteCache', 'Clear All Site Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.browser) {
         addContext([['all'], 'clearBrowserCache', 'Clear Browser Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.browserAll) {
         addContext([['all'], 'clearAllBrowserCache', 'Clear All Browser Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.options) {
         if (ctx.site || ctx.siteAll || ctx.browser || ctx.browserAll) {
             addContext([['all'], 'separator'])
