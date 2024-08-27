@@ -35,7 +35,7 @@ async function onInstalled(details) {
     const options = await setDefaultOptions({
         site: {
             cacheStorage: true,
-            cookies: true,
+            cookies: false,
             fileSystems: true,
             indexedDB: true,
             localStorage: true,
@@ -47,13 +47,13 @@ async function onInstalled(details) {
             cookies: false,
             fileSystems: true,
             indexedDB: true,
-            localStorage: true,
+            localStorage: false,
             serviceWorkers: true,
             webSQL: true,
 
-            appcache: false,
+            appcache: true,
             cache: true,
-            downloads: false,
+            downloads: true,
             formData: false,
             history: false,
             passwords: false,
