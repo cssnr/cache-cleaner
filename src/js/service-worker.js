@@ -11,7 +11,7 @@ chrome.storage.onChanged.addListener(onChanged)
 /**
  * On Installed Callback
  * @function onInstalled
- * @param {InstalledDetails} details
+ * @param {chrome.runtime.InstalledDetails} details
  */
 async function onInstalled(details) {
     console.log('onInstalled:', details)
@@ -137,7 +137,7 @@ async function onClicked(ctx, tab) {
  * @param {String} command
  */
 async function onCommand(command) {
-    console.debug(`onCommand: ${command}`)
+    console.debug('onCommand:', command)
     if (command === 'openOptions') {
         await chrome.runtime.openOptionsPage()
     } else if (command === 'clearSiteCache') {
