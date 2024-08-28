@@ -47,7 +47,6 @@ async function initPopup() {
     updateBrowser()
     // noinspection ES6MissingAwait
     updatePlatform()
-
     chrome.storage.sync.get(['options']).then((items) => {
         console.debug('options:', items.options)
         updateOptions(items.options)
@@ -64,9 +63,9 @@ async function initPopup() {
 
     // Update Site Data
     hostnameEl.textContent = result.hostname
-    document.getElementById('cache-usage').textContent = formatBytes(
-        result.estimate.usage
-    )
+    document.getElementById('cache-usage').textContent = result.estimate
+        ? formatBytes(result.estimate.usage)
+        : 'Unknown'
     document.querySelectorAll('[data-clean]').forEach((el) => {
         el.dataset.hostname = result.hostname
     })
@@ -76,7 +75,7 @@ async function getSiteInfo() {
     async function getInfo() {
         return {
             hostname: window.location.hostname,
-            estimate: await navigator.storage.estimate(),
+            estimate: await navigator.storage?.estimate(),
         }
     }
     try {

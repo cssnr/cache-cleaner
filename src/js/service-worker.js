@@ -2,28 +2,11 @@
 
 import { cleanCache, githubURL } from './export.js'
 
-chrome.runtime.onStartup.addListener(onStartup)
 chrome.runtime.onInstalled.addListener(onInstalled)
+chrome.runtime.onStartup.addListener(onStartup)
 chrome.contextMenus?.onClicked.addListener(onClicked)
 chrome.commands?.onCommand.addListener(onCommand)
 chrome.storage.onChanged.addListener(onChanged)
-
-/**
- * On Startup Callback
- * @function onStartup
- */
-async function onStartup() {
-    console.log('onStartup')
-    // noinspection JSUnresolvedReference
-    if (typeof browser !== 'undefined') {
-        console.log('Firefox CTX Menu Workaround')
-        const { options } = await chrome.storage.sync.get(['options'])
-        // console.debug('options:', options)
-        if (options.ctx.enable) {
-            createContextMenus(options.ctx)
-        }
-    }
-}
 
 /**
  * On Installed Callback
@@ -32,7 +15,6 @@ async function onStartup() {
  */
 async function onInstalled(details) {
     console.log('onInstalled:', details)
-    // const uninstallURL = new URL('https://link-extractor.cssnr.com/uninstall/')
     const options = await setDefaultOptions({
         site: {
             cacheStorage: true,
@@ -88,13 +70,38 @@ async function onInstalled(details) {
             }
         }
     }
-    // uninstallURL.searchParams.append('version', manifest.version)
-    // console.log('uninstallURL:', uninstallURL.href)
-    // await chrome.runtime.setUninstallURL(uninstallURL.href)
-    await chrome.runtime.setUninstallURL(`${githubURL}/issues`)
+    setUninstallURL()
 
     // const platform = await chrome.runtime.getPlatformInfo()
     // console.debug('platform:', platform)
+}
+
+/**
+ * On Startup Callback
+ * @function onStartup
+ */
+async function onStartup() {
+    console.log('onStartup')
+    // noinspection JSUnresolvedReference
+    if (typeof browser !== 'undefined') {
+        console.log('Firefox Startup Workarounds')
+        const { options } = await chrome.storage.sync.get(['options'])
+        // console.debug('options:', options)
+        if (options.ctx.enable) {
+            createContextMenus(options.ctx)
+        }
+        setUninstallURL()
+    }
+}
+
+function setUninstallURL() {
+    // const manifest = chrome.runtime.getManifest()
+    // const url = new URL('https://link-extractor.cssnr.com/uninstall/')
+    // url.searchParams.append('version', manifest.version)
+    // chrome.runtime.setUninstallURL(url.href)
+    // console.debug(`setUninstallURL: ${url.href}`)
+    chrome.runtime.setUninstallURL(`${githubURL}/issues`)
+    console.debug(`setUninstallURL: ${githubURL}/issues`)
 }
 
 /**
@@ -254,7 +261,7 @@ async function setDefaultOptions(defaultOptions) {
         if (options[key] === undefined) {
             changed = true
             options[key] = value
-            console.log(`%cSet ${key}:`, 'color: Lime', value)
+            console.log(`Set %c${key}:`, 'color: Khaki', value)
         } else if (typeof defaultOptions[key] === 'object') {
             console.debug(`%cProcessing Object: ${key}`, 'color: Magenta')
             for (const [subKey, subValue] of Object.entries(

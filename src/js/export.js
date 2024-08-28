@@ -144,7 +144,7 @@ export async function saveOptions(event) {
         console.log(`%cSet: ${key}.${subkey}:`, 'color: DeepSkyBlue', value)
         options[key][subkey] = value
     } else if (value !== undefined) {
-        console.log(`%cSet: ${key}:`, 'color: DeepSkyBlue', value)
+        console.log(`Set %c${key}:`, 'color: Khaki', value)
         options[key] = value
     } else {
         console.warn('No Value for key:', key)
