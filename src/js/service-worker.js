@@ -2,41 +2,23 @@
 
 import { cleanCache, githubURL } from './export.js'
 
-chrome.runtime.onStartup.addListener(onStartup)
 chrome.runtime.onInstalled.addListener(onInstalled)
+chrome.runtime.onStartup.addListener(onStartup)
 chrome.contextMenus?.onClicked.addListener(onClicked)
 chrome.commands?.onCommand.addListener(onCommand)
 chrome.storage.onChanged.addListener(onChanged)
 
 /**
- * On Startup Callback
- * @function onStartup
- */
-async function onStartup() {
-    console.log('onStartup')
-    const { options } = await chrome.storage.sync.get(['options'])
-    // await updateIcon(options)
-    if (typeof browser !== 'undefined') {
-        console.log('Firefox CTX Menu Workaround')
-        // console.debug('options:', options)
-        if (options.ctx.enable) {
-            createContextMenus(options.ctx)
-        }
-    }
-}
-
-/**
  * On Installed Callback
  * @function onInstalled
- * @param {InstalledDetails} details
+ * @param {chrome.runtime.InstalledDetails} details
  */
 async function onInstalled(details) {
     console.log('onInstalled:', details)
-    // const uninstallURL = new URL('https://link-extractor.cssnr.com/uninstall/')
     const options = await setDefaultOptions({
         site: {
             cacheStorage: true,
-            cookies: true,
+            cookies: false,
             fileSystems: true,
             indexedDB: true,
             localStorage: true,
@@ -48,13 +30,13 @@ async function onInstalled(details) {
             cookies: false,
             fileSystems: true,
             indexedDB: true,
-            localStorage: true,
+            localStorage: false,
             serviceWorkers: true,
             webSQL: true,
 
-            appcache: false,
+            appcache: true,
             cache: true,
-            downloads: false,
+            downloads: true,
             formData: false,
             history: false,
             passwords: false,
@@ -73,6 +55,7 @@ async function onInstalled(details) {
         showUpdate: false,
     })
     console.debug('options:', options)
+    // noinspection JSUnresolvedReference
     if (options.ctx.enable) {
         createContextMenus(options.ctx)
     }
@@ -87,13 +70,38 @@ async function onInstalled(details) {
             }
         }
     }
-    // uninstallURL.searchParams.append('version', manifest.version)
-    // console.log('uninstallURL:', uninstallURL.href)
-    // await chrome.runtime.setUninstallURL(uninstallURL.href)
-    await chrome.runtime.setUninstallURL(`${githubURL}/issues`)
+    setUninstallURL()
 
     // const platform = await chrome.runtime.getPlatformInfo()
     // console.debug('platform:', platform)
+}
+
+/**
+ * On Startup Callback
+ * @function onStartup
+ */
+async function onStartup() {
+    console.log('onStartup')
+    // noinspection JSUnresolvedReference
+    if (typeof browser !== 'undefined') {
+        console.log('Firefox Startup Workarounds')
+        const { options } = await chrome.storage.sync.get(['options'])
+        // console.debug('options:', options)
+        if (options.ctx.enable) {
+            createContextMenus(options.ctx)
+        }
+        setUninstallURL()
+    }
+}
+
+function setUninstallURL() {
+    // const manifest = chrome.runtime.getManifest()
+    // const url = new URL('https://link-extractor.cssnr.com/uninstall/')
+    // url.searchParams.append('version', manifest.version)
+    // chrome.runtime.setUninstallURL(url.href)
+    // console.debug(`setUninstallURL: ${url.href}`)
+    chrome.runtime.setUninstallURL(`${githubURL}/issues`)
+    console.debug(`setUninstallURL: ${githubURL}/issues`)
 }
 
 /**
@@ -129,7 +137,7 @@ async function onClicked(ctx, tab) {
  * @param {String} command
  */
 async function onCommand(command) {
-    console.debug(`onCommand: ${command}`)
+    console.debug('onCommand:', command)
     if (command === 'openOptions') {
         await chrome.runtime.openOptionsPage()
     } else if (command === 'clearSiteCache') {
@@ -184,18 +192,23 @@ function createContextMenus(ctx) {
         return console.debug('Skipping: chrome.contextMenus')
     }
     chrome.contextMenus.removeAll()
+    // noinspection JSUnresolvedReference
     if (ctx.site) {
         addContext([['all'], 'clearSiteCache', 'Clear Site Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.siteAll) {
         addContext([['all'], 'clearAllSiteCache', 'Clear All Site Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.browser) {
         addContext([['all'], 'clearBrowserCache', 'Clear Browser Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.browserAll) {
         addContext([['all'], 'clearAllBrowserCache', 'Clear All Browser Cache'])
     }
+    // noinspection JSUnresolvedReference
     if (ctx.options) {
         if (ctx.site || ctx.siteAll || ctx.browser || ctx.browserAll) {
             addContext([['all'], 'separator'])
@@ -235,11 +248,11 @@ function addContext(context) {
  */
 async function setDefaultOptions(defaultOptions) {
     console.log('setDefaultOptions', defaultOptions)
-    let { hosts } = await chrome.storage.sync.get(['hosts'])
-    if (!hosts) {
-        await chrome.storage.sync.set({ hosts: {} })
-        console.debug('Initialized Empty: hosts')
-    }
+    // let { hosts } = await chrome.storage.sync.get(['hosts'])
+    // if (!hosts) {
+    //     await chrome.storage.sync.set({ hosts: {} })
+    //     console.debug('Initialized Empty: hosts')
+    // }
     let { options } = await chrome.storage.sync.get(['options'])
     options = options || {}
     let changed = false
@@ -248,7 +261,7 @@ async function setDefaultOptions(defaultOptions) {
         if (options[key] === undefined) {
             changed = true
             options[key] = value
-            console.log(`%cSet ${key}:`, 'color: Lime', value)
+            console.log(`Set %c${key}:`, 'color: Khaki', value)
         } else if (typeof defaultOptions[key] === 'object') {
             console.debug(`%cProcessing Object: ${key}`, 'color: Magenta')
             for (const [subKey, subValue] of Object.entries(

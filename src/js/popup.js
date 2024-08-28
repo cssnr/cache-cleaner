@@ -15,6 +15,7 @@ import {
 chrome.storage.onChanged.addListener(onChanged)
 
 document.addEventListener('DOMContentLoaded', initPopup)
+// noinspection JSCheckFunctionSignatures
 document
     .querySelectorAll('a[href]')
     .forEach((el) => el.addEventListener('click', (e) => linkClick(e, true)))
@@ -40,13 +41,16 @@ const confirmModal = new bootstrap.Modal('#confirm-modal')
  */
 async function initPopup() {
     console.debug('initPopup')
+    // noinspection ES6MissingAwait
     updateManifest()
-    updateBrowser().then()
-    updatePlatform().then()
-
-    const { options } = await chrome.storage.sync.get(['options'])
-    console.debug('options:', options)
-    updateOptions(options)
+    // noinspection ES6MissingAwait
+    updateBrowser()
+    // noinspection ES6MissingAwait
+    updatePlatform()
+    chrome.storage.sync.get(['options']).then((items) => {
+        console.debug('options:', items.options)
+        updateOptions(items.options)
+    })
 
     // Check Site Access
     const result = await getSiteInfo()
@@ -59,9 +63,9 @@ async function initPopup() {
 
     // Update Site Data
     hostnameEl.textContent = result.hostname
-    document.getElementById('cache-usage').textContent = formatBytes(
-        result.estimate.usage
-    )
+    document.getElementById('cache-usage').textContent = result.estimate
+        ? formatBytes(result.estimate.usage)
+        : 'Unknown'
     document.querySelectorAll('[data-clean]').forEach((el) => {
         el.dataset.hostname = result.hostname
     })
@@ -71,7 +75,7 @@ async function getSiteInfo() {
     async function getInfo() {
         return {
             hostname: window.location.hostname,
-            estimate: await navigator.storage.estimate(),
+            estimate: await navigator.storage?.estimate(),
         }
     }
     try {

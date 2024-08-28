@@ -28,6 +28,7 @@ export async function cleanCache(type) {
         console.debug('origin:', url.origin)
 
         let removalOptions
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             removalOptions = { hostnames: [url.hostname] }
         } else {
@@ -45,6 +46,7 @@ export async function cleanCache(type) {
                 serviceWorkers: true,
             }
         }
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             if (cleanOptions.cacheStorage) {
                 await clearCacheStorage()
@@ -80,6 +82,7 @@ export async function cleanCache(type) {
                 pluginData: true,
             }
         }
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             delete cleanOptions.cacheStorage
             delete cleanOptions.fileSystems
@@ -141,7 +144,7 @@ export async function saveOptions(event) {
         console.log(`%cSet: ${key}.${subkey}:`, 'color: DeepSkyBlue', value)
         options[key][subkey] = value
     } else if (value !== undefined) {
-        console.log(`%cSet: ${key}:`, 'color: DeepSkyBlue', value)
+        console.log(`Set %c${key}:`, 'color: Khaki', value)
         options[key] = value
     } else {
         console.warn('No Value for key:', key)
@@ -267,16 +270,16 @@ export async function linkClick(event, close = false) {
  * Update DOM with Manifest Details
  * @function updateManifest
  */
-export function updateManifest() {
+export async function updateManifest() {
     const manifest = chrome.runtime.getManifest()
     document.querySelectorAll('.version').forEach((el) => {
         el.textContent = manifest.version
     })
-    document.querySelectorAll('[href="version_url"]').forEach((el) => {
-        el.href = `${githubURL}/releases/tag/${manifest.version}`
-    })
     document.querySelectorAll('[href="homepage_url"]').forEach((el) => {
         el.href = manifest.homepage_url
+    })
+    document.querySelectorAll('[href="version_url"]').forEach((el) => {
+        el.href = `${githubURL}/releases/tag/${manifest.version}`
     })
 }
 
@@ -325,6 +328,7 @@ export function showToast(message, type = 'primary') {
 export function updateBrowser() {
     return new Promise((resolve) => {
         let selector
+        // noinspection JSUnresolvedReference
         if (typeof browser !== 'undefined') {
             selector = '.firefox'
         } else {
