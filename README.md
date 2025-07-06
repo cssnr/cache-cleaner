@@ -14,6 +14,7 @@
 [![GitHub Repo Size](https://img.shields.io/github/repo-size/cssnr/cache-cleaner?logo=bookstack&logoColor=white&label=repo%20size)](https://github.com/cssnr/cache-cleaner)
 [![GitHub Org Stars](https://img.shields.io/github/stars/cssnr?style=flat&logo=github&logoColor=white&label=org%20stars)](https://cssnr.github.io/)
 [![Discord](https://img.shields.io/discord/899171661457293343?logo=discord&logoColor=white&label=discord&color=7289da)](https://discord.gg/wXy6m2X8wY)
+[![Support](https://img.shields.io/badge/Ko--fi-579fbf?logo=kofi&label=Support)](https://ko-fi.com/cssnr)
 
 # Cache Cleaner
 
@@ -63,6 +64,8 @@ Mobile browser support available for
 [Firefox](https://addons.mozilla.org/addon/cache-cleaner-addon),
 [Yandex](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi) and
 [Kiwi](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi).
+
+[![QR Code GitHub](https://raw.githubusercontent.com/smashedr/repo-images/refs/heads/master/cache-cleaner/qr-code-firefox.png)](https://addons.mozilla.org/addon/auto-auth)
 
 ## Features
 
@@ -205,9 +208,14 @@ Build: [https://wiki.mozilla.org/Add-ons/Extension_Signing#Unbranded_Builds](htt
 
 # Contributing
 
-Currently, the best way to contribute to this project is to give a 5-star rating
+Please consider making a donation to support the development of this project
+and [additional](https://cssnr.com/) open source projects.
+
+[![Support](https://img.shields.io/badge/Ko--fi-579fbf?style=for-the-badge&logo=kofi&label=Support)](https://ko-fi.com/cssnr)
+
+Additionally, you can give a 5-star rating
 on [Google](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
-or [Mozilla](https://addons.mozilla.org/addon/cache-cleaner-addon) and to star this project on GitHub.
+or [Mozilla](https://addons.mozilla.org/addon/cache-cleaner-addon) and star this project on GitHub.
 
 Other Web Extensions I have created and published:
 
