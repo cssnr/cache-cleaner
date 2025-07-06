@@ -32,21 +32,21 @@ More information on the individual APIs
 for [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browsingData)
 and [Chrome](https://developer.chrome.com/docs/extensions/reference/api/browsingData).
 
-* [Install](#Install)
-* [Features](#Features)
+- [Install](#Install)
+- [Features](#Features)
     - [Upcoming Features](#Upcoming-Features)
     - [Known Issues](#Known-Issues)
-* [Configuration](#Configuration)
-* [Usage](#Usage)
-* [Support](#Support)
-* [Development](#Development)
+- [Configuration](#Configuration)
+- [Usage](#Usage)
+- [Support](#Support)
+- [Development](#Development)
     - [Building](#Building)
-* [Contributing](#Contributing)
+- [Contributing](#Contributing)
 
 ## Install
 
-* [Google Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
-* [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/cache-cleaner-addon)
+- [Google Chrome Web Store](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
+- [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/cache-cleaner-addon)
 
 [![Chrome](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/chrome_48.png)](https://chromewebstore.google.com/detail/cache-cleaner/nbkhplnnajkikghffmincdbipjalpobi)
 [![Firefox](https://raw.githubusercontent.com/smashedr/logo-icons/master/browsers/firefox_48.png)](https://addons.mozilla.org/addon/cache-cleaner-addon)
