@@ -341,10 +341,15 @@ export function updateBrowser() {
     })
 }
 
+/**
+ * @function updatePlatform
+ * @return {Promise<chrome.runtime.PlatformInfo>}
+ */
 export async function updatePlatform() {
     const platform = await chrome.runtime.getPlatformInfo()
     console.debug('updatePlatform:', platform)
-    if (platform.os === 'android') {
+    const splitCls = (cls) => cls.split(' ').filter(Boolean)
+    if (platform.os === 'android' && typeof document !== 'undefined') {
         // document.querySelectorAll('[class*="mobile-"]').forEach((el) => {
         document
             .querySelectorAll(
@@ -352,18 +357,28 @@ export async function updatePlatform() {
             )
             .forEach((el) => {
                 if (el.dataset.mobileAdd) {
-                    // console.debug('mobileAdd:', el.dataset.mobileAdd)
-                    el.classList.add(el.dataset.mobileAdd)
+                    for (const cls of splitCls(el.dataset.mobileAdd)) {
+                        // console.debug('mobileAdd:', cls)
+                        el.classList.add(cls)
+                    }
                 }
                 if (el.dataset.mobileRemove) {
-                    // console.debug('mobileRemove:', el.dataset.mobileRemove)
-                    el.classList.remove(el.dataset.mobileRemove)
+                    for (const cls of splitCls(el.dataset.mobileRemove)) {
+                        // console.debug('mobileAdd:', cls)
+                        el.classList.remove(cls)
+                    }
                 }
                 if (el.dataset.mobileReplace) {
-                    const split = el.dataset.mobileReplace.split(' ')
+                    const split = splitCls(el.dataset.mobileReplace)
                     // console.debug('mobileReplace:', split)
-                    el.classList.replace(split[0], split[1])
+                    for (let i = 0; i < split.length; i += 2) {
+                        const one = split[i]
+                        const two = split[i + 1]
+                        // console.debug(`replace: ${one} >> ${two}`)
+                        el.classList.replace(one, two)
+                    }
                 }
             })
     }
+    return platform
 }
