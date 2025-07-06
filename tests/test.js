@@ -71,6 +71,7 @@ async function getPage(browser, name, size) {
         args: [
             `--disable-extensions-except=${pathToExtension}`,
             `--load-extension=${pathToExtension}`,
+            '--no-sandbox',
         ],
         dumpio: true,
         // headless: false,
@@ -86,6 +87,8 @@ async function getPage(browser, name, size) {
     )
     const worker = await workerTarget.worker()
     console.log('worker:', worker)
+
+    await new Promise((resolve) => setTimeout(resolve, 1000))
 
     // Popup
     let popup
@@ -137,4 +140,5 @@ async function getPage(browser, name, size) {
     // await page.screenshot(ssOptions('page'))
 
     await browser.close()
+    console.log('Done')
 })()

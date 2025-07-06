@@ -11,7 +11,7 @@
       }
     },
     {
-      "files": ["**/*.json", "**/*.yaml", "**/*.yml"],
+      "files": ["**/*.mjs", "**/*.json", "**/*.yaml", "**/*.yml"],
       "options": {
         "tabWidth": 2
       }
