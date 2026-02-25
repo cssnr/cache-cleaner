@@ -71,13 +71,14 @@ async function initPopup() {
     })
 }
 
-async function getSiteInfo() {
-    async function getInfo() {
-        return {
-            hostname: window.location.hostname,
-            estimate: await navigator.storage?.estimate(),
-        }
+async function getInfo() {
+    return {
+        hostname: window.location.hostname,
+        estimate: await navigator.storage?.estimate(),
     }
+}
+
+async function getSiteInfo() {
     try {
         const results = await injectFunction(getInfo)
         console.debug('results:', results)
@@ -155,7 +156,7 @@ function formatBytes(bytes, decimals = 2) {
     if (!numBytes) return '0 Bytes'
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB']
     const i = Math.floor(Math.log(numBytes) / Math.log(1024))
-    return `${parseFloat((bytes / Math.pow(1024, i)).toFixed(decimals))} ${sizes[i]}`
+    return `${Number.parseFloat((numBytes / Math.pow(1024, i)).toFixed(decimals))} ${sizes[i]}`
 }
 
 /**
