@@ -23,7 +23,7 @@
 
 # Cache Cleaner
 
-<a title="Cache Cleaner" href="https://github.com/cssnr/cache-cleaner#readme-ov-file" target="_blank">
+<a title="Cache Cleaner" href="https://github.com/cssnr/cache-cleaner?tab=readme-ov-file#readme" target="_blank">
 <img alt="Cache Cleaner" align="right" width="128" height="auto" src="https://raw.githubusercontent.com/cssnr/cache-cleaner/refs/heads/master/src/images/logo128.png"></a>
 
 - [Install](#install)
@@ -88,7 +88,7 @@ Mobile browser support available for
 - Custom time frames to clear supported caches
 - Chrome only, option to exclude specified origins
 
-> [!TIP]
+> [!TIP]  
 > **Don't see your feature here?**
 > Submit a [Feature Request](https://github.com/cssnr/cache-cleaner/issues/new?template=1-feature.yaml).
 
@@ -96,7 +96,7 @@ Mobile browser support available for
 
 - No major issues detected at the moment...
 
-> [!TIP]
+> [!TIP]  
 > **Don't see your issue here?**
 > Open a [New Issues](https://github.com/cssnr/cache-cleaner/issues).
 
