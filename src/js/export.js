@@ -29,7 +29,10 @@ export async function cleanCache(type) {
 
         let removalOptions
         // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
+        if (
+            typeof browser !== 'undefined' &&
+            typeof browser?.runtime?.getBrowserInfo === 'function'
+        ) {
             removalOptions = { hostnames: [url.hostname] }
         } else {
             removalOptions = { origins: [url.origin] }
@@ -47,7 +50,10 @@ export async function cleanCache(type) {
             }
         }
         // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
+        if (
+            typeof browser !== 'undefined' &&
+            typeof browser?.runtime?.getBrowserInfo === 'function'
+        ) {
             if (cleanOptions.cacheStorage) {
                 await clearCacheStorage()
             }
@@ -83,7 +89,10 @@ export async function cleanCache(type) {
             }
         }
         // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
+        if (
+            typeof browser !== 'undefined' &&
+            typeof browser?.runtime?.getBrowserInfo === 'function'
+        ) {
             delete cleanOptions.cacheStorage
             delete cleanOptions.fileSystems
             delete cleanOptions.webSQL
