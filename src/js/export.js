@@ -161,11 +161,11 @@ export async function saveOptions(event) {
         key = key.split('-')[0]
         console.log(`%cSet: ${key}.${subkey}:`, 'color: DeepSkyBlue', value)
         options[key][subkey] = value
-    } else if (value !== undefined) {
+    } else if (value === undefined) {
+        console.warn('No Value for key:', key)
+    } else {
         console.log(`Set %c${key}:`, 'color: Khaki', value)
         options[key] = value
-    } else {
-        console.warn('No Value for key:', key)
     }
     await chrome.storage.sync.set({ options })
 }
