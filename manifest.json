@@ -6,13 +6,7 @@
   "author": "Shane",
   "version": "0.0.1",
   "manifest_version": 3,
-  "permissions": [
-    "activeTab",
-    "browsingData",
-    "contextMenus",
-    "scripting",
-    "storage"
-  ],
+  "permissions": ["activeTab", "browsingData", "contextMenus", "scripting", "storage"],
   "background": { "type": "module" },
   "options_ui": {
     "page": "html/options.html",
