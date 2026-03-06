@@ -7,7 +7,7 @@ export const githubURL = 'https://github.com/cssnr/cache-cleaner'
  * @function cleanCache
  * @param {String} type
  */
-export async function cleanCache(type) {
+export async function cleanCache(type) /* NOSONAR */ {
     console.debug('cleanCache:', type)
     const { options } = await chrome.storage.sync.get(['options'])
     console.debug('options:', options)
@@ -124,7 +124,7 @@ async function clearCacheStorage() {
  * @function saveOptions
  * @param {UIEvent} event
  */
-export async function saveOptions(event) {
+export async function saveOptions(event) /* NOSONAR */ {
     console.debug('saveOptions:', event)
     const { options } = await chrome.storage.sync.get(['options'])
     let key = event.target.id
@@ -217,7 +217,6 @@ function processEl(el, value) {
         hideShowElement(`#${el.dataset.related}`, value)
     }
     if (el.dataset.warning) {
-        // addWarningClass(el.nextElementSibling, value, el.dataset.warning)
         el.nextElementSibling.classList.toggle(el.dataset.warning, !!value)
     }
 }
@@ -238,22 +237,6 @@ function hideShowElement(selector, show, speed = 'fast') {
         element.hide(speed)
     }
 }
-
-// /**
-//  * Add Warning Class to Element
-//  * @function addWarningClass
-//  * @param {HTMLElement} element
-//  * @param {Boolean} value
-//  * @param {String} warning
-//  */
-// function addWarningClass(element, value, warning) {
-//     // console.debug('addWarningClass:', value, element)
-//     if (value) {
-//         element.classList.add(warning)
-//     } else {
-//         element.classList.remove(warning)
-//     }
-// }
 
 /**
  * Link Click Callback
