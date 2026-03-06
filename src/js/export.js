@@ -2,6 +2,11 @@
 
 export const githubURL = 'https://github.com/cssnr/cache-cleaner'
 
+// noinspection JSUnresolvedReference
+export const isFirefox =
+    typeof browser !== 'undefined' &&
+    typeof browser?.runtime?.getBrowserInfo === 'function'
+
 /**
  * Save Options Callback
  * @function cleanCache
@@ -28,11 +33,7 @@ export async function cleanCache(type) /* NOSONAR */ {
         console.debug('origin:', url.origin)
 
         let removalOptions
-        // noinspection JSUnresolvedReference
-        if (
-            typeof browser !== 'undefined' &&
-            typeof browser?.runtime?.getBrowserInfo === 'function'
-        ) {
+        if (isFirefox) {
             removalOptions = { hostnames: [url.hostname] }
         } else {
             removalOptions = { origins: [url.origin] }
@@ -49,11 +50,7 @@ export async function cleanCache(type) /* NOSONAR */ {
                 serviceWorkers: true,
             }
         }
-        // noinspection JSUnresolvedReference
-        if (
-            typeof browser !== 'undefined' &&
-            typeof browser?.runtime?.getBrowserInfo === 'function'
-        ) {
+        if (isFirefox) {
             if (cleanOptions.cacheStorage) {
                 await clearCacheStorage()
             }
@@ -88,11 +85,7 @@ export async function cleanCache(type) /* NOSONAR */ {
                 pluginData: true,
             }
         }
-        // noinspection JSUnresolvedReference
-        if (
-            typeof browser !== 'undefined' &&
-            typeof browser?.runtime?.getBrowserInfo === 'function'
-        ) {
+        if (isFirefox) {
             delete cleanOptions.cacheStorage
             delete cleanOptions.fileSystems
             delete cleanOptions.webSQL
@@ -185,6 +178,7 @@ export function updateOptions(options) {
         // console.debug(`%cKey: ${key}`, 'color: Lime', value)
         if (typeof value === 'object') {
             // console.debug('%cProcessing Object', 'color: Yellow', key)
+            // noinspection JSCheckFunctionSignatures
             for (const [subKey, subValue] of Object.entries(value)) {
                 // console.debug(`subKey: ${key}-${subKey}:`, subValue)
                 const el = document.getElementById(`${key}-${subKey}`)
@@ -199,8 +193,8 @@ export function updateOptions(options) {
 
 /**
  * @function processEl
- * @param {HTMLElement} el
- * @param {Boolean} value
+ * @param {HTMLInputElement} el
+ * @param {boolean|string} value
  */
 function processEl(el, value) {
     if (!el) {
@@ -331,11 +325,7 @@ export function showToast(message, type = 'primary') {
  */
 export async function updateBrowser() {
     let selector = '.chrome'
-    // noinspection JSUnresolvedReference
-    if (
-        typeof browser !== 'undefined' &&
-        typeof browser?.runtime?.getBrowserInfo === 'function'
-    ) {
+    if (isFirefox) {
         selector = '.firefox'
     }
     console.debug('updateBrowser:', selector)

@@ -1,6 +1,6 @@
 // JS Background Service Worker
 
-import { cleanCache, githubURL } from './export.js'
+import { cleanCache, githubURL, isFirefox } from './export.js'
 
 chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.runtime.onStartup.addListener(onStartup)
@@ -82,11 +82,7 @@ async function onInstalled(details) {
  */
 async function onStartup() {
     console.log('onStartup')
-    // noinspection JSUnresolvedReference
-    if (
-        typeof browser !== 'undefined' &&
-        typeof browser?.runtime?.getBrowserInfo === 'function'
-    ) {
+    if (isFirefox) {
         console.log('Firefox Startup Workarounds')
         const { options } = await chrome.storage.sync.get(['options'])
         // console.debug('options:', options)
