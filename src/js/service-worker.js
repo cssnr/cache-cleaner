@@ -1,6 +1,6 @@
 // JS Background Service Worker
 
-import { cleanCache, githubURL } from './export.js'
+import { cleanCache, githubURL, isFirefox } from './export.js'
 
 chrome.runtime.onInstalled.addListener(onInstalled)
 chrome.runtime.onStartup.addListener(onStartup)
@@ -82,8 +82,7 @@ async function onInstalled(details) {
  */
 async function onStartup() {
     console.log('onStartup')
-    // noinspection JSUnresolvedReference
-    if (typeof browser !== 'undefined') {
+    if (isFirefox) {
         console.log('Firefox Startup Workarounds')
         const { options } = await chrome.storage.sync.get(['options'])
         // console.debug('options:', options)
@@ -220,7 +219,7 @@ function createContextMenus(ctx) {
 /**
  * Add Context from Array
  * @function addContext
- * @param {[String[],String,String?,String?]} context
+ * @param {[chrome.contextMenus.ContextType[],String,String?,chrome.contextMenus.ContextType?]} context
  */
 function addContext(context) {
     // console.debug('addContext:', context)
@@ -229,6 +228,7 @@ function addContext(context) {
             context[1] = Math.random().toString().substring(2, 7)
             context.push('separator', 'separator')
         }
+        // noinspection JSCheckFunctionSignatures
         chrome.contextMenus.create({
             contexts: context[0],
             id: context[1],
@@ -264,17 +264,11 @@ async function setDefaultOptions(defaultOptions) {
             console.log(`Set %c${key}:`, 'color: Khaki', value)
         } else if (typeof defaultOptions[key] === 'object') {
             console.debug(`%cProcessing Object: ${key}`, 'color: Magenta')
-            for (const [subKey, subValue] of Object.entries(
-                defaultOptions[key]
-            )) {
+            for (const [subKey, subValue] of Object.entries(defaultOptions[key])) {
                 if (options[key][subKey] === undefined) {
                     changed = true
                     options[key][subKey] = subValue
-                    console.log(
-                        `%cSet: ${key}.${subKey}:`,
-                        'color: Lime',
-                        subValue
-                    )
+                    console.log(`%cSet: ${key}.${subKey}:`, 'color: Lime', subValue)
                 }
             }
         }

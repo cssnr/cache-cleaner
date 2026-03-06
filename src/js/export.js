@@ -2,12 +2,17 @@
 
 export const githubURL = 'https://github.com/cssnr/cache-cleaner'
 
+// noinspection JSUnresolvedReference
+export const isFirefox =
+    typeof browser !== 'undefined' &&
+    typeof browser?.runtime?.getBrowserInfo === 'function'
+
 /**
  * Save Options Callback
  * @function cleanCache
  * @param {String} type
  */
-export async function cleanCache(type) {
+export async function cleanCache(type) /* NOSONAR */ {
     console.debug('cleanCache:', type)
     const { options } = await chrome.storage.sync.get(['options'])
     console.debug('options:', options)
@@ -28,8 +33,7 @@ export async function cleanCache(type) {
         console.debug('origin:', url.origin)
 
         let removalOptions
-        // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
+        if (isFirefox) {
             removalOptions = { hostnames: [url.hostname] }
         } else {
             removalOptions = { origins: [url.origin] }
@@ -46,8 +50,7 @@ export async function cleanCache(type) {
                 serviceWorkers: true,
             }
         }
-        // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
+        if (isFirefox) {
             if (cleanOptions.cacheStorage) {
                 await clearCacheStorage()
             }
@@ -82,8 +85,7 @@ export async function cleanCache(type) {
                 pluginData: true,
             }
         }
-        // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
+        if (isFirefox) {
             delete cleanOptions.cacheStorage
             delete cleanOptions.fileSystems
             delete cleanOptions.webSQL
@@ -115,7 +117,7 @@ async function clearCacheStorage() {
  * @function saveOptions
  * @param {UIEvent} event
  */
-export async function saveOptions(event) {
+export async function saveOptions(event) /* NOSONAR */ {
     console.debug('saveOptions:', event)
     const { options } = await chrome.storage.sync.get(['options'])
     let key = event.target.id
@@ -131,8 +133,17 @@ export async function saveOptions(event) {
         }
     } else if (event.target.type === 'checkbox') {
         value = event.target.checked
-        // } else if (event.target.type === 'number') {
-        //     value = event.target.value.toString()
+    } else if (event.target.type === 'number') {
+        const number = Number.parseFloat(event.target.value)
+        let min = Number.parseFloat(event.target.min)
+        let max = Number.parseFloat(event.target.max)
+        if (!Number.isNaN(number) && number >= min && number <= max) {
+            event.target.value = number.toString()
+            value = number
+        } else {
+            event.target.value = options[event.target.id]
+            return
+        }
     } else {
         value = event.target.value
     }
@@ -143,11 +154,11 @@ export async function saveOptions(event) {
         key = key.split('-')[0]
         console.log(`%cSet: ${key}.${subkey}:`, 'color: DeepSkyBlue', value)
         options[key][subkey] = value
-    } else if (value !== undefined) {
+    } else if (value === undefined) {
+        console.warn('No Value for key:', key)
+    } else {
         console.log(`Set %c${key}:`, 'color: Khaki', value)
         options[key] = value
-    } else {
-        console.warn('No Value for key:', key)
     }
     await chrome.storage.sync.set({ options })
 }
@@ -160,13 +171,14 @@ export async function saveOptions(event) {
 export function updateOptions(options) {
     console.debug('updateOptions:', options)
     for (let [key, value] of Object.entries(options)) {
-        if (typeof value === 'undefined') {
+        if (value === undefined) {
             console.warn('Value undefined for key:', key)
             continue
         }
         // console.debug(`%cKey: ${key}`, 'color: Lime', value)
         if (typeof value === 'object') {
             // console.debug('%cProcessing Object', 'color: Yellow', key)
+            // noinspection JSCheckFunctionSignatures
             for (const [subKey, subValue] of Object.entries(value)) {
                 // console.debug(`subKey: ${key}-${subKey}:`, subValue)
                 const el = document.getElementById(`${key}-${subKey}`)
@@ -181,8 +193,8 @@ export function updateOptions(options) {
 
 /**
  * @function processEl
- * @param {HTMLElement} el
- * @param {Boolean} value
+ * @param {HTMLInputElement} el
+ * @param {boolean|string} value
  */
 function processEl(el, value) {
     if (!el) {
@@ -199,7 +211,7 @@ function processEl(el, value) {
         hideShowElement(`#${el.dataset.related}`, value)
     }
     if (el.dataset.warning) {
-        addWarningClass(el.nextElementSibling, value, el.dataset.warning)
+        el.nextElementSibling.classList.toggle(el.dataset.warning, !!value)
     }
 }
 
@@ -221,37 +233,23 @@ function hideShowElement(selector, show, speed = 'fast') {
 }
 
 /**
- * Add Warning Class to Element
- * @function addWarningClass
- * @param {HTMLElement} element
- * @param {Boolean} value
- * @param {String} warning
- */
-function addWarningClass(element, value, warning) {
-    // console.debug('addWarningClass:', value, element)
-    if (value) {
-        element.classList.add(warning)
-    } else {
-        element.classList.remove(warning)
-    }
-}
-
-/**
  * Link Click Callback
- * Firefox requires a call to window.close()
+ * Note: Firefox popup requires a call to window.close()
  * @function linkClick
  * @param {MouseEvent} event
  * @param {Boolean} [close]
  */
 export async function linkClick(event, close = false) {
-    // console.debug('linkClick:', event, close)
-    event.preventDefault()
-    const href = event.currentTarget.getAttribute('href').replace(/^\.+/g, '')
-    // console.debug('href:', href)
+    console.debug('linkClick:', close, event)
+    const target = event.currentTarget
+    const href = target.getAttribute('href').replace(/^\.+/, '')
+    console.debug('href:', href)
+    let url
     if (href.startsWith('#')) {
+        console.debug('return on anchor link')
         return
     }
-    let url
+    event.preventDefault()
     if (href.endsWith('html/options.html')) {
         await chrome.runtime.openOptionsPage()
         if (close) window.close()
@@ -313,7 +311,7 @@ export function showToast(message, type = 'primary') {
         return console.warn('Missing clone or container:', clone, container)
     }
     const element = clone.cloneNode(true)
-    element.querySelector('.toast-body').innerHTML = message
+    element.querySelector('.toast-body').textContent = message
     element.classList.add(`text-bg-${type}`)
     container.appendChild(element)
     const toast = new bootstrap.Toast(element)
@@ -325,20 +323,13 @@ export function showToast(message, type = 'primary') {
  * @function updateBrowser
  * @return {Promise<void>}
  */
-export function updateBrowser() {
-    return new Promise((resolve) => {
-        let selector
-        // noinspection JSUnresolvedReference
-        if (typeof browser !== 'undefined') {
-            selector = '.firefox'
-        } else {
-            selector = '.chrome'
-        }
-        document
-            .querySelectorAll(selector)
-            .forEach((el) => el.classList.remove('d-none'))
-        resolve()
-    })
+export async function updateBrowser() {
+    let selector = '.chrome'
+    if (isFirefox) {
+        selector = '.firefox'
+    }
+    console.debug('updateBrowser:', selector)
+    document.querySelectorAll(selector).forEach((el) => el.classList.remove('d-none'))
 }
 
 /**
@@ -353,7 +344,7 @@ export async function updatePlatform() {
         // document.querySelectorAll('[class*="mobile-"]').forEach((el) => {
         document
             .querySelectorAll(
-                '[data-mobile-add],[data-mobile-remove],[data-mobile-replace]'
+                '[data-mobile-add],[data-mobile-remove],[data-mobile-replace]',
             )
             .forEach((el) => {
                 if (el.dataset.mobileAdd) {
