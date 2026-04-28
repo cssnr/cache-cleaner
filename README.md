@@ -57,7 +57,7 @@ and [Chrome](https://developer.chrome.com/docs/extensions/reference/api/browsing
 
 > [!TIP]  
 > This is the new TypeScript+Vue branch.  
-> For the original JavaScript version, see the [legacy](https://github.com/cssnr/cache-cleaner/tree/legacy) branch.
+> For the **deprecated** JavaScript version, see the [legacy](https://github.com/cssnr/cache-cleaner/tree/legacy) branch.
 
 ## Install
 
@@ -107,7 +107,8 @@ The extension is localized in the following languages:
 - Spanish `es_419` - Español
 
 The only way to change the language is to change your browser's language and restart the browser.
-For more information on the translations, see the related file in the [src/locales](src/locales) directory.
+
+To view or edit the locales, see the related file in the [src/locales](src/locales) directory.
 
 ### Upcoming Features
 
