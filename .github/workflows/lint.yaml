@@ -52,7 +52,6 @@ jobs:
           jq . firefox-mv3/manifest.json
           echo "::endgroup::"
 
-      # TODO: This does not exit with error if there are errors...
       - name: "web-ext"
         if: ${{ !cancelled() }}
         run: npm run web-ext
