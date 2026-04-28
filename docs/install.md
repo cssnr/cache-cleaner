@@ -46,7 +46,7 @@ animation="animate__rotateIn animate__slow"
 />
 
 - [Chrome Web Store](https://chromewebstore.google.com/detail/nbkhplnnajkikghffmincdbipjalpobi)
-- [Mozilla Firefox Addons](https://addons.mozilla.org/addon/cache-cleaner-addon)
+- [Mozilla Firefox Add-ons](https://addons.mozilla.org/addon/cache-cleaner-addon)
 
 For more details see the [usage guide](usage.md) and review the [options](options.md).
 
@@ -82,6 +82,8 @@ The extension is localized in the following languages:
 - Russian `ru` - Русский
 - Spanish `es_419` - Español
 
-::: info :bulb: Changing Languages
+:bulb: You can [view or edit](https://github.com/cssnr/cache-cleaner/tree/master/src/locales) the locales on GitHub.
+
+::: info :books: Changing Languages
 The only way to change your language in a web extension, is to change your browser's language, then restart the browser.
 :::

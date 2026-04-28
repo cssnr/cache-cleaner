@@ -4,7 +4,7 @@ layout: home
 
 hero:
   name: Cache Cleaner
-  text: Browser Addon
+  text: Web Extension
   tagline: Easily clear selected cache items for the current site or whole browser with a single key press.
   image:
     src: /images/logo.svg

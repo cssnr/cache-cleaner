@@ -2,10 +2,11 @@ import { defineConfig } from 'vitepress'
 
 const settings = {
   title: 'Cache Cleaner',
-  name: 'Cache Cleaner Web Extension and Browser Addon',
+  name: 'Cache Cleaner Web Extension and Browser Add-on',
   description: {
-    short: 'Easily clear selected cache items in a single click or key press.',
-    long: 'Easily clear selected cache items for the current site or whole browser with a single key press, right-click menu, or popup icon.',
+    short:
+      'Easily clear specific cache types for the current site or entire browser with a single click or keyboard shortcut.',
+    long: 'Web Extension and Browser Add-on to easily clear specific cache types for the current site or entire browser via a keyboard shortcut, right-click context menu, or the extension popup and panels.',
   },
   base: '/cache-cleaner/', // set to empty string for no base path
   og_image: '/cache-cleaner/images/logo.png', // must be full path
@@ -94,7 +95,7 @@ export default defineConfig({
         text: 'Links',
         items: [
           { text: 'Chrome Web Store', link: settings.chrome_url },
-          { text: 'Mozilla Addons', link: settings.mozilla_url },
+          { text: 'Mozilla Add-ons', link: settings.mozilla_url },
           { text: 'GitHub Source Code', link: settings.source_repo },
           { text: 'Developer Site', link: 'https://cssnr.github.io/' },
           { text: 'Contribute', link: 'https://ko-fi.com/cssnr' },
