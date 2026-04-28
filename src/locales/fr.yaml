@@ -1,0 +1,242 @@
+name: Cache Cleaner
+short_name: CCleaner
+description: Effacez facilement les éléments de cache sélectionnés pour le site actuel ou pour l'ensemble du navigateur d'une simple pression de touche, via le menu contextuel ou l'icône de l'extension.
+
+ui:
+  action:
+    cancel: Annuler
+    close: Fermer
+    extensionPanel: Panneau d'extension
+    openPopup: Ouvrir le popup
+    sidePanel: Panneau latéral
+
+  text:
+    browserCache: Cache du navigateur
+    homePage: Page d'accueil
+    hostCopied: Hôte copié dans le presse-papiers
+    noTabAccess: Aucun accès à l'onglet actuel.
+    openIssue: Signaler un problème
+    options: Options
+    releaseNotes: Notes de version
+    requestFeature: Demander une fonctionnalité
+    siteCache: Cache du site
+    unknown: Inconnu
+
+  cache:
+    all: Tout vider
+    cache: Cache
+    clear: Vider
+    cleared: Vidé
+    error: Erreur
+    selected: Vider la sélection
+    type:
+      site: Site sélectionné
+      siteAll: Tous les sites
+      browser: Navigateur sélectionné
+      browserAll: Tout le navigateur
+
+cmd:
+  # wxt.config.ts
+  executeAction: Ouvrir le popup
+  openSidePanel: Ouvrir le panneau latéral
+  openExtPanel: Ouvrir le panneau d'extension
+  openOptions: Ouvrir les options
+  cache_site: Vider le cache du site
+  cache_siteAll: Vider tout le cache du site
+  cache_browser: Vider le cache du navigateur
+  cache_browserAll: Vider tout le cache du navigateur
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: Options
+  extension: Options de l'extension
+  moreOptions: Plus d'options
+  quickOptions: Options rapides
+  optionsBackground: Arrière-plan de la page d'options
+  copySupport: Copier les informations de support
+  copySupportTip: Pour le signalement de problèmes.
+  copySupportMsg: Informations de support copiées.
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: Paramètres spécifiques au site
+    globalBrowser: Paramètres globaux du navigateur
+    allSites: Tous les sites
+    browser: Navigateur
+
+popup:
+  # popout/App.vue
+  title: Panneau
+
+popout:
+  # popout/App.vue
+  title: Panneau
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: Description
+  manage: Gérer les raccourcis clavier
+  notSet: Non défini
+  shortcut: Raccourci
+  shortcuts: Raccourcis clavier
+
+theme:
+  # ThemeSwitch.vue
+  title: Sélecteur de thème
+  dark: Sombre
+  light: Clair
+  auto: Auto
+
+background:
+  # components/BackgroundForm.vue
+  none: Aucun
+  picture: Image
+  pictureTip: URL d'une image web.
+  pictureLabel: URL de l'image d'arrière-plan
+  video: Vidéo
+  videoTip: URL d'une vidéo web.
+  videoLabel: URL de la vidéo d'arrière-plan
+
+ctx:
+  # background/menus.ts
+  site:
+    label: Vider le cache du site
+    tip: Vider le cache du site
+  siteAll:
+    label: Vider tout le cache du site
+    tip: Vider tout le cache du site
+  browser:
+    label: Vider le cache du navigateur
+    tip: Vider le cache du navigateur
+  browserAll:
+    label: Vider tout le cache du navigateur
+    tip: Vider tout le cache du navigateur
+  popup:
+    label: Ouvrir le popup
+    tip: Ouvrir le popup
+  sidepanel:
+    label: Ouvrir le panneau latéral
+    tip: Ouvrir le panneau latéral
+  options:
+    label: Ouvrir les options
+    tip: Ouvrir les options
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: Recharger le site automatiquement
+      tip: Actualiser le site après avoir vidé le cache.
+    showAllButtons:
+      label: Afficher tous les boutons
+      tip: Afficher les boutons site et navigateur sur le popup.
+    popupBrowser:
+      label: Par défaut sur le navigateur
+      tip: Afficher l'onglet Navigateur lors de l'ouverture du popup.
+    showConfirmation:
+      label: Afficher une confirmation
+      tip: Demander confirmation avant de vider le cache.
+    showDeprecated:
+      label: Afficher les options obsolètes
+      tip: Afficher les options qui sont dépréciées.
+    contextMenu:
+      label: Afficher le menu contextuel
+      tip: Afficher le menu au clic droit.
+    contextAction:
+      label: Tout afficher sur l'icône
+      tip: Afficher tous les éléments contextuels au clic droit sur l'icône de la barre d'outils.
+    showErrorNotifications:
+      label: Afficher les notifications d'erreur
+      tip: Pour le menu contextuel et les raccourcis clavier.
+    showUpdate:
+      label: Notes de version lors d'une mise à jour
+      tip: Afficher les notifications de mise à jour.
+
+  confirm:
+    site:
+      label: Cache du site
+      tip: Cache du site
+    siteAll:
+      label: Tout le cache du site
+      tip: Tout le cache du site
+    browser:
+      label: Cache du navigateur
+      tip: Cache du navigateur
+    browserAll:
+      label: Tout le cache du navigateur
+      tip: Tout le cache du navigateur
+
+  site:
+    appcache:
+      label: App Cache
+      tip: Cache d'application du navigateur (Obsolète)
+    cacheStorage:
+      label: Stockage du cache
+      tip: Stockage du cache du site
+    cookies:
+      label: Cookies
+      tip: Cookies du site
+    fileSystems:
+      label: Systèmes de fichiers
+      tip: Systèmes de fichiers du site (Obsolète)
+    indexedDB:
+      label: IndexedDB
+      tip: IndexedDB du site
+    localStorage:
+      label: Stockage local
+      tip: Stockage local du site
+    serviceWorkers:
+      label: Service Workers
+      tip: Service Workers du site
+    webSQL:
+      label: Web SQL
+      tip: Web SQL du site (Obsolète)
+
+  browser:
+    appcache:
+      label: App Cache
+      tip: Cache d'application du navigateur (Obsolète)
+    cacheStorage:
+      label: Stockage du cache
+      tip: Stockage du cache de tous les sites
+    cookies:
+      label: Cookies
+      tip: Cookies de tous les sites
+    fileSystems:
+      label: Systèmes de fichiers
+      tip: Systèmes de fichiers de tous les sites (Obsolète)
+    indexedDB:
+      label: IndexedDB
+      tip: IndexedDB de tous les sites
+    localStorage:
+      label: Stockage local
+      tip: Stockage local de tous les sites
+    serviceWorkers:
+      label: Service Workers
+      tip: Service Workers de tous les sites
+    webSQL:
+      label: Web SQL
+      tip: Web SQL de tous les sites (Obsolète)
+
+    cache:
+      label: Cache du navigateur
+      tip: Cache du navigateur
+    downloads:
+      label: Téléchargements
+      tip: Téléchargements du navigateur
+    formData:
+      label: Données de formulaire
+      tip: Données de formulaire du navigateur
+    history:
+      label: Historique
+      tip: Historique du navigateur
+    passwords:
+      label: Mots de passe
+      tip: Mots de passe du navigateur (Obsolète)
+    pluginData:
+      label: Données de plugins
+      tip: Données de plugins du navigateur (Obsolète)

@@ -1,0 +1,72 @@
+// https://bootswatch.com/help/
+@import 'bootswatch/dist/united/variables';
+
+// https://getbootstrap.com/docs/5.3/layout/breakpoints/
+// NOTE: All breakpoints reduced by 1
+$grid-breakpoints: (
+  xs: 0,
+  sm: 340px,
+  md: 576px,
+  lg: 768px,
+  xl: 992px,
+  xxl: 1200px,
+);
+
+@import 'bootstrap/scss/bootstrap';
+@import 'bootswatch/dist/united/bootswatch';
+
+:root,
+[data-bs-theme='light'] {
+  --bs-emphasis-bg: var(--bs-white);
+  --bs-emphasis-bg-rgb: var(--bs-white-rgb);
+}
+
+[data-bs-theme='dark'] {
+  --bs-emphasis-bg: var(--bs-black);
+  --bs-emphasis-bg-rgb: var(--bs-black-rgb);
+}
+
+.glass-outline {
+  backdrop-filter: blur(6px);
+  background-color: rgba(var(--bs-emphasis-bg-rgb), 50%);
+  border: 1px solid var(--bs-border-color-translucent);
+  filter: drop-shadow(15px 12px 12px var(--bs-emphasis-bg));
+}
+
+.text-ellipsis {
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.transparent-table {
+  --bs-table-bg: rgba(var(--bs-emphasis-bg-rgb), 0.3);
+  --bs-table-striped-bg: rgba(var(--bs-emphasis-bg-rgb), 0.5);
+  --bs-table-hover-bg: rgba(var(--bs-emphasis-bg-rgb), 0.6);
+}
+
+//.btn-warning {
+//    --bs-btn-bg: #d39e00;
+//    --bs-btn-border-color: #c69500;
+//
+//    --bs-btn-hover-bg: #e0a800;
+//    --bs-btn-hover-border-color: #d39e00;
+//
+//    --bs-btn-color: #fff;
+//    --bs-btn-hover-color: #fff;
+//    --bs-btn-active-color: #fff;
+//}
+
+//.fade-enter-active,
+//.fade-leave-active {
+//    transition:
+//        opacity 0.3s ease,
+//        transform 0.3s ease;
+//}
+//
+//.fade-enter-from,
+//.fade-leave-to {
+//    opacity: 0;
+//    transform: translateY(-6px);
+//}

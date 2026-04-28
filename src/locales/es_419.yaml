@@ -1,0 +1,242 @@
+name: Cache Cleaner
+short_name: CCleaner
+description: Limpia fácilmente elementos de caché seleccionados para el sitio actual o todo el navegador con una sola tecla, menú contextual o icono emergente.
+
+ui:
+  action:
+    cancel: Cancelar
+    close: Cerrar
+    extensionPanel: Panel de extensión
+    openPopup: Abrir ventana emergente
+    sidePanel: Panel lateral
+
+  text:
+    browserCache: Caché del navegador
+    homePage: Página de inicio
+    hostCopied: Host copiado al portapapeles
+    noTabAccess: Sin acceso a la pestaña actual.
+    openIssue: Reportar un problema
+    options: Opciones
+    releaseNotes: Notas de la versión
+    requestFeature: Solicitar función
+    siteCache: Caché del sitio
+    unknown: Desconocido
+
+  cache:
+    all: Limpiar todo
+    cache: Caché
+    clear: Limpiar
+    cleared: Limpiado
+    error: Error
+    selected: Limpiar seleccionados
+    type:
+      site: Sitio seleccionado
+      siteAll: Todo el sitio
+      browser: Navegador seleccionado
+      browserAll: Todo el navegador
+
+cmd:
+  # wxt.config.ts
+  executeAction: Abrir ventana emergente
+  openSidePanel: Abrir panel lateral
+  openExtPanel: Abrir panel de extensión
+  openOptions: Abrir opciones
+  cache_site: Limpiar caché del sitio
+  cache_siteAll: Limpiar toda la caché del sitio
+  cache_browser: Limpiar caché del navegador
+  cache_browserAll: Limpiar toda la caché del navegador
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: Opciones
+  extension: Opciones de la extensión
+  moreOptions: Más opciones
+  quickOptions: Opciones rápidas
+  optionsBackground: Fondo de la página de opciones
+  copySupport: Copiar información de soporte
+  copySupportTip: Para reportar problemas.
+  copySupportMsg: Información de soporte copiada.
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: Ajustes específicos del sitio
+    globalBrowser: Ajustes globales del navegador
+    allSites: Todos los sitios
+    browser: Navegador
+
+popup:
+  # popout/App.vue
+  title: Panel
+
+popout:
+  # popout/App.vue
+  title: Panel
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: Descripción
+  manage: Administrar atajos de teclado
+  notSet: No establecido
+  shortcut: Atajo
+  shortcuts: Atajos de teclado
+
+theme:
+  # ThemeSwitch.vue
+  title: Selector de tema
+  dark: Oscuro
+  light: Claro
+  auto: Automático
+
+background:
+  # components/BackgroundForm.vue
+  none: Ninguno
+  picture: Imagen
+  pictureTip: URL de una imagen web.
+  pictureLabel: URL de la imagen de fondo
+  video: Video
+  videoTip: URL de un video web
+  videoLabel: URL del video de fondo
+
+ctx:
+  # background/menus.ts
+  site:
+    label: Limpiar caché del sitio
+    tip: Limpiar caché del sitio
+  siteAll:
+    label: Limpiar toda la caché del sitio
+    tip: Limpiar toda la caché del sitio
+  browser:
+    label: Limpiar caché del navegador
+    tip: Limpiar caché del navegador
+  browserAll:
+    label: Limpiar toda la caché del navegador
+    tip: Limpiar toda la caché del navegador
+  popup:
+    label: Abrir ventana emergente
+    tip: Abrir ventana emergente
+  sidepanel:
+    label: Abrir panel lateral
+    tip: Abrir panel lateral
+  options:
+    label: Abrir opciones
+    tip: Abrir opciones
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: Recargar sitio automáticamente
+      tip: Actualiza el sitio después de limpiar la caché.
+    showAllButtons:
+      label: Mostrar todos los botones
+      tip: Muestra los botones de sitio y navegador en la ventana emergente.
+    popupBrowser:
+      label: Navegador por defecto
+      tip: Muestra la pestaña del Navegador al abrir la ventana emergente.
+    showConfirmation:
+      label: Mostrar confirmación
+      tip: Muestra una confirmación antes de limpiar la caché.
+    showDeprecated:
+      label: Mostrar opciones obsoletas
+      tip: Muestra las opciones que han quedado obsoletas.
+    contextMenu:
+      label: Mostrar menú contextual
+      tip: Muestra el menú al hacer clic derecho.
+    contextAction:
+      label: Mostrar todos los elementos en el icono de la barra de herramientas
+      tip: Mostrar todos los elementos contextuales al hacer clic derecho en el icono de la barra de herramientas.
+    showErrorNotifications:
+      label: Mostrar notificaciones de error
+      tip: Para el menú contextual del botón derecho y los atajos de teclado.
+    showUpdate:
+      label: Mostrar notas al actualizar
+      tip: Muestra notificaciones de actualización.
+
+  confirm:
+    site:
+      label: Caché del sitio
+      tip: Caché del sitio
+    siteAll:
+      label: Toda la caché del sitio
+      tip: Toda la caché del sitio
+    browser:
+      label: Caché del navegador
+      tip: Caché del navegador
+    browserAll:
+      label: Toda la caché del navegador
+      tip: Toda la caché del navegador
+
+  site:
+    appcache:
+      label: Caché de aplicaciones
+      tip: Caché de aplicaciones del navegador (Obsoleto)
+    cacheStorage:
+      label: Almacenamiento de caché
+      tip: Almacenamiento de caché del sitio
+    cookies:
+      label: Cookies
+      tip: Cookies del sitio
+    fileSystems:
+      label: Sistemas de archivos
+      tip: Sistemas de archivos del sitio (Obsoleto)
+    indexedDB:
+      label: Index DB
+      tip: Index DB del sitio
+    localStorage:
+      label: Almacenamiento local
+      tip: Almacenamiento local del sitio
+    serviceWorkers:
+      label: Service Workers
+      tip: Service Workers del sitio
+    webSQL:
+      label: Web SQL
+      tip: Web SQL del sitio (Obsoleto)
+
+  browser:
+    appcache:
+      label: Caché de aplicaciones
+      tip: Caché de aplicaciones del navegador (Obsoleto)
+    cacheStorage:
+      label: Almacenamiento de caché
+      tip: Almacenamiento de caché de todos los sitios
+    cookies:
+      label: Cookies
+      tip: Cookies de todos los sitios
+    fileSystems:
+      label: Sistemas de archivos
+      tip: Sistemas de archivos de todos los sitios
+    indexedDB:
+      label: Index DB
+      tip: Index DB de todos los sitios
+    localStorage:
+      label: Almacenamiento local
+      tip: Almacenamiento local de todos los sitios
+    serviceWorkers:
+      label: Service Workers
+      tip: Service Workers de todos los sitios
+    webSQL:
+      label: Web SQL
+      tip: Web SQL de todos los sitios (Obsoleto)
+
+    cache:
+      label: Caché del navegador
+      tip: Caché del navegador
+    downloads:
+      label: Descargas
+      tip: Historial de descargas
+    formData:
+      label: Datos de formularios
+      tip: Datos de formularios del navegador
+    history:
+      label: Historial
+      tip: Historial del navegador
+    passwords:
+      label: Contraseñas
+      tip: Contraseñas del navegador (Obsoleto)
+    pluginData:
+      label: Datos de complementos
+      tip: Datos de complementos del navegador (Obsoleto)

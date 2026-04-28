@@ -1,0 +1,28 @@
+{
+  "props": {
+    "data": "https://chromewebstore.google.com/detail/nbkhplnnajkikghffmincdbipjalpobi",
+    "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAACLlBMVEUAAADN6hyqAAB3rjb/wxbqOCopl0T5xB3fOSwqnkr3wRniOCwqn0z/wxkll0bhOSz6xCX6wRzhOCwqnUr7xScmmUflPC/8wBTcMif7wyEpnUniOC36xiv7vw0omkjhOSv6whwqm0nhOSz6wRn7whovo07jOy4ik0LQvTTaMSX7wRcvo078xy36vgwklkThOSwyp1H8xiv7vg7mPjAik0P5rgmUYTcpnEj8whg0p1LnPzEjlULcMyf7wyEvo0/7xy7iOSwfkT/7vg3oQDL5wyD52sn50qX5xXTxykPCzX2/uDGytCyZrzJ5pzZcoDqPflMrlkP////9/v//+/j5/Pnz+P7+89T+8Mn+78L95qD53NrW5vvT5PvT6tr309Dm2M/L5dL3z8v92nj912f801n8yTX8yC38xyr8xieo1bT9xSPysKv8xCDxrqn8wx78wxz7whn7wRb7wBP7wBDswir7vw77vgz7vgv7vgmawfX7vQf6vQj3sjHevSeOyJvRuij3qxD4qg2BsvLsjYd5v43phHxvt4Hodm5WmO5MqmZHj+1EpWDjU0kzp1IyplExpVA8nlEvo04uoU0toExAmT0rnkvqQTRchkRIj0YqnUroQDIpnEhzeD8nmkfmPTCBbjwmmEYjeenkOy4ll0WYXjbiOi0klUPhOSwjlEPhNysedemuTzEik0LfNiq/RS4gkkDeNSkac+gZc+jdNCkfkD7HPivSOCncMyjbMifaMSbzw2mRAAAAr3RSTlMAAQEFBwYSFRQdIiUoLDk7PT5PUFRaWl1gYmxucHJ1d3qRkpSlpKenq62us7e5vLy+wsTb293c3+Hh4uLi5e7x8fDy+Pv9/f39/P39/f39/fz////////////+///+/v7////////////+//7//v////////7////////+/v7+/v////7///7+//7//v///////////v/////////////////////////////////+giUnBgAABF9JREFUeNq1l3lXE1cYhyc3uAAiLRBAUBa1UG0L3W0RWlvpZpEyCMWisbiwaCmBRHCh2jZGRCQEKoIFawVlDwJBDfl2/jI3yX2TzGTxHJ8/OAcOzzPvvXdmciK9XpjCK7r65Mz83UVgd35msp7FaSfnlh6aU5iZmZmenj5Umpsce2NTduky8AXmEAAPH5ZmbopNzy1fXfayQCZAAJTlRk+wtPL1dR6YCw2Aj9JYZH/rPvc6AhoTgImirZH81HJ3tMBEWar2+NluEC0wcThTaxn5GxsxBEC+aoHBjyGgXcj2xBoAmSr7544jMHY4Nez8yj3xBMbKQk5Tt88TX2CsSCdR0jwagYUFJOCDkEIa9fWfhgXA4I3fTjc2fvPtd3/85edvwScJJJAz/DwksLp867QcoOFcT8+lS5cvX6XsIgN8bn8QEhg8pZi19fW1PNEclvhMjGCw2+1LNLB68xikk9aBKZdrasB6Er8cO4tCcCIrcATvIzBOAzdgnOh3rflw9Z/AH870kCG8Pz/0H0TikN0+NPREBG7i368srhEWr+BPmEEk0OhN8m+hfQgMv/AHBjG/FZenuKxYRXN3D7jKE2Ib2TsO+A7H//7AKVwffkgBMzR0dyMhtuI9xrfgC+hg5DkP3ML6MX8oi9iHcyiQdXytVwLbHPDByDgCAOffv6ZCvywfR4AkelOUQLqD+yMjS97AIM7PpRZw4TRbLDTRyw8yj+vgvgcBHIF1TRUrDsJiQSKwFQUSYIXQfTxB4HdZHlAPDMjyL2ZRQGKPDgHdWzA5/wy/8G5B7ZR6YKpWPm5BQST2kgB08MC90SjXu9QDrnr5Z4vZTBL7GQ9wHdy9+zRqgBd4ggQUHYxHXkKDGYghlCWwwsDlwb2lyJvY1UUT2ESQx3Xu37sf8RjPdAGRKOA3EtHBT5FupGb4wFcwZ/FbGbrw/635VftWboBMEym+h4nooE/7YTrb2UkLeJj440z1yclJo+bj3AlIAo+zQg7Vwe069RdK3ffQaWKXxEkUPsem/kr7wWQyBRWSJA4roTr477raS/X6NRMgQ+Cl6sMgdNhebHWhr/U6W1VHRwdNdGaJD5YD5Oqc28bgDxbjndHKDmASiYoE8tEWoj8CfU1ygKa++fkf29vbgxLYQjIC1eGDx7N3bOebjMam87Zh57yzGj5J8AEE6WG6l9nHs07nvBen888LoqAkMiQKK1bRFbjuPHoB0CHwKghi8wFtHdRcbOMFf6JiixTC9hrqw6X+SlUbIInKN6UwDI80Lg9/FHpQYocUDsvT0ldWjrSRAhIFTFItqOqgGipNFEjqMENN2OIVrrW2kkTlDiZpsf2g0IV/tBUEEhVvSBHYXEx1Ts3FlhaR2L9FighL/1jonKoWL7xQkcGkaOhzDgodjML2JSp2JkixoDeUBALPnh3xBz7Igh4jLDGn5CvuVyvyl+/uTGLxfvXdZsgrLC5+e++egowUvU56JZiOMZ3u9X7BfwlssAjIJeZNvAAAAABJRU5ErkJggg==",
+    "width": 200,
+    "height": 200,
+    "margin": 0,
+    "dotsOptions": { "color": "#cdd6f4", "type": "extra-rounded" },
+    "cornersSquareOptions": { "color": "#fab387", "type": "dot" },
+    "cornersDotOptions": { "color": "#cdd6f4", "type": "dot" },
+    "imageOptions": { "margin": 0 },
+    "qrOptions": { "errorCorrectionLevel": "H" }
+  },
+  "style": { "borderRadius": "20px", "background": "#000000" },
+  "frame": {
+    "text": "Chrome Web Store",
+    "position": "top",
+    "style": {
+      "textColor": "#cdd6f4",
+      "backgroundColor": "#181825",
+      "borderColor": "#cdd6f4",
+      "borderWidth": "1px",
+      "borderRadius": "8px",
+      "padding": "8px",
+      "fontFamily": "Verdana, sans-serif"
+    }
+  }
+}

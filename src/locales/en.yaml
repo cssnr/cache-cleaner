@@ -1,0 +1,242 @@
+name: Cache Cleaner
+short_name: CCleaner
+description: Easily clear selected cache items for the current site or whole browser with a single key press, right-click menu, or popup icon.
+
+ui:
+  action:
+    cancel: Cancel
+    close: Close
+    extensionPanel: Extension Panel
+    openPopup: Open Popup
+    sidePanel: Side Panel
+
+  text:
+    browserCache: Browser Cache
+    homePage: Home Page
+    hostCopied: Host Copied to Clipboard
+    noTabAccess: No Access to the Current Tab.
+    openIssue: Open Issue
+    options: Options
+    releaseNotes: Release Notes
+    requestFeature: Request Feature
+    siteCache: Site Cache
+    unknown: Unknown
+
+  cache:
+    all: Clear All
+    cache: Cache
+    clear: Clear
+    cleared: Cleared
+    error: Error
+    selected: Clear Selected
+    type:
+      site: Selected Site
+      siteAll: All Site
+      browser: Selected Browser
+      browserAll: All Browser
+
+cmd:
+  # wxt.config.ts
+  executeAction: Open Popup
+  openSidePanel: Open Side Panel
+  openExtPanel: Open Extension Panel
+  openOptions: Open Options
+  cache_site: Clear Site Cache
+  cache_siteAll: Clear All Site Cache
+  cache_browser: Clear Browser Cache
+  cache_browserAll: Clear All Browser Cache
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: Options
+  extension: Extension Options
+  moreOptions: More Options
+  quickOptions: Quick Options
+  optionsBackground: Options Page Background
+  copySupport: Copy Support Information
+  copySupportTip: For issue reporting.
+  copySupportMsg: Support Information Copied.
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: Site Specific Settings
+    globalBrowser: Global Browser Settings
+    allSites: All Sites
+    browser: Browser
+
+popup:
+  # popout/App.vue
+  title: Panel
+
+popout:
+  # popout/App.vue
+  title: Panel
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: Description
+  manage: Manage Keyboard Shortcuts
+  notSet: Not Set
+  shortcut: Shortcut
+  shortcuts: Keyboard Shortcuts
+
+theme:
+  # ThemeSwitch.vue
+  title: Theme Switcher
+  dark: Dark
+  light: Light
+  auto: Auto
+
+background:
+  # components/BackgroundForm.vue
+  none: None
+  picture: Picture
+  pictureTip: URL to a Web Image.
+  pictureLabel: Background Picture URL
+  video: Video
+  videoTip: URL to a Web Video
+  videoLabel: Background Video URL
+
+ctx:
+  # background/menus.ts
+  site:
+    label: Clear Site Cache
+    tip: Clear Site Cache
+  siteAll:
+    label: Clear All Site Cache
+    tip: Clear All Site Cache
+  browser:
+    label: Clear Browser Cache
+    tip: Clear Browser Cache
+  browserAll:
+    label: Clear All Browser Cache
+    tip: Clear All Browser Cache
+  popup:
+    label: Open Popup
+    tip: Open Popup
+  sidepanel:
+    label: Open Side Panel
+    tip: Open Side Panel
+  options:
+    label: Open Options
+    tip: Open Options
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: Auto Reload Site
+      tip: Refresh the site after clearing cache.
+    showAllButtons:
+      label: Show All Buttons
+      tip: Show both site and browser buttons on popup.
+    popupBrowser:
+      label: Default to Browser
+      tip: Show the Browser tab when opening the popup.
+    showConfirmation:
+      label: Show Confirmation
+      tip: Show confirmation before clearing cache.
+    showDeprecated:
+      label: Show Deprecated Options
+      tip: Display options that are deprecated.
+    contextMenu:
+      label: Show Context Menu
+      tip: Show right-click context menu.
+    contextAction:
+      label: Show All Items on Toolbar Icon
+      tip: Show all context items on toolbar icon right-click.
+    showErrorNotifications:
+      label: Show Error Notifications
+      tip: For right-click context menu and keyboard shortcuts.
+    showUpdate:
+      label: Show Release Notes on Update
+      tip: Show update notifications.
+
+  confirm:
+    site:
+      label: Site Cache
+      tip: Site Cache
+    siteAll:
+      label: All Site Cache
+      tip: All Site Cache
+    browser:
+      label: Browser Cache
+      tip: Browser Cache
+    browserAll:
+      label: All Browser Cache
+      tip: All Browser Cache
+
+  site:
+    appcache:
+      label: App Cache
+      tip: Browser App Cache (Deprecated)
+    cacheStorage:
+      label: Cache Storage
+      tip: Site Cache Storage
+    cookies:
+      label: Cookies
+      tip: Site Cookies
+    fileSystems:
+      label: File Systems
+      tip: Site File Systems (Deprecated)
+    indexedDB:
+      label: Index DB
+      tip: Site Index DB
+    localStorage:
+      label: Local Storage
+      tip: Site Local Storage
+    serviceWorkers:
+      label: Service Workers
+      tip: Site Service Workers
+    webSQL:
+      label: Web SQL
+      tip: Site Web SQL (Deprecated)
+
+  browser:
+    appcache:
+      label: App Cache
+      tip: Browser App Cache (Deprecated)
+    cacheStorage:
+      label: Cache Storage
+      tip: All Sites Cache Storage
+    cookies:
+      label: Cookies
+      tip: All Sites Cookies
+    fileSystems:
+      label: File Systems
+      tip: All Sites File Systems
+    indexedDB:
+      label: Index DB
+      tip: All Sites Index DB
+    localStorage:
+      label: Local Storage
+      tip: All Sites Local Storage
+    serviceWorkers:
+      label: Service Workers
+      tip: All Sites Service Workers
+    webSQL:
+      label: Web SQL
+      tip: All Sites Web SQL (Deprecated)
+
+    cache:
+      label: Browser Cache
+      tip: Browser Cache
+    downloads:
+      label: Downloads
+      tip: Browser Downloads
+    formData:
+      label: Form Data
+      tip: Browser Form Data
+    history:
+      label: History
+      tip: Browser History
+    passwords:
+      label: Passwords
+      tip: Browser Passwords (Deprecated)
+    pluginData:
+      label: Plugin Data
+      tip: Browser Plugin Data (Deprecated)

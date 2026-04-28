@@ -1,0 +1,242 @@
+name: Cache Cleaner
+short_name: CCleaner
+description: Ausgewählte Cache-Elemente für die aktuelle Website oder den gesamten Browser mit einem einzigen Tastendruck, dem Rechtsklick-Menü oder dem Popup-Symbol einfach löschen.
+
+ui:
+  action:
+    cancel: Abbrechen
+    close: Schließen
+    extensionPanel: Erweiterungsbereich
+    openPopup: Popup öffnen
+    sidePanel: Seitenbereich
+
+  text:
+    browserCache: Browser-Cache
+    homePage: Startseite
+    hostCopied: Host in die Zwischenablage kopiert
+    noTabAccess: Kein Zugriff auf den aktuellen Tab.
+    openIssue: Problem melden
+    options: Einstellungen
+    releaseNotes: Versionshinweise
+    requestFeature: Funktion anfragen
+    siteCache: Website-Cache
+    unknown: Unbekannt
+
+  cache:
+    all: Alle löschen
+    cache: Cache
+    clear: Löschen
+    cleared: Gelöscht
+    error: Fehler
+    selected: Auswahl löschen
+    type:
+      site: Ausgewählte Website
+      siteAll: Alle Websites
+      browser: Ausgewählter Browser
+      browserAll: Gesamter Browser
+
+cmd:
+  # wxt.config.ts
+  executeAction: Popup öffnen
+  openSidePanel: Seitenbereich öffnen
+  openExtPanel: Erweiterungsbereich öffnen
+  openOptions: Einstellungen öffnen
+  cache_site: Website-Cache löschen
+  cache_siteAll: Gesamten Website-Cache löschen
+  cache_browser: Browser-Cache löschen
+  cache_browserAll: Gesamten Browser-Cache löschen
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: Einstellungen
+  extension: Erweiterungseinstellungen
+  moreOptions: Weitere Optionen
+  quickOptions: Schnelloptionen
+  optionsBackground: Optionsseite Hintergrund
+  copySupport: Supportinformationen kopieren
+  copySupportTip: Für die Fehlermeldung.
+  copySupportMsg: Supportinformationen kopiert.
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: Website-spezifische Einstellungen
+    globalBrowser: Globale Browser-Einstellungen
+    allSites: Alle Websites
+    browser: Browser
+
+popup:
+  # popout/App.vue
+  title: Bereich
+
+popout:
+  # popout/App.vue
+  title: Bereich
+
+background:
+  # components/BackgroundForm.vue
+  none: Keine
+  picture: Bild
+  pictureTip: URL zu einem Web-Bild.
+  pictureLabel: Hintergrundbild-URL
+  video: Video
+  videoTip: URL zu einem Web-Video
+  videoLabel: Hintergrundvideo-URL
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: Beschreibung
+  manage: Tastenkürzel verwalten
+  notSet: Nicht festgelegt
+  shortcut: Tastenkürzel
+  shortcuts: Tastenkürzel
+
+theme:
+  # ThemeSwitch.vue
+  title: Design-Umschalter
+  dark: Dunkel
+  light: Hell
+  auto: Automatisch
+
+ctx:
+  # background/menus.ts
+  site:
+    label: Website-Cache löschen
+    tip: Website-Cache löschen
+  siteAll:
+    label: Gesamten Website-Cache löschen
+    tip: Gesamten Website-Cache löschen
+  browser:
+    label: Browser-Cache löschen
+    tip: Browser-Cache löschen
+  browserAll:
+    label: Gesamten Browser-Cache löschen
+    tip: Gesamten Browser-Cache löschen
+  popup:
+    label: Popup öffnen
+    tip: Popup öffnen
+  sidepanel:
+    label: Seitenbereich öffnen
+    tip: Seitenbereich öffnen
+  options:
+    label: Einstellungen öffnen
+    tip: Einstellungen öffnen
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: Website automatisch neu laden
+      tip: Website nach dem Löschen des Caches neu laden.
+    showAllButtons:
+      label: Alle Schaltflächen anzeigen
+      tip: Sowohl Website- als auch Browser-Schaltflächen im Popup anzeigen.
+    popupBrowser:
+      label: Standardmäßig Browser
+      tip: Zeigt den Browser-Tab beim Öffnen des Popups an.
+    showConfirmation:
+      label: Bestätigung anzeigen
+      tip: Vor dem Löschen des Caches eine Bestätigung anfordern.
+    showDeprecated:
+      label: Veraltete Optionen anzeigen
+      tip: Optionen anzeigen, die veraltet sind.
+    contextMenu:
+      label: Kontextmenü anzeigen
+      tip: Rechtsklick-Kontextmenü anzeigen.
+    contextAction:
+      label: Show All Items on Toolbar Icon
+      tip: Show all context items on toolbar icon right-click.
+    showErrorNotifications:
+      label: Fehlermeldungen anzeigen
+      tip: Für das Rechtsklick-Kontextmenü und Tastenkombinationen.
+    showUpdate:
+      label: Versionshinweise bei Aktualisierung anzeigen
+      tip: Aktualisierungsbenachrichtigungen anzeigen.
+
+  confirm:
+    site:
+      label: Website-Cache
+      tip: Website-Cache
+    siteAll:
+      label: Gesamter Website-Cache
+      tip: Gesamter Website-Cache
+    browser:
+      label: Browser-Cache
+      tip: Browser-Cache
+    browserAll:
+      label: Gesamter Browser-Cache
+      tip: Gesamter Browser-Cache
+
+  site:
+    appcache:
+      label: App-Cache
+      tip: Browser-App-Cache (Veraltet)
+    cacheStorage:
+      label: Cache-Speicher
+      tip: Website-Cache-Speicher
+    cookies:
+      label: Cookies
+      tip: Website-Cookies
+    fileSystems:
+      label: Dateisysteme
+      tip: Website-Dateisysteme (Veraltet)
+    indexedDB:
+      label: Index-DB
+      tip: Website-Index-DB
+    localStorage:
+      label: Lokaler Speicher
+      tip: Lokaler Website-Speicher
+    serviceWorkers:
+      label: Service-Worker
+      tip: Website-Service-Worker
+    webSQL:
+      label: Web-SQL
+      tip: Website-Web-SQL (Veraltet)
+
+  browser:
+    cacheStorage:
+      label: Cache-Speicher
+      tip: Cache-Speicher aller Websites (Veraltet)
+    cookies:
+      label: Cookies
+      tip: Cookies aller Websites
+    fileSystems:
+      label: Dateisysteme
+      tip: Dateisysteme aller Websites
+    indexedDB:
+      label: Index-DB
+      tip: Index-DB aller Websites
+    localStorage:
+      label: Lokaler Speicher
+      tip: Lokaler Speicher aller Websites
+    serviceWorkers:
+      label: Service-Worker
+      tip: Service-Worker aller Websites
+    webSQL:
+      label: Web-SQL
+      tip: Web-SQL aller Websites (Veraltet)
+
+    appcache:
+      label: App-Cache
+      tip: Browser-App-Cache
+    cache:
+      label: Browser-Cache
+      tip: Browser-Cache
+    downloads:
+      label: Downloads
+      tip: Browser-Downloads
+    formData:
+      label: Formulardaten
+      tip: Browser-Formulardaten
+    history:
+      label: Verlauf
+      tip: Browser-Verlauf
+    passwords:
+      label: Passwörter
+      tip: Browser-Passwörter (Veraltet)
+    pluginData:
+      label: Plugin-Daten
+      tip: Browser-Plugin-Daten (Veraltet)

@@ -1,0 +1,17 @@
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  min-width: 340px;
+  width: 100%;
+  max-width: 100vw;
+
+  overflow-y: scroll;
+}
+
+.form-control {
+  background-color: rgba(var(--bs-emphasis-bg-rgb), 50%);
+}

@@ -1,0 +1,25 @@
+<svg viewBox="-0.6 -1.4 124 124" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="color-1" gradientUnits="userSpaceOnUse">
+      <stop style="stop-color: rgb(217, 146, 95);"/>
+    </linearGradient>
+    <linearGradient id="color-2">
+      <stop style="stop-color: #fdc830;" offset="0"/>
+      <stop style="stop-color: #f37335;" offset="1"/>
+    </linearGradient>
+    <linearGradient id="color-2-0" href="#color-2" gradientUnits="userSpaceOnUse" x1="39.657" y1="45.031" x2="39.657" y2="120.02"/>
+    <linearGradient id="color-0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.06811, 0, 0, 1, -0.000002, 0.000001)">
+      <stop style="stop-color: rgb(250, 109, 98);"/>
+    </linearGradient>
+  </defs>
+  <g style="" transform="matrix(1.120362, 0, 0, 1.120362, -14.789827, 0.00014)">
+    <path class="st0" d="M 110.97 1.27 L 70.02 42.73 L 80.69 53.09 L 121.94 11.53 C 125.58 3.7 117.92 -2.85 110.97 1.27 Z" style="paint-order: fill; fill: url(&quot;#color-1&quot;);"/>
+  </g>
+  <g>
+    <path class="st0" d="M 54.04 46.81 C 54.44 46.5 54.85 46.23 55.26 46 L 55.41 45.92 C 57.76 44.64 60.22 44.68 62.8 46.45 L 69.97 53.43 L 70.08 53.54 L 76.68 59.96 C 79.41 62.74 80.02 65.84 78.51 69.27 L 59.16 120.02 C 24.02 112.99 -0.34 87.94 0 49.73 C 19.23 55.35 37.75 57.19 54.04 46.81 Z" style="paint-order: fill; fill: url(&quot;#color-2-0&quot;);"/>
+  </g>
+  <!-- NOTE: wxt-dev/auto-icons can NOT render this rect properly -->
+  <!--<g style="" transform="matrix(1.120362, 0, 0, 1.120362, 0.283325, -7.149945)">-->
+  <!--  <rect x="85.3" y="8.204" width="14.873" height="26.812" style="fill: url(&quot;#color-0&quot;); transform-box: fill-box; transform-origin: 50% 50%;" transform="matrix(0.70486, 0.709346, -0.702999, 0.711248, -8.887851, 10.547202)"/>-->
+  <!--</g>-->
+</svg>

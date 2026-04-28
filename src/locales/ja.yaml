@@ -1,0 +1,242 @@
+name: Cache Cleaner
+short_name: CCleaner
+description: 選択したキャッシュ項目を、ショートカットキー、右クリックメニュー、またはポップアップアイコンから簡単に削除できます。
+
+ui:
+  action:
+    cancel: キャンセル
+    close: 閉じる
+    extensionPanel: 拡張機能パネル
+    openPopup: ポップアップを開く
+    sidePanel: サイドパネル
+
+  text:
+    browserCache: ブラウザのキャッシュ
+    homePage: ホームページ
+    hostCopied: ホストをクリップボードにコピーしました
+    noTabAccess: 現在のタブへのアクセス権がありません。
+    openIssue: 問題を報告
+    options: オプション
+    releaseNotes: リリースノート
+    requestFeature: 機能のリクエスト
+    siteCache: サイトのキャッシュ
+    unknown: 不明
+
+  cache:
+    all: すべてクリア
+    cache: キャッシュ
+    clear: クリア
+    cleared: クリアしました
+    error: エラー
+    selected: 選択項目をクリア
+    type:
+      site: 選択したサイト
+      siteAll: すべてのサイト
+      browser: 選択したブラウザ
+      browserAll: すべてのブラウザ
+
+cmd:
+  # wxt.config.ts
+  executeAction: ポップアップを開く
+  openSidePanel: サイドパネルを開く
+  openExtPanel: 拡張機能パネルを開く
+  openOptions: オプションを開く
+  cache_site: サイトのキャッシュをクリア
+  cache_siteAll: すべてのサイトのキャッシュをクリア
+  cache_browser: ブラウザのキャッシュをクリア
+  cache_browserAll: すべてのブラウザのキャッシュをクリア
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: オプション
+  extension: 拡張機能のオプション
+  moreOptions: 詳細設定
+  quickOptions: クイック設定
+  optionsBackground: オプションページの背景
+  copySupport: サポート情報をコピー
+  copySupportTip: 問題を報告する際にご利用ください。
+  copySupportMsg: サポート情報をコピーしました。
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: サイトごとの設定
+    globalBrowser: ブラウザ全体の共通設定
+    allSites: すべてのサイト
+    browser: ブラウザ
+
+popup:
+  # popout/App.vue
+  title: パネル
+
+popout:
+  # popout/App.vue
+  title: パネル
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: 説明
+  manage: キーボードショートカットの管理
+  notSet: 未設定
+  shortcut: ショートカット
+  shortcuts: キーボードショートカット
+
+theme:
+  # ThemeSwitch.vue
+  title: テーマ切り替え
+  dark: ダーク
+  light: ライト
+  auto: 自動
+
+background:
+  # components/BackgroundForm.vue
+  none: なし
+  picture: 画像
+  pictureTip: ウェブ上の画像のURL
+  pictureLabel: 背景画像のURL
+  video: 動画
+  videoTip: ウェブ上の動画のURL
+  videoLabel: 背景動画のURL
+
+ctx:
+  # background/menus.ts
+  site:
+    label: サイトのキャッシュをクリア
+    tip: サイトのキャッシュをクリア
+  siteAll:
+    label: すべてのサイトのキャッシュをクリア
+    tip: すべてのサイトのキャッシュをクリア
+  browser:
+    label: ブラウザのキャッシュをクリア
+    tip: ブラウザのキャッシュをクリア
+  browserAll:
+    label: すべてのブラウザのキャッシュをクリア
+    tip: すべてのブラウザのキャッシュをクリア
+  popup:
+    label: ポップアップを開く
+    tip: ポップアップを開く
+  sidepanel:
+    label: サイドパネルを開く
+    tip: サイドパネルを開く
+  options:
+    label: オプションを開く
+    tip: オプションを開く
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: サイトを自動更新
+      tip: キャッシュ削除後にサイトをリロードします。
+    showAllButtons:
+      label: すべてのボタンを表示
+      tip: ポップアップに「サイト」と「ブラウザ」両方のボタンを表示します。
+    popupBrowser:
+      label: デフォルトでブラウザを表示
+      tip: ポップアップを開いたときに「ブラウザ」タブを最初に表示します。
+    showConfirmation:
+      label: 確認画面を表示
+      tip: キャッシュをクリアする前に確認メッセージを表示します。
+    showDeprecated:
+      label: 非推奨のオプションを表示
+      tip: 非推奨となったオプション項目を表示します。
+    contextMenu:
+      label: コンテキストメニューを表示
+      tip: 右クリックメニューを表示します。
+    contextAction:
+      label: ツールバーアイコンに全項目を表示
+      tip: ツールバーアイコンを右クリックした際に、すべてのメニュー項目を表示します。
+    showErrorNotifications:
+      label: エラー通知を表示
+      tip: 右クリックメニューやショートカットキーでの操作エラーを通知します。
+    showUpdate:
+      label: アップデート時にリリースノートを表示
+      tip: 更新通知を表示します。
+
+  confirm:
+    site:
+      label: サイトのキャッシュ
+      tip: サイトのキャッシュ
+    siteAll:
+      label: すべてのサイトのキャッシュ
+      tip: すべてのサイトのキャッシュ
+    browser:
+      label: ブラウザのキャッシュ
+      tip: ブラウザのキャッシュ
+    browserAll:
+      label: すべてのブラウザのキャッシュ
+      tip: すべてのブラウザのキャッシュ
+
+  site:
+    appcache:
+      label: Appキャッシュ
+      tip: ブラウザのAppキャッシュ (非推奨)
+    cacheStorage:
+      label: キャッシュストレージ
+      tip: サイトのキャッシュストレージ
+    cookies:
+      label: クッキー
+      tip: サイトのクッキー
+    fileSystems:
+      label: ファイルシステム
+      tip: サイトのファイルシステム (非推奨)
+    indexedDB:
+      label: インデックス付きDB
+      tip: サイトのIndexedDB
+    localStorage:
+      label: ローカルストレージ
+      tip: サイトのローカルストレージ
+    serviceWorkers:
+      label: サービスワーカー
+      tip: サイトのサービスワーカー
+    webSQL:
+      label: Web SQL
+      tip: サイトのWeb SQL (非推奨)
+
+  browser:
+    appcache:
+      label: Appキャッシュ
+      tip: ブラウザのAppキャッシュ (非推奨)
+    cacheStorage:
+      label: キャッシュストレージ
+      tip: すべてのサイトのキャッシュストレージ
+    cookies:
+      label: クッキー
+      tip: すべてのサイトのクッキー
+    fileSystems:
+      label: ファイルシステム
+      tip: すべてのサイトのファイルシステム (非推奨)
+    indexedDB:
+      label: インデックス付きDB
+      tip: すべてのサイトのIndexedDB
+    localStorage:
+      label: ローカルストレージ
+      tip: すべてのサイトのローカルストレージ
+    serviceWorkers:
+      label: サービスワーカー
+      tip: すべてのサイトのサービスワーカー
+    webSQL:
+      label: Web SQL
+      tip: すべてのサイトのWeb SQL (非推奨)
+
+    cache:
+      label: ブラウザのキャッシュ
+      tip: ブラウザのキャッシュ
+    downloads:
+      label: ダウンロード履歴
+      tip: ブラウザのダウンロード履歴
+    formData:
+      label: フォームデータ
+      tip: ブラウザの自動入力フォームデータ
+    history:
+      label: 閲覧履歴
+      tip: ブラウザの閲覧履歴
+    passwords:
+      label: パスワード
+      tip: ブラウザの保存済みパスワード (非推奨)
+    pluginData:
+      label: プラグインデータ
+      tip: ブラウザのプラグインデータ (非推奨)

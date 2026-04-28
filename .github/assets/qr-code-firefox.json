@@ -1,0 +1,28 @@
+{
+  "props": {
+    "data": "https://addons.mozilla.org/addon/cache-cleaner-addon",
+    "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAACx1BMVEUAAADsYjnysjrbC3D/1kLgI3b/ykn83kjyOEz9nDH+6EnnE23+3Ef2fETDXaqqMtX+qzz+4EX1OVTmDHD+qzr+gzP+3kfqHWj/tCr/Yyv+40blCnH+uzHjC3D+2EH/nyKsNNvmDG/8Xzz+4En/nxmmMdLkCnD9pEb+4kj+6Ez+pBjnDW78Tjj+fhz+4kn+zTL4ZlOsNNrqFGj6hFD/70r+Zyn7STv+3Eb/diD930j+qCb4QEX/7kr/6kf/50X/5EP+4kv/4UL/30P/3j//3EX/2Ub/2j3/1Uj91Uf/1T//1Tn/0Ur/zz7/0DX/zET/ykv1y07/yjD+xkP/w0v+v0b/wiv/vzr9vE3+uUf1vkL/uyf+sk//tTr7skbrtF//tSP9qkr/sCP8qFL/qjr/rx7/qhz7oFX/pxr7n0f/nznfoIf/oCnqo0v/ohnioWn6l1j/nBn/lT3/kzX6kUz/lxn3jVv/kSX/jDv/kBfclk3QkIbnkzfViJr/iRnciXP/gjnBjaL/hSj5gUz0fmD/gxn/gB3/eTn/eyD+dij3cU/cgj3/dSH/bzv/bybLcpf/aTn/Zyn1Yk//YD3/Yiz/Xi7/WzDZakL/WDvFb1f/VzP+UkC5a3D/UjaxWNvAW6OeYtW7V73xUFL/TTn/STv/RT6VVPqAX/iLWPr/QECdTfV3YfGlSfP/PUK3SMXuQlOtRO+0QOv/OUSCVvFwYOuzWGO5O+f/NkZpYub+NEmsPue1OuP9MkyjQeh5Vun7MVCRSOvwM1X5LlSxN+BjX973LFiBTOX2Klu7RWhuVd6XRr70KGCaPOCrNNphWdbxJ1V7SNzvI15ZWc+RS4SMPNxuStPnIFVYUcfrGmCOMtNjScl/OM/lGV3nE2XhGFhZSb9vPMd1QJ3lDGziDmhkPb7kC2/fEGF+LcXbElpZQLd3L7ZrMLdiNbRaOa8x73s4AAAA5XRSTlMAAQcJFBkiKy83OEFOUlpaXF5ibXV1eHuDiIuMkZ+ipaqrrrO9v77CxNDR0tbY3dzj5ufo6+vu8PH5/f3////////////////+/v////////////////////////////////////////7////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+///////////////////////////////////////////////+pIpm/AAABrhJREFUeNq11Ptfjnccx/Hrqu4aMYUKkTnMYTajMUNxp8Pd2dySpFIqFUJnZyqtWkrZkIQObA4TIkSFiCh1o5YSlW5Zhz9i7+/3e11dpUdGHnv90E99nn2+1/e64j4yDUN97nPSnm4+jecG3uA5Zubm+p85bz5Ha8D7zzEzW4QmDfAQGtPNzMwXkQZ2CH6MGRagzdcZCKBjbk4WWEyaqTWABSYtwgNczLKYpvHpN2CxeJE5/r4gmHzwQeqN7LuAiSUECljQDPsXNMb7jRLHODEtOxsIGBZbot/v/GR/AeD1RnUL+vY2ECws2TBp/pD+5oMD/MeSQe2pHiOlEzjZE8LGcomY1TwdTqfvffLjw7cEB4wHMDTQ11ePE+K/dyICsrKi06SZWhrTB78PGGzdCuEbnjcICQmSAI1lTk6EsLezs5Iy4Q3nvycM2reLCloGUVEQGMDzsi83bfJaRQRHOztrazptjfS15L3fKY3v9jFhcmRoKISRZHzYV7NLaRdSvCA42imsxeZpT5L3+rQM4uMEIRiP0n/DeJ4fNruytPQmq7Q0y8vR2VEhCgqFib5c3uM2ZD/F9xL8Fgz9upLNFxQUUKEyRens7KyAoSDZDpHLZ0qv9eikJEnYQgSfE3S+gEWFrJUgHBRCk6bL5frdT2BuMhXi9u3atTU8nAj+ficKCwsvXbrUQ7hABYFwmCaXd/+XHJqazIRex0gpvHgRAjN2rt+ZVXnCRckIB2Qrl8u1ORo/EQAVeh9jY9ZFEKyb6/HvZPtuF5flS5c60KwBGArA3NRUsgOIXZgNhyAcY/dxEAwp3Ikvykrp5rJcIBQAhJv84vffqBC3xc/PZ80ad/c1weHis9x9/DwEVFi4nXxNEOgSDJjH7mH4ISZgAAARVqzwWRAQHODjvsLJ6zyiQKGXJXJzc1tJl1CQ70KHnmD0IQggov2pAADCsmX0G/j5+Nmz50lFRUVZNshu9Wq3lSshWFsAYO/SxKNHmRBJgZ6C18nTp88iClRsIoKL9+rVEJZTwJBu8G2mKMQFSIdYtWn73r2nkUAUVVSk2CNHbwggLC3xbY3hOfRjJhEYER+5hQLbT+bn/0kTCQCP7MmxvNeuhbDcxhJfpwkB+IU5EMgSjMAK2x5VlxXn5/+BqAHh9u2KihernJDnurUgnO1sbG2tKaC5MDcnR1oiwc9nW0N1dXVx8TlEDRC3ATx/sXEZ8ti8DgS+bmdbBdvgzqncXGmJZL8F7U01NeXlV65cOUeiAoDn3cDmzevcHB0dlc4ODDA9BUFawv9YRxMVrl8XjPz8fDr/YuMK5BERsXmdqxKA0nksBWacOQMBSzAiMr2jtam+5sm9e/euw0DFxWVlZQDa3AngGxER4eHqqlS6uCjZNU4ogSAsASJhR2dna339kyeUQBSoft7Q8MidFBgbGwjA1QVvtR5HMlJd/qsnEdwM4fXfT5+CIJWXl+OhNjS0HVtDCouN8ECunp5uboMooNtyTRAYkZDe2fXPayLAIJXX1NRgvm2HDyk21tfXF4K3t6enBgVk6qprl3sSkc1dVABBDcw3NbW1PfNfgIJig4J8SYHe3lN5CvBTGm8QoZvI/LULAiFo9fX1TU1N7e07NpBCQ4MQ5tFIjjVCXXVDImBkpncxgtXa2trR0Z4eHolCo0JDQwgRFhYWqC0AMnVLya1eRA4EQrA6Ozs7OtIjUfSePXuiokJDUExYGD0Bu0h1XcktRuBZUCO7uUuqs7P5cFx0dPQviBJRITExMWF6nJiuuqWqRCKY8VAimq8mJMUnHDhwYP9+EESISYyJ+YHdAXuM6jf37wqEZOQ9fEa6ejgpOfVQ5pEjBw92E4mJiTEGHJJWaLx/F4S0BgyCkDc8J5der0jASEtLTJylyUnx49RvIEgEDGEPIDRiZICAsT8NJQ7leiYzbXnT+OB+T0NAoNAokpGRASItOzstbaJ4BdIhIIgEM0QECmJKBsrLzs6eJeN6xxtDeKt60NMAIilMgrEwLw+CrjQqvQwQ6h4/BgFDQqAwhkl3UF7ecK5vmlOI8FYFghkMYYoI3aqtrYJgxHP9Cy9BwGCIqDCopKq2tlalemzE0foK5BQCISFghMh4XZ1KNZzn+ok3UtMl3okGFJGpqn316uXLuro6U13uA+nOULeAgPEOvy0oKlUtpsk4miDjPpimsZoQMICIYRg1NuLPD+f+M9k4EDAYwmpkmRppch8RLzM2VTOERYdbWmaMwPhHpqlrPENNEDCsKUZf8NynxPMy3RHGE6agCcYjdDWl6U9ThJ//Z/8CC+x7LHGiYsoAAAAASUVORK5CYII=",
+    "width": 200,
+    "height": 200,
+    "margin": 0,
+    "dotsOptions": { "color": "#cdd6f4", "type": "extra-rounded" },
+    "cornersSquareOptions": { "color": "#fab387", "type": "dot" },
+    "cornersDotOptions": { "color": "#cdd6f4", "type": "dot" },
+    "imageOptions": { "margin": 0 },
+    "qrOptions": { "errorCorrectionLevel": "Q" }
+  },
+  "style": { "borderRadius": "20px", "background": "#000000" },
+  "frame": {
+    "text": "Firefox Android",
+    "position": "top",
+    "style": {
+      "textColor": "#cdd6f4",
+      "backgroundColor": "#181825",
+      "borderColor": "#cdd6f4",
+      "borderWidth": "1px",
+      "borderRadius": "8px",
+      "padding": "8px",
+      "fontFamily": "Verdana, sans-serif"
+    }
+  }
+}

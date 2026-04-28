@@ -1,0 +1,242 @@
+name: Cache Cleaner
+short_name: CCleaner
+description: Удобная очистка выбранных элементов кеша для текущего сайта или всего браузера одним нажатием клавиши, через контекстное меню или всплывающее окно.
+
+ui:
+  action:
+    cancel: Отмена
+    close: Закрыть
+    extensionPanel: Панель расширения
+    openPopup: Открыть окно
+    sidePanel: Боковая панель
+
+  text:
+    browserCache: Кеш браузера
+    homePage: Главная страница
+    hostCopied: Хост скопирован в буфер обмена
+    noTabAccess: Нет доступа к текущей вкладке.
+    openIssue: Сообщить о проблеме
+    options: Настройки
+    releaseNotes: Заметки о выпуске
+    requestFeature: Предложить функцию
+    siteCache: Кеш сайта
+    unknown: Неизвестно
+
+  cache:
+    all: Очистить всё
+    cache: Кеш
+    clear: Очистить
+    cleared: Очищено
+    error: Ошибка
+    selected: Очистить выбранное
+    type:
+      site: Текущий сайт
+      siteAll: Все сайты
+      browser: Выбранный браузер
+      browserAll: Весь браузер
+
+cmd:
+  # wxt.config.ts
+  executeAction: Открыть всплывающее окно
+  openSidePanel: Открыть боковую панель
+  openExtPanel: Открыть панель расширения
+  openOptions: Открыть настройки
+  cache_site: Очистить кеш сайта
+  cache_siteAll: Очистить кеш всех сайтов
+  cache_browser: Очистить кеш браузера
+  cache_browserAll: Очистить весь кеш браузера
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: Настройки
+  extension: Настройки расширения
+  moreOptions: Дополнительные параметры
+  quickOptions: Быстрые настройки
+  optionsBackground: Фон страницы настроек
+  copySupport: Копировать данные для поддержки
+  copySupportTip: Для отчета об ошибках.
+  copySupportMsg: Данные для поддержки скопированы.
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: Настройки сайта
+    globalBrowser: Глобальные настройки браузера
+    allSites: Все сайты
+    browser: Браузер
+
+popup:
+  # popout/App.vue
+  title: Панель
+
+popout:
+  # popout/App.vue
+  title: Панель
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: Описание
+  manage: Управление сочетаниями клавиш
+  notSet: Не установлено
+  shortcut: Сочетание клавиш
+  shortcuts: Сочетания клавиш
+
+theme:
+  # ThemeSwitch.vue
+  title: Переключатель темы
+  dark: Темная
+  light: Светлая
+  auto: Авто
+
+background:
+  # components/BackgroundForm.vue
+  none: Нет
+  picture: Изображение
+  pictureTip: URL веб-изображения.
+  pictureLabel: URL фонового изображения
+  video: Видео
+  videoTip: URL веб-видео
+  videoLabel: URL фонового видео
+
+ctx:
+  # background/menus.ts
+  site:
+    label: Очистить кеш сайта
+    tip: Очистить кеш текущего сайта
+  siteAll:
+    label: Очистить кеш всех сайтов
+    tip: Очистить кеш всех сайтов
+  browser:
+    label: Очистить кеш браузера
+    tip: Очистить кеш браузера
+  browserAll:
+    label: Очистить весь кеш браузера
+    tip: Очистить абсолютно весь кеш браузера
+  popup:
+    label: Открыть окно
+    tip: Открыть всплывающее окно
+  sidepanel:
+    label: Открыть боковую панель
+    tip: Открыть боковую панель
+  options:
+    label: Открыть настройки
+    tip: Открыть страницу настроек
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: Автообновление сайта
+      tip: Обновить страницу после очистки кеша.
+    showAllButtons:
+      label: Показывать все кнопки
+      tip: Показывать кнопки и сайта, и браузера во всплывающем окне.
+    popupBrowser:
+      label: Вкладка браузера по умолчанию
+      tip: Открывать вкладку «Браузер» при открытии окна.
+    showConfirmation:
+      label: Подтверждение очистки
+      tip: Спрашивать подтверждение перед очисткой кеша.
+    showDeprecated:
+      label: Устаревшие параметры
+      tip: Показывать параметры, которые считаются устаревшими.
+    contextMenu:
+      label: Контекстное меню
+      tip: Показывать пункты в меню правой кнопки мыши.
+    contextAction:
+      label: Все элементы на иконке
+      tip: Показывать все элементы контекстного меню при клике правой кнопкой на иконку панели инструментов.
+    showErrorNotifications:
+      label: Уведомления об ошибках
+      tip: Для контекстного меню и горячих клавиш.
+    showUpdate:
+      label: Заметки об обновлении
+      tip: Показывать уведомления о новых версиях.
+
+  confirm:
+    site:
+      label: Кеш сайта
+      tip: Кеш сайта
+    siteAll:
+      label: Кеш всех сайтов
+      tip: Кеш всех сайтов
+    browser:
+      label: Кеш браузера
+      tip: Кеш браузера
+    browserAll:
+      label: Весь кеш браузера
+      tip: Весь кеш браузера
+
+  site:
+    appcache:
+      label: Кеш приложений (App Cache)
+      tip: Кеш приложений браузера (устарело)
+    cacheStorage:
+      label: Хранилище кеша
+      tip: Хранилище кеша сайта
+    cookies:
+      label: Куки (Cookies)
+      tip: Файлы cookie сайта
+    fileSystems:
+      label: Файловые системы
+      tip: Файловые системы сайта (устарело)
+    indexedDB:
+      label: IndexedDB
+      tip: Базы данных IndexedDB сайта
+    localStorage:
+      label: Локальное хранилище
+      tip: Локальное хранилище сайта (Local Storage)
+    serviceWorkers:
+      label: Service Workers
+      tip: Сервис-воркеры сайта
+    webSQL:
+      label: Web SQL
+      tip: Web SQL сайта (устарело)
+
+  browser:
+    appcache:
+      label: Кеш приложений (App Cache)
+      tip: Кеш приложений браузера (устарело)
+    cacheStorage:
+      label: Хранилище кеша
+      tip: Хранилище кеша всех сайтов
+    cookies:
+      label: Куки (Cookies)
+      tip: Файлы cookie всех сайтов
+    fileSystems:
+      label: Файловые системы
+      tip: Файловые системы всех сайтов
+    indexedDB:
+      label: IndexedDB
+      tip: Базы данных IndexedDB всех сайтов
+    localStorage:
+      label: Локальное хранилище
+      tip: Локальное хранилище всех сайтов
+    serviceWorkers:
+      label: Service Workers
+      tip: Сервис-воркеры всех сайтов
+    webSQL:
+      label: Web SQL
+      tip: Web SQL всех сайтов (устарело)
+
+    cache:
+      label: Кеш браузера
+      tip: Кеш браузера
+    downloads:
+      label: Загрузки
+      tip: История загрузок браузера
+    formData:
+      label: Данные форм
+      tip: Данные автозаполнения форм
+    history:
+      label: История
+      tip: История просмотров
+    passwords:
+      label: Пароли
+      tip: Сохраненные пароли (устарело)
+    pluginData:
+      label: Данные плагинов
+      tip: Данные плагинов браузера (устарело)

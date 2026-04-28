@@ -1,0 +1,242 @@
+name: 缓存清理器
+short_name: CCleaner
+description: 通过按键、右键菜单或弹出图标，轻松清除当前站点或整个浏览器的特定缓存项目。
+
+ui:
+  action:
+    cancel: 取消
+    close: 关闭
+    extensionPanel: 扩展面板
+    openPopup: 打开弹出窗口
+    sidePanel: 侧边栏
+
+  text:
+    browserCache: 浏览器缓存
+    homePage: 主页
+    hostCopied: 域名已复制到剪贴板
+    noTabAccess: 无法访问当前标签页。
+    openIssue: 反馈问题
+    options: 选项
+    releaseNotes: 更新日志
+    requestFeature: 功能建议
+    siteCache: 站点缓存
+    unknown: 未知
+
+  cache:
+    all: 全部清除
+    cache: 缓存
+    clear: 清除
+    cleared: 已清除
+    error: 错误
+    selected: 清除所选
+    type:
+      site: 所选站点
+      siteAll: 所有站点
+      browser: 所选浏览器
+      browserAll: 所有浏览器
+
+cmd:
+  # wxt.config.ts
+  executeAction: 打开弹出窗口
+  openSidePanel: 打开侧边栏
+  openExtPanel: 打开扩展面板
+  openOptions: 打开选项
+  cache_site: 清除站点缓存
+  cache_siteAll: 清除所有站点缓存
+  cache_browser: 清除浏览器缓存
+  cache_browserAll: 清除所有浏览器缓存
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: 选项
+  extension: 扩展选项
+  moreOptions: 更多选项
+  quickOptions: 快捷选项
+  optionsBackground: 选项页背景
+  copySupport: 复制支持信息
+  copySupportTip: 用于报告问题。
+  copySupportMsg: 支持信息已复制。
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: 站点特定设置
+    globalBrowser: 全局浏览器设置
+    allSites: 所有站点
+    browser: 浏览器
+
+popup:
+  # popout/App.vue
+  title: 面板
+
+popout:
+  # popout/App.vue
+  title: 面板
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: 描述
+  manage: 管理键盘快捷键
+  notSet: 未设置
+  shortcut: 快捷键
+  shortcuts: 键盘快捷键
+
+theme:
+  # ThemeSwitch.vue
+  title: 主题切换
+  dark: 深色
+  light: 浅色
+  auto: 自动
+
+background:
+  # components/BackgroundForm.vue
+  none: 无
+  picture: 图片
+  pictureTip: 网络图片 URL。
+  pictureLabel: 背景图片 URL
+  video: 视频
+  videoTip: 网络视频 URL
+  videoLabel: 背景视频 URL
+
+ctx:
+  # background/menus.ts
+  site:
+    label: 清除站点缓存
+    tip: 清除站点缓存
+  siteAll:
+    label: 清除所有站点缓存
+    tip: 清除所有站点缓存
+  browser:
+    label: 清除浏览器缓存
+    tip: 清除浏览器缓存
+  browserAll:
+    label: 清除所有浏览器缓存
+    tip: 清除所有浏览器缓存
+  popup:
+    label: 打开弹出窗口
+    tip: 打开弹出窗口
+  sidepanel:
+    label: 打开侧边栏
+    tip: 打开侧边栏
+  options:
+    label: 打开选项
+    tip: 打开选项
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: 自动刷新页面
+      tip: 清除缓存后自动刷新当前页面。
+    showAllButtons:
+      label: 显示所有按钮
+      tip: 在弹出窗口中同时显示站点和浏览器按钮。
+    popupBrowser:
+      label: 默认为浏览器
+      tip: 打开弹出窗口时默认显示浏览器选项卡。
+    showConfirmation:
+      label: 显示确认对话框
+      tip: 清除缓存前弹出确认。
+    showDeprecated:
+      label: 显示已弃用选项
+      tip: 显示已不再推荐使用的选项。
+    contextMenu:
+      label: 显示右键菜单
+      tip: 在浏览器中显示右键上下文菜单。
+    contextAction:
+      label: 在工具栏图标显示所有项
+      tip: 右键点击工具栏图标时显示所有上下文菜单项。
+    showErrorNotifications:
+      label: 显示错误通知
+      tip: 针对右键菜单和键盘快捷键的错误提醒。
+    showUpdate:
+      label: 更新后显示日志
+      tip: 插件更新后显示更新日志通知。
+
+  confirm:
+    site:
+      label: 站点缓存
+      tip: 站点缓存
+    siteAll:
+      label: 所有站点缓存
+      tip: 所有站点缓存
+    browser:
+      label: 浏览器缓存
+      tip: 浏览器缓存
+    browserAll:
+      label: 所有浏览器缓存
+      tip: 所有浏览器缓存
+
+  site:
+    appcache:
+      label: 应用缓存 (App Cache)
+      tip: 浏览器应用缓存 (已弃用)
+    cacheStorage:
+      label: 缓存存储 (Cache Storage)
+      tip: 站点缓存存储
+    cookies:
+      label: Cookie
+      tip: 站点 Cookie
+    fileSystems:
+      label: 文件系统
+      tip: 站点文件系统 (已弃用)
+    indexedDB:
+      label: IndexedDB
+      tip: 站点 IndexedDB
+    localStorage:
+      label: 本地存储 (Local Storage)
+      tip: 站点本地存储
+    serviceWorkers:
+      label: Service Workers
+      tip: 站点 Service Workers
+    webSQL:
+      label: Web SQL
+      tip: 站点 Web SQL (已弃用)
+
+  browser:
+    appcache:
+      label: 应用缓存 (App Cache)
+      tip: 浏览器应用缓存 (已弃用)
+    cacheStorage:
+      label: 缓存存储 (Cache Storage)
+      tip: 所有站点缓存存储
+    cookies:
+      label: Cookie
+      tip: 所有站点 Cookie
+    fileSystems:
+      label: 文件系统
+      tip: 所有站点文件系统
+    indexedDB:
+      label: IndexedDB
+      tip: 所有站点 IndexedDB
+    localStorage:
+      label: 本地存储 (Local Storage)
+      tip: 所有站点本地存储
+    serviceWorkers:
+      label: Service Workers
+      tip: 所有站点 Service Workers
+    webSQL:
+      label: Web SQL
+      tip: 所有站点 Web SQL (已弃用)
+
+    cache:
+      label: 浏览器缓存
+      tip: 浏览器缓存
+    downloads:
+      label: 下载历史
+      tip: 浏览器下载历史
+    formData:
+      label: 表单数据
+      tip: 浏览器表单数据
+    history:
+      label: 历史记录
+      tip: 浏览器历史记录
+    passwords:
+      label: 密码
+      tip: 浏览器密码 (已弃用)
+    pluginData:
+      label: 插件数据
+      tip: 浏览器插件数据 (已弃用)
