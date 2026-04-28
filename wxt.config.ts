@@ -34,7 +34,7 @@ export default defineConfig({
         'activeTab',
         'browsingData',
         'contextMenus',
-        'notifications',
+        // 'notifications',
         'scripting',
         'storage',
       ],

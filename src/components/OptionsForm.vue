@@ -38,7 +38,7 @@ const props = withDefaults(
       'showConfirmation',
       'contextMenu',
       'contextAction',
-      'showErrorNotifications',
+      // 'showErrorNotifications',
       'showDeprecated',
       'showUpdate',
     ],
