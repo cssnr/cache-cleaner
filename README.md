@@ -38,7 +38,7 @@
 - [Support](#support)
 - [Contributing](#contributing)
 
-Modern Chrome Web Extension and Firefox Browser Addon to easily clean selected cache items specific sites or the whole
+Modern Chrome Web Extension and Firefox Browser Add-on to easily clean selected cache items specific sites or the whole
 browser with a single key press, from the right-click context menu or via the toolbar icon popup. Cache cleaner is also
 available for mobile browsers, see [Install](#install) below.
 

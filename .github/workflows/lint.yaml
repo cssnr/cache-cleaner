@@ -27,7 +27,6 @@ jobs:
           node-version: 24
 
       - name: "Install"
-        id: install
         run: npm ci
 
       - name: "Build"
@@ -60,8 +59,7 @@ jobs:
 
       - name: "eslint"
         if: ${{ !cancelled() }}
-        run: |
-          npm run lint
+        run: npm run lint
 
       - name: "prettier"
         if: ${{ !cancelled() }}
