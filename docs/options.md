@@ -117,12 +117,6 @@ When enabled, the following items can appear in the context menu:
 
 When you right-click the extension's toolbar icon, by default only a minimal set of actions are shown. Enabling this option adds all available context menu actions to the toolbar icon's right-click menu, matching the full set available in the page context menu.
 
-#### Show Error Notifications
-
-Shows a browser notification if a cache clear operation triggered by a **keyboard shortcut** or **right-click context menu** encounters an error. Errors that occur through the popup UI are always shown inline regardless of this setting.
-
-Disable this if you find error notifications disruptive and prefer to check results manually.
-
 #### Show Deprecated Options
 
 Some cache types are deprecated — they were part of older browser APIs that are no longer actively used (such as App Cache, Web SQL, and File Systems). These options are hidden by default to keep the interface clean.

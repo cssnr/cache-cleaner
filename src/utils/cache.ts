@@ -1,10 +1,9 @@
 // noinspection JSDeprecatedSymbols
 
-import { i18n } from '#imports'
 import { isFirefox, isMobile } from '@/utils/system.ts'
 import { getOptions } from '@/utils/options.ts'
-import { sendNotifications } from '@/utils/extension.ts'
 import type { Options } from '@/utils/options.ts'
+// import { sendNotifications } from '@/utils/extension.ts'
 
 export async function clearCache(type: ClearCacheType) {
   const isAll = type.endsWith('All')
@@ -18,10 +17,10 @@ export async function clearCache(type: ClearCacheType) {
     }
   } catch (e) {
     console.error(e)
-    if (options.showErrorNotifications) {
-      const message = e instanceof Error ? e.message : i18n.t('ui.text.unknown')
-      await sendNotifications(i18n.t('ui.cache.error'), message)
-    }
+    // if (options.showErrorNotifications) {
+    //   const message = e instanceof Error ? e.message : i18n.t('ui.text.unknown')
+    //   await sendNotifications(i18n.t('ui.cache.error'), message)
+    // }
   }
 }
 
