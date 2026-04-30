@@ -21,8 +21,8 @@ export const defaultOptions = {
   },
 
   site: {
-    cache: false,
     appcache: false, // deprecated
+    cache: false,
     cacheStorage: true,
     cookies: false,
     fileSystems: true,

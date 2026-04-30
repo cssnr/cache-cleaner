@@ -30,9 +30,7 @@ async function clearBrowserCache(options: Options, all = false) {
   console.log('%cClear Browser Cache:', 'color: Crimson', all)
 
   let cleanOptions: chrome.browsingData.DataTypeSet
-  if (!all) {
-    cleanOptions = options.browser
-  } else {
+  if (all) {
     cleanOptions = {
       appcache: true,
       cacheStorage: true,
@@ -50,6 +48,8 @@ async function clearBrowserCache(options: Options, all = false) {
       passwords: true,
       pluginData: true,
     }
+  } else {
+    cleanOptions = options.browser
   }
 
   if (isFirefox) {
