@@ -52,47 +52,6 @@ jobs:
         continue-on-error: true
         uses: cssnr/package-changelog-action@v2
 
-  publish-chrome:
-    # https://developer.chrome.com/docs/webstore/using-api
-    name: "Publish Chrome"
-    if: ${{ !github.event.release.prerelease }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: [build]
-
-    environment:
-      name: chrome
-      url: "https://chromewebstore.google.com/detail/${{ env.CHROME_ID }}"
-
-    steps:
-      - name: "Download Artifacts"
-        uses: actions/download-artifact@v8
-        with:
-          name: artifacts
-
-      - name: "Validate"
-        run: |
-          ls -lAh .
-          stat "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
-          yq -e '.version | test("${{ github.event.release.tag_name }}")' chrome-mv3/manifest.json
-          echo "::group::chrome-mv3"
-          ls -lAh chrome-mv3
-          echo "::endgroup::"
-          echo "::group::chrome-mv3/manifest.json"
-          jq . chrome-mv3/manifest.json
-          echo "::endgroup::"
-
-      - name: "Web Store Publish"
-        uses: cssnr/webstore-publish-action@v1
-        with:
-          extension_id: ${{ env.CHROME_ID }}
-          publisher_id: ${{env.PUBLISHER_ID}}
-          json_data: ${{ secrets.WEBSTORE_JSON }}
-          zip_file: "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
-          submit: false
-
-      # NOTE: This only submits for review! Need automation to upload signed release...
-
   publish-mozilla:
     # https://mozilla.github.io/addons-server/topics/api/index.html
     name: "Publish Mozilla"
@@ -164,12 +123,53 @@ jobs:
 
       # NOTE: This only submits for review! Need automation to upload signed release...
 
+  publish-chrome:
+    # https://developer.chrome.com/docs/webstore/using-api
+    name: "Publish Chrome"
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [build, publish-mozilla] # TODO: Remove publish-mozilla once successful
+
+    environment:
+      name: chrome
+      url: "https://chromewebstore.google.com/detail/${{ env.CHROME_ID }}"
+
+    steps:
+      - name: "Download Artifacts"
+        uses: actions/download-artifact@v8
+        with:
+          name: artifacts
+
+      - name: "Validate"
+        run: |
+          ls -lAh .
+          stat "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
+          yq -e '.version | test("${{ github.event.release.tag_name }}")' chrome-mv3/manifest.json
+          echo "::group::chrome-mv3"
+          ls -lAh chrome-mv3
+          echo "::endgroup::"
+          echo "::group::chrome-mv3/manifest.json"
+          jq . chrome-mv3/manifest.json
+          echo "::endgroup::"
+
+      - name: "Web Store Publish"
+        uses: cssnr/webstore-publish-action@v1
+        with:
+          extension_id: ${{ env.CHROME_ID }}
+          publisher_id: ${{env.PUBLISHER_ID}}
+          json_data: ${{ secrets.WEBSTORE_JSON }}
+          zip_file: "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
+          submit: false
+
+      # NOTE: This only submits for review! Need automation to upload signed release...
+
   check:
     name: "Check"
     if: ${{ always() }}
     runs-on: Ubuntu-latest
     timeout-minutes: 5
-    needs: [build, release, publish-chrome, publish-mozilla]
+    needs: [build, release, publish-mozilla, publish-chrome]
 
     permissions:
       contents: write
