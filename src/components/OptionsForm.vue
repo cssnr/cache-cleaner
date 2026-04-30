@@ -45,6 +45,7 @@ const props = withDefaults(
     ctx: () => ['site', 'siteAll', 'browser', 'browserAll', 'popup', 'sidepanel', 'options'],
     confirm: () => ['site', 'siteAll', 'browser', 'browserAll'],
     site: () => [
+      'cache',
       'cookies',
       'indexedDB',
       'localStorage',
@@ -72,7 +73,7 @@ const options = useOptions()
 
 const deprecated = new Set(['appcache', 'pluginData', 'webSQL'])
 if (!isFirefox) ['passwords'].forEach((item) => deprecated.add(item))
-const ffExcludes = new Set(['appcache', 'fileSystems', 'webSQL'])
+const ffExcludes = new Set(['cache', 'appcache', 'fileSystems', 'webSQL'])
 const ffExcludesAll = new Set([...ffExcludes, 'cacheStorage'])
 
 const extensionKeys = computed(() => props.extension.filter((ext) => ext !== 'contextMenu' || !!chrome?.contextMenus))

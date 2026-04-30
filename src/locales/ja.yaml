@@ -171,6 +171,9 @@ option:
       tip: すべてのブラウザのキャッシュ
 
   site:
+    cache:
+      label: サイトのキャッシュ
+      tip: ブラウザに保存されたサイトのキャッシュ
     appcache:
       label: Appキャッシュ
       tip: ブラウザのAppキャッシュ (非推奨)

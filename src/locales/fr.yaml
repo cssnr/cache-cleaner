@@ -171,6 +171,9 @@ option:
       tip: Tout le cache du navigateur
 
   site:
+    cache:
+      label: Cache du site
+      tip: Cache du navigateur pour le site
     appcache:
       label: App Cache
       tip: Cache d'application du navigateur (Obsolète)

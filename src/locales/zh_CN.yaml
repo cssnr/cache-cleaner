@@ -171,6 +171,9 @@ option:
       tip: 所有浏览器缓存
 
   site:
+    cache:
+      label: 网站缓存
+      tip: 浏览器的网站缓存
     appcache:
       label: 应用缓存 (App Cache)
       tip: 浏览器应用缓存 (已弃用)
