@@ -171,6 +171,9 @@ option:
       tip: Gesamter Browser-Cache
 
   site:
+    cache:
+      label: Website-Cache
+      tip: Browser-Cache für die Website
     appcache:
       label: App-Cache
       tip: Browser-App-Cache (Veraltet)

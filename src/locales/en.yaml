@@ -171,6 +171,9 @@ option:
       tip: All Browser Cache
 
   site:
+    cache:
+      label: Site Cache
+      tip: Browser's Cache for the Site
     appcache:
       label: App Cache
       tip: Browser App Cache (Deprecated)

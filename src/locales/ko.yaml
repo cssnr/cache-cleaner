@@ -171,6 +171,9 @@ option:
       tip: 전체 브라우저 캐시
 
   site:
+    cache:
+      label: 사이트 캐시
+      tip: 사이트의 브라우저 캐시
     appcache:
       label: 앱 캐시
       tip: 브라우저 앱 캐시 (지원 중단)

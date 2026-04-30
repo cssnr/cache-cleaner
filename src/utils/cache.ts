@@ -86,8 +86,11 @@ async function clearSiteCache(options: Options, all = false) {
 
   const url = new URL(tab.url)
   console.debug('url:', url)
-  // console.debug('hostname:', url.hostname)
-  // console.debug('origin:', url.origin)
+  if (isFirefox) {
+    console.debug('hostname:', url.hostname)
+  } else {
+    console.debug('origin:', url.origin)
+  }
 
   const removalOptions:
     | chrome.browsingData.RemovalOptions
@@ -97,11 +100,15 @@ async function clearSiteCache(options: Options, all = false) {
 
   const cleanOptions: chrome.browsingData.DataTypeSet = all
     ? {
+        appcache: true,
+        cache: true,
         cacheStorage: true,
         cookies: true,
+        fileSystems: true,
         indexedDB: true,
         localStorage: true,
         serviceWorkers: true,
+        webSQL: true,
       }
     : options.site
 
@@ -109,6 +116,7 @@ async function clearSiteCache(options: Options, all = false) {
     if (cleanOptions.cacheStorage) clearCacheStorage().catch(console.warn)
 
     delete cleanOptions.appcache
+    delete cleanOptions.cache
     delete cleanOptions.cacheStorage
     delete cleanOptions.fileSystems
     delete cleanOptions.webSQL
