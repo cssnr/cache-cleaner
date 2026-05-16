@@ -1,4 +1,4 @@
-# Cache Cleaner
+# Cache Cleaner — Agent Guide
 
 Project - This is a Web Extension for Chrome and Firefox using the WXT Framework, TypeScript, and Vue3.
 The documentation uses VitePress.

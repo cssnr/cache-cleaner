@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'eslint/config'
-import { includeIgnoreFile } from '@eslint/compat'
+import { includeIgnoreFile } from '@eslint/config-helpers'
 import js from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import pluginVue from 'eslint-plugin-vue'
@@ -17,7 +17,7 @@ export default defineConfig([
   {
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
-      'no-undef': 'off',
+      'no-undef': 'off', // does not support src/types or auto-imports
     },
     languageOptions: {
       sourceType: 'module',
@@ -26,6 +26,7 @@ export default defineConfig([
       },
       // globals: {
       //   ...globals.browser,
+      //   ...globals.webextensions,
       // },
     },
   },

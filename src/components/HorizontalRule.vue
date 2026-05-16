@@ -1,7 +1,16 @@
 <template>
-  <div class="d-flex flex-row align-items-center justify-content-center">
-    <hr class="w-100 my-0" />
-    <span class="text-nowrap mx-2"><slot /></span>
-    <hr class="w-100 my-0" />
+  <div class="d-flex align-items-center">
+    <hr class="flex-grow-1 my-0 hr" />
+    <span class="mx-2 text-truncate span"><slot /></span>
+    <hr class="flex-grow-1 my-0 hr" />
   </div>
 </template>
+
+<style scoped>
+.hr {
+  min-width: 12px;
+}
+.span {
+  min-width: 0;
+}
+</style>

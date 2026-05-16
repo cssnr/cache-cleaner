@@ -8,7 +8,7 @@ export function useOptions(): Ref<Options> {
   const onChanged = async (changes: Record<string, any>) => {
     // console.log('useOptions - onChanged:', changes)
     if (!changes?.options?.newValue) return
-    // console.log('%c useOptions.ts - options updated ', 'color: Yellow')
+    // console.log('%c useOptions.ts - options updated ', 'color: MediumSpringGreen')
     options.value = changes.options.newValue as Options
   }
 
