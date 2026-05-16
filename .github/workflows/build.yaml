@@ -41,11 +41,31 @@ jobs:
       - name: "Verify Version"
         if: ${{ github.event_name == 'release' }}
         run: |
-          yq -e '.version | test("${{ inputs.version }}")' package.json
+          jq -e '.version == "${{ inputs.version }}"' package.json
           cat -n package.json
 
       - name: "Build"
         run: npm run package
+
+      - name: "Validate"
+        if: ${{ github.event_name == 'release' }}
+        working-directory: .output
+        run: |
+          ls -lAh .
+          jq -e '.version == "${{ github.event.release.tag_name }}"' firefox-mv3/manifest.json
+          echo "::group::chrome-mv3"
+          ls -lAh chrome-mv3
+          echo "::endgroup::"
+          echo "::group::chrome-mv3/manifest.json"
+          jq . chrome-mv3/manifest.json
+          echo "::endgroup::"
+          jq -e '.version == "${{ github.event.release.tag_name }}"' firefox-mv3/manifest.json
+          echo "::group::firefox-mv3"
+          ls -lAh firefox-mv3
+          echo "::endgroup::"
+          echo "::group::firefox-mv3/manifest.json"
+          jq . firefox-mv3/manifest.json
+          echo "::endgroup::"
 
       - name: "Upload to Actions"
         uses: actions/upload-artifact@v7

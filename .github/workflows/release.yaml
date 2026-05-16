@@ -5,7 +5,7 @@ on:
     types: [published]
 
 env:
-  PACKAGE_NAME: cache-cleaner # can be a wild card unless the to-do's are completed
+  PACKAGE_NAME: cache-cleaner # can be a wild card pattern instead of env variable
   CHROME_ID: nbkhplnnajkikghffmincdbipjalpobi # can be defined in elsewhere and parsed
   PUBLISHER_ID: 428868da-c02f-433a-b34c-208b3d01fbc3 # can be defined in elsewhere and parsed
   MOZILLA_SLUG: cache-cleaner-addon # can be defined in elsewhere and parsed
@@ -52,6 +52,47 @@ jobs:
         continue-on-error: true
         uses: cssnr/package-changelog-action@v2
 
+  publish-chrome:
+    # https://developer.chrome.com/docs/webstore/using-api
+    name: "Publish Chrome"
+    if: ${{ !github.event.release.prerelease }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [build]
+
+    environment:
+      name: chrome
+      url: "https://chromewebstore.google.com/detail/${{ env.CHROME_ID }}"
+
+    steps:
+      - name: "Download Artifacts"
+        uses: actions/download-artifact@v8
+        with:
+          name: artifacts
+
+      - name: "Validate"
+        run: |
+          ls -lAh .
+          stat "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
+          jq -e '.version == "${{ github.event.release.tag_name }}"' chrome-mv3/manifest.json
+          echo "::group::chrome-mv3"
+          ls -lAh chrome-mv3
+          echo "::endgroup::"
+          echo "::group::chrome-mv3/manifest.json"
+          jq . chrome-mv3/manifest.json
+          echo "::endgroup::"
+
+      - name: "Web Store Publish"
+        uses: cssnr/webstore-publish-action@v1
+        with:
+          extension_id: ${{ env.CHROME_ID }}
+          publisher_id: ${{ env.PUBLISHER_ID }}
+          json_data: ${{ secrets.WEBSTORE_JSON }}
+          zip_file: "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
+          submit: false
+
+      # NOTE: This only submits for review! Need automation to upload signed release...
+
   publish-mozilla:
     # https://mozilla.github.io/addons-server/topics/api/index.html
     name: "Publish Mozilla"
@@ -74,6 +115,7 @@ jobs:
           name: artifacts
 
       - name: "Generate Release Notes"
+        # https://github.com/mozilla/addons-server/blob/master/src/olympia/core/languages.py
         env:
           RELEASE_NOTES: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.event.release.tag_name }}
         run: |
@@ -95,7 +137,7 @@ jobs:
         run: |
           ls -lAh .
           stat "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-sources.zip"
-          yq -e '.version | test("${{ github.event.release.tag_name }}")' firefox-mv3/manifest.json
+          jq -e '.version == "${{ github.event.release.tag_name }}"' firefox-mv3/manifest.json
           echo "::group::firefox-mv3"
           ls -lAh firefox-mv3
           echo "::endgroup::"
@@ -106,14 +148,16 @@ jobs:
           jq . amo-metadata.json
           echo "::endgroup::"
 
+      # NOTE: This installs web-ext using npx
       # NOTE: The web-ext sign command uploads and submits for review
 
       - name: "Mozilla AMO Publish"
+        # https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-sign
         env:
           FIREFOX_API_KEY: ${{ secrets.FIREFOX_API_KEY }}
           FIREFOX_API_SECRET: ${{ secrets.FIREFOX_API_SECRET }}
         run: |
-          npx web-ext sign \
+          npx web-ext sign --no-input \
             --api-key="${FIREFOX_API_KEY}" \
             --api-secret="${FIREFOX_API_SECRET}" \
             --channel=listed --approval-timeout=0 \
@@ -122,54 +166,15 @@ jobs:
             --upload-source-code="${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-sources.zip"
 
       # NOTE: This only submits for review! Need automation to upload signed release...
-
-  publish-chrome:
-    # https://developer.chrome.com/docs/webstore/using-api
-    name: "Publish Chrome"
-    if: ${{ !github.event.release.prerelease }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    needs: [build, publish-mozilla] # TODO: Remove publish-mozilla once successful
-
-    environment:
-      name: chrome
-      url: "https://chromewebstore.google.com/detail/${{ env.CHROME_ID }}"
-
-    steps:
-      - name: "Download Artifacts"
-        uses: actions/download-artifact@v8
-        with:
-          name: artifacts
-
-      - name: "Validate"
-        run: |
-          ls -lAh .
-          stat "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
-          yq -e '.version | test("${{ github.event.release.tag_name }}")' chrome-mv3/manifest.json
-          echo "::group::chrome-mv3"
-          ls -lAh chrome-mv3
-          echo "::endgroup::"
-          echo "::group::chrome-mv3/manifest.json"
-          jq . chrome-mv3/manifest.json
-          echo "::endgroup::"
-
-      - name: "Web Store Publish"
-        uses: cssnr/webstore-publish-action@v1
-        with:
-          extension_id: ${{ env.CHROME_ID }}
-          publisher_id: ${{env.PUBLISHER_ID}}
-          json_data: ${{ secrets.WEBSTORE_JSON }}
-          zip_file: "${{ env.PACKAGE_NAME }}-${{ github.event.release.tag_name }}-chrome.zip"
-          submit: false
-
-      # NOTE: This only submits for review! Need automation to upload signed release...
+      # NOTE: Firefox allows signing listed addons with unlisted channel for beta...
+      #   https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/#signing-test-version-listed
 
   check:
     name: "Check"
     if: ${{ always() }}
-    runs-on: Ubuntu-latest
+    runs-on: ubuntu-latest
     timeout-minutes: 5
-    needs: [build, release, publish-mozilla, publish-chrome]
+    needs: [build, release, publish-chrome, publish-mozilla]
 
     permissions:
       contents: write

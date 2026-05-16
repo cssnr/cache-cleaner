@@ -10,7 +10,7 @@ export function openSidePanel(close?: boolean) {
         .then(() => {
           if (close) window.close()
         })
-        .catch((e) => console.warn(e))
+        .catch(console.warn)
     })
   } else if (chrome.sidebarAction) {
     // console.debug('chrome.sidebarAction')
@@ -28,7 +28,7 @@ export function openOptions(close = false) {
     .then(() => {
       if (close) window.close()
     })
-    .catch((e) => console.warn(e))
+    .catch(console.warn)
 }
 
 export async function openPopup() {
