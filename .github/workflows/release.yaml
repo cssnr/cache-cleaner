@@ -124,6 +124,7 @@ jobs:
             "de":    "Vollständige Versionshinweise: $RELEASE_NOTES",
             "en-US": "Full Release Notes: $RELEASE_NOTES",
             "es-MX": "Notas de versión completas: $RELEASE_NOTES",
+            "fa":    "یادداشت‌های کامل انتشار : $RELEASE_NOTES",
             "fr":    "Notes de version complètes : $RELEASE_NOTES",
             "ja":    "完全なリリースノート: $RELEASE_NOTES",
             "ko":    "전체 릴리스 노트: $RELEASE_NOTES",

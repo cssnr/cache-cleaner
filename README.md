@@ -102,6 +102,7 @@ The extension is localized in the following languages:
 - German `de` - Deutsch
 - Japanese `ja` - 日本語
 - Korean `ko` - 한국어
+- Persian `fa` - فارسی
 - Portuguese (Brazil) `pt_BR` - Português (Brasil)
 - Russian `ru` - Русский
 - Spanish `es_419` - Español

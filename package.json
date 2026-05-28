@@ -32,7 +32,7 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "bootstrap": "^5.3.8",
     "bootswatch": "^5.3.8",
-    "vue": "^3.5.34"
+    "vue": "^3.5.35"
   },
   "devDependencies": {
     "@catppuccin/vitepress": "github:catppuccin/vitepress#c8a6edc2a050899552f86e01b1301a547c84820f",
@@ -52,12 +52,12 @@
     "eslint-plugin-vue": "^10.9.1",
     "nodemon": "^3.1.14",
     "prettier": "^3.8.3",
-    "sass": "^1.99.0",
+    "sass": "^1.100.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.3",
+    "typescript-eslint": "^8.60.0",
     "vitepress": "^2.0.0-alpha.17",
-    "vue-tsc": "^3.2.9",
-    "web-ext": "^10.1.0",
+    "vue-tsc": "^3.3.2",
+    "web-ext": "^10.3.0",
     "wxt": "^0.20.26"
   }
 }
