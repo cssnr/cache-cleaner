@@ -156,8 +156,10 @@ To add a new locale:
 1. The source language is English, copy [en.yaml](src/locales/en.yaml)
 2. Copy the exact format, including comments.
 3. Verify the correct file name: https://developer.chrome.com/docs/extensions/reference/api/i18n
-4. Verify the correct Mozilla translation: https://github.com/mozilla/addons-server/blob/master/src/olympia/core/languages.py
+4. Verify the correct Mozilla name in `PROD_LANGUAGES`: https://github.com/mozilla/addons-server/blob/master/src/olympia/core/languages.py
 5. Add the Release Notes translation here [release.yaml](.github/workflows/release.yaml)
+
+Note: The process for adding and validating names for `Mozilla` was clearly designed by a foolish child.
 
 # Documentation
 
