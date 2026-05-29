@@ -1,0 +1,245 @@
+name: پاک‌کننده حافظه پنهان
+short_name: CCleaner
+description: موارد انتخاب‌شده از حافظه پنهان (کش) برای سایت فعلی یا کل مرورگر را به راحتی با فشردن یک کلید، منوی کلیک‌راست، یا آیکون پاپ‌آپ پاک کنید.
+
+ui:
+  action:
+    cancel: لغو
+    close: بستن
+    extensionPanel: پنل افزونه
+    openPopup: باز کردن پاپ‌آپ
+    sidePanel: پنل کناری
+
+  text:
+    browserCache: کش مرورگر
+    homePage: صفحه اصلی
+    hostCopied: آدرس میزبان در کلیپ‌بورد کپی شد
+    noTabAccess: عدم دسترسی به تب فعلی.
+    openIssue: گزارش مشکل
+    options: تنظیمات
+    releaseNotes: یادداشت‌های انتشار
+    requestFeature: درخواست ویژگی
+    siteCache: کش سایت
+    unknown: ناشناخته
+
+  cache:
+    all: پاک کردن همه
+    cache: کش
+    clear: پاک کردن
+    cleared: پاک شد
+    error: خطا
+    selected: پاک کردن موارد انتخاب‌شده
+    type:
+      site: سایت انتخاب‌شده
+      siteAll: همه سایت‌ها
+      browser: مرورگر انتخاب‌شده
+      browserAll: همه مرورگرها
+
+cmd:
+  # wxt.config.ts
+  executeAction: باز کردن پاپ‌آپ
+  openSidePanel: باز کردن پنل کناری
+  openExtPanel: باز کردن پنل افزونه
+  openOptions: باز کردن تنظیمات
+  cache_site: پاک کردن کش سایت
+  cache_siteAll: پاک کردن کش همه سایت‌ها
+  cache_browser: پاک کردن کش مرورگر
+  cache_browserAll: پاک کردن کش کل مرورگر
+
+# Entrypoints
+
+options:
+  # options/App.vue
+  title: تنظیمات
+  extension: تنظیمات افزونه
+  moreOptions: تنظیمات بیشتر
+  quickOptions: تنظیمات سریع
+  optionsBackground: پس‌زمینه صفحه تنظیمات
+  copySupport: کپی اطلاعات پشتیبانی
+  copySupportTip: برای گزارش مشکل.
+  copySupportMsg: اطلاعات پشتیبانی کپی شد.
+  form:
+    # components/OptionsForm.vue
+    siteSpecific: تنظیمات خاص سایت
+    globalBrowser: تنظیمات عمومی مرورگر
+    allSites: همه سایت‌ها
+    browser: مرورگر
+
+popup:
+  # popout/App.vue
+  title: پنل
+
+popout:
+  # popout/App.vue
+  title: پنل
+
+# Components
+
+keyboard:
+  # KeyboardShortcuts.vue
+  description: توضیحات
+  manage: مدیریت میانبرهای صفحه‌کلید
+  notSet: تنظیم نشده
+  shortcut: میانبر
+  shortcuts: میانبرهای صفحه‌کلید
+
+theme:
+  # ThemeSwitch.vue
+  title: تغییر تم
+  dark: تیره
+  light: روشن
+  auto: خودکار
+
+background:
+  # components/BackgroundForm.vue
+  none: هیچ‌کدام
+  picture: تصویر
+  pictureTip: آدرس اینترنتی (URL) یک تصویر.
+  pictureLabel: آدرس تصویر پس‌زمینه
+  video: ویدیو
+  videoTip: آدرس اینترنتی (URL) یک ویدیو.
+  videoLabel: آدرس ویدیوی پس‌زمینه
+
+ctx:
+  # background/menus.ts
+  site:
+    label: پاک کردن کش سایت
+    tip: پاک کردن کش سایت
+  siteAll:
+    label: پاک کردن کش همه سایت‌ها
+    tip: پاک کردن کش همه سایت‌ها
+  browser:
+    label: پاک کردن کش مرورگر
+    tip: پاک کردن کش مرورگر
+  browserAll:
+    label: پاک کردن کش کل مرورگر
+    tip: پاک کردن کش کل مرورگر
+  popup:
+    label: باز کردن پاپ‌آپ
+    tip: باز کردن پاپ‌آپ
+  sidepanel:
+    label: باز کردن پنل کناری
+    tip: باز کردن پنل کناری
+  options:
+    label: باز کردن تنظیمات
+    tip: باز کردن تنظیمات
+
+# Options
+
+option:
+  toggle:
+    autoReload:
+      label: بارگذاری مجدد خودکار سایت
+      tip: رفرش کردن سایت پس از پاک کردن کش.
+    showAllButtons:
+      label: نمایش همه دکمه‌ها
+      tip: نمایش دکمه‌های سایت و مرورگر در پاپ‌آپ.
+    popupBrowser:
+      label: مرورگر به عنوان پیش‌فرض
+      tip: نمایش تب مرورگر هنگام باز کردن پاپ‌آپ.
+    showConfirmation:
+      label: نمایش تاییدیه
+      tip: نمایش پیام تایید قبل از پاک کردن کش.
+    showDeprecated:
+      label: نمایش گزینه‌های منسوخ‌شده
+      tip: نمایش گزینه‌هایی که دیگر پشتیبانی نمی‌شوند (Deprecated).
+    contextMenu:
+      label: نمایش منوی کلیک‌راست
+      tip: نمایش گزینه‌ها در منوی کلیک‌راست.
+    contextAction:
+      label: نمایش همه موارد روی آیکون نوار ابزار
+      tip: نمایش تمام موارد منو هنگام کلیک‌راست روی آیکون افزونه.
+    showErrorNotifications:
+      label: نمایش اعلان‌های خطا
+      tip: برای منوی کلیک‌راست و میانبرهای صفحه‌کلید.
+    showUpdate:
+      label: نمایش یادداشت‌های انتشار هنگام بروزرسانی
+      tip: نمایش اعلان‌های مربوط به بروزرسانی افزونه.
+
+  confirm:
+    site:
+      label: کش سایت
+      tip: کش سایت
+    siteAll:
+      label: کش همه سایت‌ها
+      tip: کش همه سایت‌ها
+    browser:
+      label: کش مرورگر
+      tip: کش مرورگر
+    browserAll:
+      label: کش کل مرورگر
+      tip: کش کل مرورگر
+
+  site:
+    cache:
+      label: کش سایت
+      tip: کش مرورگر برای این سایت
+    appcache:
+      label: کش برنامه (App Cache)
+      tip: کش برنامه مرورگر (منسوخ‌شده)
+    cacheStorage:
+      label: حافظه کش (Cache Storage)
+      tip: حافظه کش سایت
+    cookies:
+      label: کوکی‌ها
+      tip: کوکی‌های سایت
+    fileSystems:
+      label: فایل سیستم‌ها
+      tip: فایل سیستم‌های سایت (منسوخ‌شده)
+    indexedDB:
+      label: پایگاه داده (IndexedDB)
+      tip: پایگاه داده IndexedDB سایت
+    localStorage:
+      label: حافظه محلی (Local Storage)
+      tip: حافظه محلی سایت
+    serviceWorkers:
+      label: سرویس ورکرها (Service Workers)
+      tip: سرویس ورکرهای سایت
+    webSQL:
+      label: پایگاه داده Web SQL
+      tip: پایگاه داده Web SQL سایت (منسوخ‌شده)
+
+  browser:
+    appcache:
+      label: کش برنامه (App Cache)
+      tip: کش برنامه مرورگر (منسوخ‌شده)
+    cacheStorage:
+      label: حافظه کش (Cache Storage)
+      tip: حافظه کش همه سایت‌ها
+    cookies:
+      label: کوکی‌ها
+      tip: کوکی‌های همه سایت‌ها
+    fileSystems:
+      label: فایل سیستم‌ها
+      tip: فایل سیستم‌های همه سایت‌ها
+    indexedDB:
+      label: پایگاه داده (IndexedDB)
+      tip: پایگاه داده IndexedDB همه سایت‌ها
+    localStorage:
+      label: حافظه محلی (Local Storage)
+      tip: حافظه محلی همه سایت‌ها
+    serviceWorkers:
+      label: سرویس ورکرها (Service Workers)
+      tip: سرویس ورکرهای همه سایت‌ها
+    webSQL:
+      label: پایگاه داده Web SQL
+      tip: پایگاه داده Web SQL همه سایت‌ها (منسوخ‌شده)
+
+    cache:
+      label: کش مرورگر
+      tip: کش مرورگر
+    downloads:
+      label: دانلودها
+      tip: تاریخچه دانلودهای مرورگر
+    formData:
+      label: داده‌های فرم (Form Data)
+      tip: داده‌های فرم‌های مرورگر
+    history:
+      label: تاریخچه (History)
+      tip: تاریخچه مرورگر
+    passwords:
+      label: رمزهای عبور
+      tip: رمزهای عبور مرورگر (منسوخ‌شده)
+    pluginData:
+      label: داده‌های افزونه‌ها
+      tip: داده‌های پلاگین‌های مرورگر (منسوخ‌شده)
