@@ -7,6 +7,7 @@ on:
 jobs:
   issue:
     name: "Issue"
+    if: ${{ github.event.issue.type.name == 'Bug' || github.event.issue.type.name == '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:
