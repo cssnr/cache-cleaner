@@ -4,7 +4,7 @@
   - [Developing](#developing)
   - [Building](#building)
   - [WXT](#wxt)
-  - [Locales](#locales)
+- [Locales](#locales)
 - [Documentation](#documentation)
 
 For workflow instructions, see the main [CSSNR CONTRIBUTING.md](https://github.com/cssnr/.github/blob/master/.github/CONTRIBUTING.md).
@@ -149,7 +149,7 @@ Additional notes on loading temporary/unpacked extensions.
 - [Google Chrome](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
 - [Microsoft Edge](https://learn.microsoft.com/en-us/microsoft-edge/extensions/getting-started/extension-sideloading#locally-installing-and-running-an-extension)
 
-## Locales
+# Locales
 
 To add a new locale:
 
