@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@catppuccin/vitepress": "github:catppuccin/vitepress#c8a6edc2a050899552f86e01b1301a547c84820f",
+    "@cssnr/vitepress-chat": "github:smashedr/vitepress-chat#66927264e3646a65238e5775a2eaf96d7b3100d8",
     "@cssnr/vitepress-plugin-contributors": "^0.2.0",
     "@cssnr/vitepress-swiper": "^0.3.1",
     "@eslint/compat": "^2.1.0",

@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import vitePressInstructions from '@cssnr/vitepress-chat/instructions-plugin'
 
 const settings = {
   title: 'Cache Cleaner',
@@ -22,6 +23,8 @@ export default defineConfig({
   // srcDir: './docs',
   base: settings.base,
   vite: {
+    envDir: '..',
+    plugins: [vitePressInstructions({ exclude: ['index.md', 'updates/**'] })],
     server: {
       allowedHosts: true,
     },
@@ -35,7 +38,7 @@ export default defineConfig({
       {
         rel: 'icon',
         sizes: 'any',
-        href: `${settings.base}/images/logo.svg`,
+        href: `${settings.base}images/logo.svg`,
         type: 'image/svg+xml',
       },
     ],
@@ -44,7 +47,7 @@ export default defineConfig({
       {
         rel: 'icon',
         sizes: '16x16 32x32 64x64 128x128',
-        href: `${settings.base}/favicon.ico`,
+        href: `${settings.base}favicon.ico`,
         type: 'image/x-icon',
       },
     ],
