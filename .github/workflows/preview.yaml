@@ -18,7 +18,7 @@ jobs:
   build:
     name: "Build"
     if: ${{ !contains(github.event.head_commit.message, '#nodev') }}
-    uses: cssnr/workflows/.github/workflows/npm-build.yaml@ai # TODO: TESTING
+    uses: cssnr/workflows/.github/workflows/npm-build.yaml@master
     permissions:
       contents: read
     with:
