@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import vitePressInstructions from '@cssnr/vitepress-chat/instructions-plugin'
+import instructions from 'vitepress-chat/instructions'
 
 const settings = {
   title: 'Cache Cleaner',
@@ -24,7 +24,9 @@ export default defineConfig({
   base: settings.base,
   vite: {
     envDir: '..',
-    plugins: [vitePressInstructions({ exclude: ['index.md', 'updates/**'] })],
+    plugins: [
+      instructions({ filePath: 'llms.txt', exclude: ['index.md', 'updates/**'] }),
+    ],
     server: {
       allowedHosts: true,
     },

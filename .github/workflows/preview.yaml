@@ -25,10 +25,7 @@ jobs:
       #install: "npm ci --legacy-peer-deps"
       build: "npm run docs:deploy"
       path: "docs/.vitepress/dist"
-    secrets:
-      webhook: ${{ secrets.DISCORD_WEBHOOK }}
-      ai_chat_api: ${{ secrets.AI_CHAT_API }}
-      ai_chat_auth: ${{ secrets.AI_CHAT_AUTH }}
+    secrets: inherit
 
   deploy:
     name: "Deploy"
@@ -57,7 +54,7 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v6
 
-      - name: "Setup Node 24"
+      - name: "Setup Node"
         uses: actions/setup-node@v6
         with:
           node-version: 24
