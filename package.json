@@ -20,6 +20,7 @@
     "get-contributors": "npx get-contributors cssnr/cache-cleaner -f docs/.vitepress/contributors.json",
     "clean": "rm -rf .output",
     "tsc": "vue-tsc --noEmit",
+    "prettier": "npm run prettier:write",
     "prettier:check": "npx prettier --check .",
     "prettier:write": "npx prettier --write .",
     "lint": "npx eslint src docs",
