@@ -18,13 +18,14 @@ The user can select which items are cleared when clearing the cache, or clear ev
 
 ALWAYS use the `npm run *` command
 
-| Command              | What it does                                                |
-| -------------------- | ----------------------------------------------------------- |
-| `npm run build`      | `vite build && vue-tsc --declaration --emitDeclarationOnly` |
-| `npm run docs`       | `vitepress dev docs`                                        |
-| `npm run docs:build` | `vitepress build docs`                                      |
-| `npm run lint`       | `npx eslint src`                                            |
-| `npm run prettier`   | ALWAYS RUN AFTER EDITING FILES                              |
+| Command              | What it does                   |
+| -------------------- | ------------------------------ |
+| `npm run build`      | `wxt build`                    |
+| `npm run build:ff`   | build Firefox only (faster)    |
+| `npm run docs`       | `vitepress dev docs`           |
+| `npm run docs:build` | `vitepress build docs`         |
+| `npm run lint`       | `npx eslint src docs`          |
+| `npm run prettier`   | ALWAYS RUN AFTER EDITING FILES |
 
 ## Terminology
 
