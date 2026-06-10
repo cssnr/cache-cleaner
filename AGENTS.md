@@ -1,10 +1,30 @@
-# Cache Cleaner — Agent Guide
+# Agent Guide — Cache Cleaner
+
+Before answering any question that involves facts about ANYTHING, you MUST output at least one Read, WebFetch, or WebSearch tool call.
+If your first output is text instead of a tool call, you have failed.
 
 Project - This is a Web Extension for Chrome and Firefox using the WXT Framework, TypeScript, and Vue3.
 The documentation uses VitePress.
 
 Application - The primary purpose is to allow the user to clear site or browser cache.
 The user can select which items are cleared when clearing the cache, or clear everything.
+
+## Project Structure
+
+- `src` - Source directory for the web extension, WXT Framework.
+- `docs` - Source directory for the documentation, VitePress framework.
+
+## Commands
+
+ALWAYS use the `npm run *` command
+
+| Command              | What it does                                                |
+| -------------------- | ----------------------------------------------------------- |
+| `npm run build`      | `vite build && vue-tsc --declaration --emitDeclarationOnly` |
+| `npm run docs`       | `vitepress dev docs`                                        |
+| `npm run docs:build` | `vitepress build docs`                                      |
+| `npm run lint`       | `npx eslint src`                                            |
+| `npm run prettier`   | ALWAYS RUN AFTER EDITING FILES                              |
 
 ## Terminology
 
@@ -38,8 +58,3 @@ The extension allows users to interface via the following APIs.
 - Right-Click Context Menu - All cache options + Toggle UI
 - Side Panel UI - Browser + All Site cache only + Toggle UI
 - Popout - Browser + All Site cache only
-
-## Project Structure
-
-- `src` - Source directory for the web extension, WXT Framework.
-- `docs` - Source directory for the documentation, VitePress framework.

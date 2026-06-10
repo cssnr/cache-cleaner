@@ -3,7 +3,7 @@ name: "Draft Release"
 on:
   workflow_dispatch:
   push:
-    branches: [master]
+    branches: [master, main]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
