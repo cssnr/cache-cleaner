@@ -3,7 +3,7 @@ name: "Preview"
 on:
   workflow_dispatch:
   push:
-    branches-ignore: [master, legacy]
+    branches-ignore: [master, main, legacy]
     paths:
       - ".github/workflows/preview.yaml"
       - ".vitepress/**"
@@ -17,12 +17,12 @@ concurrency:
 jobs:
   build:
     name: "Build"
-    if: ${{ !contains(github.event.head_commit.message, '#nodev') }}
+    if: ${{ !contains(github.event.head_commit.message, '#nopreview') }}
     uses: cssnr/workflows/.github/workflows/npm-build.yaml@master
     permissions:
       contents: read
     with:
-      #install: "npm ci --legacy-peer-deps"
+      install: "npm ci --ignore-scripts"
       build: "npm run docs:deploy"
       path: "docs/.vitepress/dist"
     secrets: inherit
@@ -61,7 +61,7 @@ jobs:
 
       - name: "Install"
         id: install
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: "eslint"
         if: ${{ !cancelled() }}

@@ -13,11 +13,14 @@
   --vp-button-alt-bg: var(--vp-c-default-1);
 }
 
-/* NOTE: This is a "fix" for the search modal content shift */
 @supports (scrollbar-gutter: stable) {
+  /* Note: local search is: 768px */
   @media (min-width: 769px) {
     html {
       scrollbar-gutter: stable;
+    }
+    html:has(:fullscreen) {
+      scrollbar-gutter: auto;
     }
   }
 }

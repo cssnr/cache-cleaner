@@ -22,11 +22,12 @@ export default {
   ...DefaultTheme,
 
   ...chat(DefaultTheme, {
-    filePath: 'llms.txt',
     api: import.meta.env.VITE_AI_API,
     headers: import.meta.env.VITE_AI_AUTH
       ? { Authorization: import.meta.env.VITE_AI_AUTH }
       : undefined,
+    filePath: 'llms.txt',
+    showReasoning: true,
   }),
 
   enhanceApp({ app }) {
