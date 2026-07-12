@@ -93,8 +93,7 @@ async function clearSiteCache(options: Options, all = false) {
   }
 
   const removalOptions:
-    | chrome.browsingData.RemovalOptions
-    | browser.browsingData.RemovalOptions = isFirefox
+    chrome.browsingData.RemovalOptions | browser.browsingData.RemovalOptions = isFirefox
     ? { hostnames: [url.hostname] }
     : { origins: [url.origin] }
 
