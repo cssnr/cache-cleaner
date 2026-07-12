@@ -30,10 +30,10 @@
     "postinstall": "wxt prepare"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@fortawesome/fontawesome-free": "^7.3.0",
     "bootstrap": "^5.3.8",
     "bootswatch": "^5.3.8",
-    "vue": "^3.5.35"
+    "vue": "^3.5.39"
   },
   "devDependencies": {
     "@catppuccin/vitepress": "github:catppuccin/vitepress#c8a6edc2a050899552f86e01b1301a547c84820f",
@@ -43,23 +43,23 @@
     "@eslint/config-helpers": "^0.6.0",
     "@eslint/js": "^10.0.1",
     "@types/bootstrap": "^5.2.11",
-    "@types/chrome": "^0.1.43",
+    "@types/chrome": "^0.2.2",
     "@types/firefox-webext-browser": "^143.0.0",
     "@wxt-dev/auto-icons": "^1.1.1",
-    "@wxt-dev/i18n": "^0.2.5",
+    "@wxt-dev/i18n": "^0.2.6",
     "@wxt-dev/module-vue": "^1.0.3",
     "animate.css": "^4.1.1",
-    "eslint": "^10.4.1",
+    "eslint": "^10.7.0",
     "eslint-plugin-vue": "^10.9.2",
     "nodemon": "^3.1.14",
-    "prettier": "^3.8.4",
-    "sass": "^1.100.0",
+    "prettier": "^3.9.5",
+    "sass": "^1.101.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.61.0",
-    "vitepress": "^2.0.0-alpha.17",
-    "vitepress-chat": "^0.0.2",
-    "vue-tsc": "^3.3.4",
-    "web-ext": "^10.3.0",
-    "wxt": "^0.20.26"
+    "typescript-eslint": "^8.63.0",
+    "vitepress": "next",
+    "vitepress-chat": "^0.0.4",
+    "vue-tsc": "^3.3.7",
+    "web-ext": "^10.5.0",
+    "wxt": "^0.20.27"
   }
 }
