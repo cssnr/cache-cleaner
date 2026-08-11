@@ -5,6 +5,7 @@ export function openSidePanel(close?: boolean) {
   if (chrome.sidePanel) {
     // console.debug('chrome.sidePanel')
     chrome.tabs.query({ active: true, currentWindow: true }, ([tab]) => {
+      if (!tab) return
       chrome.sidePanel
         .open({ windowId: tab.windowId })
         .then(() => {

@@ -1,5 +1,5 @@
 import { i18n } from '#imports'
-import { Options } from '@/utils/options.ts'
+import type { Options } from '@/utils/options.ts'
 
 const config = {
   cache: {
