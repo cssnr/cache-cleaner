@@ -1,8 +1,5 @@
 # Agent Guide — Cache Cleaner
 
-Before answering any question that involves facts about ANYTHING, you MUST output at least one Read, WebFetch, or WebSearch tool call.
-If your first output is text instead of a tool call, you have failed.
-
 Project - This is a Web Extension for Chrome and Firefox using the WXT Framework, TypeScript, and Vue3.
 The documentation uses VitePress.
 

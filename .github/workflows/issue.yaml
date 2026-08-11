@@ -43,3 +43,4 @@ jobs:
           url: https://cssnr.github.io/cache-cleaner/llms.txt
           path: |
             AGENTS.md
+            docs/**/*.md
