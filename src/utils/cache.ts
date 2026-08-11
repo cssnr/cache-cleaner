@@ -82,7 +82,7 @@ async function clearSiteCache(options: Options, all = false) {
 
   const [tab] = await chrome.tabs.query({ currentWindow: true, active: true })
   console.debug('tab:', tab)
-  if (!tab.url) return console.warn('no tab.url')
+  if (!tab?.url) return console.warn('no tab.url')
 
   const url = new URL(tab.url)
   console.debug('url:', url)
@@ -159,7 +159,7 @@ async function injectFunction<Args extends unknown[], R>(
   args: Args = [] as unknown as Args,
 ) {
   const [tab] = await chrome.tabs.query({ currentWindow: true, active: true })
-  if (!tab.id) return console.warn('no tab.id')
+  if (!tab?.id) return console.warn('no tab.id')
   return await chrome.scripting.executeScript({
     target: { tabId: tab.id },
     func,

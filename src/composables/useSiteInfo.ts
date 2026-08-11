@@ -20,7 +20,7 @@ async function checkTab(): Promise<SiteInfo | undefined> {
   try {
     const [tab] = await chrome.tabs.query({ currentWindow: true, active: true })
     // console.log('tab:', tab)
-    if (!tab.id) return
+    if (!tab?.id) return
     const results = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       injectImmediately: true,

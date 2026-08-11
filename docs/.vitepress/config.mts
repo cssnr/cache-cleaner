@@ -152,15 +152,15 @@ export default defineConfig({
       },
     },
 
-    // search: {
-    //   // provider: 'local',
-    //   provider: 'algolia',
-    //   options: {
-    //     appId: '',
-    //     apiKey: '',
-    //     indexName: 'cache-cleaner-docs',
-    //   },
-    // },
+    search: {
+      // provider: 'local',
+      provider: 'algolia',
+      options: {
+        appId: 'ER8FFA9PDG',
+        apiKey: '75fae4b2f25f6eb40c3d8fa87a679613',
+        indexName: 'cache-cleaner-docs',
+      },
+    },
 
     // footer: {
     //   message: '<a href="/privacy">Privacy Policy</a>',
